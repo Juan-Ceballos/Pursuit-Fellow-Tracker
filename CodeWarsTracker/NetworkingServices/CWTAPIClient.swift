@@ -25,9 +25,9 @@ class CWTAPIClient {
                 print(appError)
             case .success(let data):
                 do {
-                    let userWrapper = try JSONDecoder().decode(UserWrapper.self, from: data)
-                    let users = userWrapper.users
-                completion(.success(users))
+                    let userWrapper = try JSONDecoder().decode([User].self, from: data)
+                   
+                completion(.success(userWrapper))
                 } catch {
                     completion(.failure(.decodingError(error)))
                 }

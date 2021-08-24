@@ -30,5 +30,40 @@ class CodeWarsTrackerTests: XCTestCase {
         
         wait(for: [exp], timeout: 5.0)
     }
+    
+    func testFetchAllUsers() {
+        let exp = XCTestExpectation(description: "fetched all users")
+        let firstUserIdInAPI = 5
+        CWTAPIClient.fetchAllUsers { (result) in
+            switch result {
+            case .failure(let appError):
+                print(appError)
+                XCTFail("\(appError)")
+            case .success(let users):
+                exp.fulfill()
+                
+                XCTAssertEqual(users[0].id, firstUserIdInAPI)
+            }
+        }
+        
+        wait(for: [exp], timeout: 5.0)
+        
+    }
+    
+    func testFetchUserById() {
+        let exp = XCTestExpectation(description: "fetched a user by id")
+        CWTAPIClient.fetchUserById(id: "5") { (result) in
+            switch result {
+            case .failure(let appError):
+                print(appError)
+                XCTFail("\(appError)")
+            case .success(let userById):
+                exp.fulfill()
+                XCTAssertEqual(userById.id, 5)
+            }
+        }
+        
+        wait(for: [exp], timeout: 5.0)
+    }
 
 }

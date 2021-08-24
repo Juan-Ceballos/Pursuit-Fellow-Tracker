@@ -14,3 +14,11 @@ struct UserWrapper: Decodable {
 struct User: Decodable {
     let id: Int
 }
+
+extension User {
+    init(_ dictionary: [String:Any]) {
+        self.id = dictionary["id"] as? Int ?? -1
+    }
+}
+
+
