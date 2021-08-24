@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ScoreCardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
