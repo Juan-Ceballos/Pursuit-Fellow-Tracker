@@ -61,4 +61,29 @@ class CWTAPIClient {
             }
         }
     }
+    
+    public static func getScoreboardData(completion: @escaping (Result<ScoreBoard, AppError>) -> ()){
+        let urlString = RequestURLString.scoreboard
+        
+        guard let url = URL(string: urlString) else {
+            completion(.failure(.badURL(urlString)))
+            return
+        }
+        
+        let urlRequest = URLRequest(url: url)
+        
+        NetworkHelper.shared.performDataTask(request: urlRequest) { (result) in
+            switch result {
+            case .failure(let appError):
+                print(appError)
+            case .success(let data):
+                do {
+                    let scoreboard = try JSONDecoder().decode(ScoreBoard.self, from: data)
+                    completion(.success(scoreboard))
+                } catch {
+                    completion(.failure(.decodingError(error)))
+                }
+            }
+        }
+    }
 }
