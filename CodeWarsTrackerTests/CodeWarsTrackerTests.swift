@@ -65,5 +65,20 @@ class CodeWarsTrackerTests: XCTestCase {
         
         wait(for: [exp], timeout: 5.0)
     }
+    
+    func testGetScoreboard() {
+        let exp = XCTestExpectation(description: "fetched scoreboard data")
+        let scoreboardId = 1
+        CWTAPIClient.getScoreboardData { (result) in
+            switch result {
+            case .failure(let appError):
+                print(appError)
+                XCTFail("\(appError)")
+            case .success(let scoreboardData):
+                exp.fulfill()
+                XCTAssertEqual(scoreboardData.id, scoreboardId)
+            }
+        }
+    }
 
 }

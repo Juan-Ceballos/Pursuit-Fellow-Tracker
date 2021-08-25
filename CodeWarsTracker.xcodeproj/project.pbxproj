@@ -23,6 +23,7 @@
 		3E6AB81126CC5ED500DF9A11 /* CodeWarsTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AB81026CC5ED500DF9A11 /* CodeWarsTrackerUITests.swift */; };
 		B3E7524322C97D4C7BB44379 /* Pods_CodeWarsTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1A94353D1F8E416F54FC22 /* Pods_CodeWarsTrackerTests.framework */; };
 		BA229D6F33FD7572A282A465 /* Pods_CodeWarsTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1433D67A9032F8B08B6E30D2 /* Pods_CodeWarsTracker.framework */; };
+		F110DB4526D5DBC8007BA3A3 /* ScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */; };
 		F4C8DF27C5529637BBD03696 /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1690613AA1A60B294BFD5E2C /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		9D1A94353D1F8E416F54FC22 /* Pods_CodeWarsTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeWarsTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D354AC7882F44AB5E962EEF9 /* Pods-CodeWarsTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTrackerTests.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTrackerTests/Pods-CodeWarsTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1764549936F4EACD3D0E770 /* Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTracker-CodeWarsTrackerUITests/Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCardView.swift; sourceTree = "<group>"; };
 		F6D8733F5C605B29BD1CDBB7 /* Pods-CodeWarsTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTrackerTests.release.xcconfig"; path = "Target Support Files/Pods-CodeWarsTrackerTests/Pods-CodeWarsTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		F73FE2A454D4947730BF9339 /* Pods-CodeWarsTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTracker.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTracker/Pods-CodeWarsTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,13 +105,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3E0AB1C726D422380005FAE5 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		3E0AB1C926D4224E0005FAE5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,13 +183,13 @@
 		3E6AB7ED26CC5ED000DF9A11 /* CodeWarsTracker */ = {
 			isa = PBXGroup;
 			children = (
+				F110DB4326D5DB8C007BA3A3 /* Views */,
 				3E0AB1F326D430AB0005FAE5 /* Secrets */,
 				3E0AB1E226D42C720005FAE5 /* NetworkingServices */,
 				3E0AB1CC26D4226B0005FAE5 /* SupportingFiles */,
 				3E0AB1CB26D4225C0005FAE5 /* Models */,
 				3E0AB1CA26D422550005FAE5 /* Controllers */,
 				3E0AB1C926D4224E0005FAE5 /* Extensions */,
-				3E0AB1C726D422380005FAE5 /* Views */,
 				3E6AB7F726CC5ED400DF9A11 /* Assets.xcassets */,
 				3E6AB7FC26CC5ED400DF9A11 /* Info.plist */,
 			);
@@ -227,6 +222,14 @@
 				9D1A94353D1F8E416F54FC22 /* Pods_CodeWarsTrackerTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F110DB4326D5DB8C007BA3A3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F6EAF4476B6153638CA8CFB3 /* Pods */ = {
@@ -484,6 +487,7 @@
 				3E0AB1D426D42B280005FAE5 /* ScoreCard.swift in Sources */,
 				3E0AB1D926D42B400005FAE5 /* User.swift in Sources */,
 				3E6AB7F326CC5ED000DF9A11 /* ScoreCardViewController.swift in Sources */,
+				F110DB4526D5DBC8007BA3A3 /* ScoreCardView.swift in Sources */,
 				3E0AB1EF26D42CFC0005FAE5 /* CWTAPIClient.swift in Sources */,
 				3E6AB7EF26CC5ED000DF9A11 /* AppDelegate.swift in Sources */,
 				3E6AB7F126CC5ED000DF9A11 /* SceneDelegate.swift in Sources */,
