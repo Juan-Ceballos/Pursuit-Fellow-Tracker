@@ -24,6 +24,7 @@
 		B3E7524322C97D4C7BB44379 /* Pods_CodeWarsTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1A94353D1F8E416F54FC22 /* Pods_CodeWarsTrackerTests.framework */; };
 		BA229D6F33FD7572A282A465 /* Pods_CodeWarsTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1433D67A9032F8B08B6E30D2 /* Pods_CodeWarsTracker.framework */; };
 		F110DB4526D5DBC8007BA3A3 /* ScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */; };
+		F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */; };
 		F4C8DF27C5529637BBD03696 /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1690613AA1A60B294BFD5E2C /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		D354AC7882F44AB5E962EEF9 /* Pods-CodeWarsTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTrackerTests.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTrackerTests/Pods-CodeWarsTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1764549936F4EACD3D0E770 /* Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTracker-CodeWarsTrackerUITests/Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCardView.swift; sourceTree = "<group>"; };
+		F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarViewController.swift; sourceTree = "<group>"; };
 		F6D8733F5C605B29BD1CDBB7 /* Pods-CodeWarsTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTrackerTests.release.xcconfig"; path = "Target Support Files/Pods-CodeWarsTrackerTests/Pods-CodeWarsTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		F73FE2A454D4947730BF9339 /* Pods-CodeWarsTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTracker.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTracker/Pods-CodeWarsTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				3E6AB7F226CC5ED000DF9A11 /* ScoreCardViewController.swift */,
+				F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 			files = (
 				3E0AB1E926D42CB90005FAE5 /* NetworkHelper.swift in Sources */,
 				3E0AB1F526D430C20005FAE5 /* Secrets.swift in Sources */,
+				F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */,
 				3E0AB1D426D42B280005FAE5 /* ScoreCard.swift in Sources */,
 				3E0AB1D926D42B400005FAE5 /* User.swift in Sources */,
 				3E6AB7F326CC5ED000DF9A11 /* ScoreCardViewController.swift in Sources */,

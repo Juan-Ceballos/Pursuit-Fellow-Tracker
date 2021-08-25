@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ScoreCardViewController: UIViewController {
+class ScoreCardViewController: NavBarViewController {
     
     private let scoreCardView = ScoreCardView()
     
