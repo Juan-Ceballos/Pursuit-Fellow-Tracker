@@ -36,7 +36,7 @@ class ScoreCardViewController: UIViewController {
                 fatalError()
             }
             cell.backgroundColor = .systemBackground
-            cell.usernameLabel.text = "Default"
+            cell.usernameLabel.text = item.username
             return cell
         })
         
