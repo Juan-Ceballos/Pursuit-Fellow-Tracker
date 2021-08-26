@@ -14,11 +14,76 @@ class ScoreCardViewController: NavBarViewController {
     override func loadView() {
         view = scoreCardView
     }
+    
+    private typealias DataSource = UICollectionViewDiffableDataSource<Section, User>
+    private var dataSource: DataSource!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemTeal
+        view.backgroundColor = .systemBackground
         loadScoreCardData()
+        configureCollectionView()
+        configureDataSource()
+    }
+    
+    private func configureCollectionView() {
+        scoreCardView.cv.register(FellowCardCell.self, forCellWithReuseIdentifier: FellowCardCell.reuseIdentifier)
+        scoreCardView.cv.register(HeaderView.self, forSupplementaryViewOfKind: "header", withReuseIdentifier: HeaderView.reuseIdentifier)
+    }
+    
+    private func configureDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, User>(collectionView: scoreCardView.cv, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FellowCardCell.reuseIdentifier, for: indexPath) as? FellowCardCell else {
+                fatalError()
+            }
+            cell.backgroundColor = .systemBlue
+            cell.nameLabel.text = item.name
+            cell.usernameLabel.text = "Codewars: \(item.username)"
+            cell.clanLabel.text = "Clan: \(item.clan ?? "No Clan")"
+            cell.honorLabel.text = String(item.honor ?? 0)
+            return cell
+        })
+        
+        dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
+            
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView else {
+                fatalError()
+            }
+            
+            if self.dataSource.itemIdentifier(for: indexPath)!.role == "staff" {
+                headerView.textLabel.text = "Staff"
+
+            } else {
+                headerView.textLabel.text = "Fellows"
+            }
+            headerView.textLabel.textAlignment = .left
+            headerView.textLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+            return headerView
+        }
+        
+        var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
+        var fellows = [User]()
+        var staff = [User]()
+        snapshot.appendSections([.fellow, .staff])
+        CWTAPIClient.fetchAllUsers { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                print("\(error)")
+            case .success(let users):
+                DispatchQueue.main.async {
+                    for user in users {
+                        if user.role == "staff" {
+                            staff.append(user)
+                        } else {
+                            fellows.append(user)
+                        }
+                    }
+                    snapshot.appendItems(fellows, toSection: .fellow)
+                    snapshot.appendItems(staff, toSection: .staff)
+                    self?.dataSource.apply(snapshot, animatingDifferences: false)
+                }
+            }
+        }
     }
     
     private func loadScoreCardData(){
@@ -35,6 +100,8 @@ class ScoreCardViewController: NavBarViewController {
             }
         }
     }
+    
+    
 
 
 }
