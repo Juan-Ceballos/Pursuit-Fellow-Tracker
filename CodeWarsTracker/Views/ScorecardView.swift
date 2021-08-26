@@ -8,6 +8,11 @@
 import UIKit
 import SnapKit
 
+public enum Section {
+    case fellow
+    case staff
+}
+
 class ScoreCardView: UIView {
     
 //    public lazy var scoreboardCardContainerView:UIView = {
@@ -15,6 +20,22 @@ class ScoreCardView: UIView {
 //        view.backgroundColor = .systemBlue
 //        return view
 //    }()
+    
+    public lazy var cv: UICollectionView = {
+        let layout = createLayout()
+        let mainCV = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        return mainCV
+    }()
+    
+    private func createLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3))
+        let group = NSCollectionLayoutGroup(layoutSize: groupSize)
+        let section = NSCollectionLayoutSection(group: group)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
+    }
     
     public lazy var scoreboardContainerStackView: UIStackView = {
         let stackview = UIStackView()
@@ -91,6 +112,7 @@ class ScoreCardView: UIView {
     
     private func commonInit(){
         scoreboardContainerStackViewContrainsts()
+        setupCollectionViewConstraints()
     }
     
     private func scoreboardContainerStackViewContrainsts(){
@@ -100,6 +122,16 @@ class ScoreCardView: UIView {
             mkr.top.equalTo(safeAreaLayoutGuide).offset(10)
             //mkr.edges.equalTo(self).offset(8)
             //mkr.size.height.lessThanOrEqualTo(self).multipliedBy(0.5)
+        }
+    }
+    
+    private func setupCollectionViewConstraints() {
+        addSubview(cv)
+        cv.snp.makeConstraints { (make) in
+            make.top.equalTo(scoreboardContainerStackView.snp.bottom).offset(11)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
     }
 }
