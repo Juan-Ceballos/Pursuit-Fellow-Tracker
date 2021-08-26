@@ -8,9 +8,18 @@
 import UIKit
 import SnapKit
 
-public enum Section {
+public enum Section: CaseIterable {
     case fellow
     case staff
+    
+    var sectionTitle: String {
+        switch self {
+        case .fellow:
+            return "Fellow"
+        case .staff:
+            return "Staff"
+        }
+    }
 }
 
 class ScoreCardView: UIView {
@@ -29,13 +38,19 @@ class ScoreCardView: UIView {
     }()
     
     private func createLayout() -> UICollectionViewLayout {
+        let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.125))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerFooterSize, elementKind: "header", alignment: .top)
+        
+        
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         group.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0)
         let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [sectionHeader]
         let layout = UICollectionViewCompositionalLayout(section: section)
+        
         return layout
     }
     

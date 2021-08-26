@@ -28,6 +28,7 @@ class ScoreCardViewController: UIViewController {
     
     private func configureCollectionView() {
         scoreCardView.cv.register(FellowCardCell.self, forCellWithReuseIdentifier: FellowCardCell.reuseIdentifier)
+        scoreCardView.cv.register(HeaderView.self, forSupplementaryViewOfKind: "header", withReuseIdentifier: HeaderView.reuseIdentifier)
     }
     
     private func configureDataSource() {
@@ -40,15 +41,42 @@ class ScoreCardViewController: UIViewController {
             return cell
         })
         
+        dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
+            
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView else {
+                fatalError()
+            }
+            
+            if self.dataSource.itemIdentifier(for: indexPath)!.role == "staff" {
+                headerView.textLabel.text = "Staff"
+
+            } else {
+                headerView.textLabel.text = "Fellow"
+            }
+            headerView.textLabel.textAlignment = .left
+            headerView.textLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+            return headerView
+        }
+        
         var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
-        snapshot.appendSections([.fellow])
+        var fellows = [User]()
+        var staff = [User]()
+        snapshot.appendSections([.fellow, .staff])
         CWTAPIClient.fetchAllUsers { [weak self] (result) in
             switch result {
             case .failure(let error):
                 print("\(error)")
             case .success(let users):
                 DispatchQueue.main.async {
-                    snapshot.appendItems(users, toSection: .fellow)
+                    for user in users {
+                        if user.role == "staff" {
+                            staff.append(user)
+                        } else {
+                            fellows.append(user)
+                        }
+                    }
+                    snapshot.appendItems(fellows, toSection: .fellow)
+                    snapshot.appendItems(staff, toSection: .staff)
                     self?.dataSource.apply(snapshot, animatingDifferences: false)
                 }
             }

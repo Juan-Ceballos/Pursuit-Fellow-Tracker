@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3E0A04C426D758DB00061809 /* FellowCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A04C326D758DB00061809 /* FellowCardCell.swift */; };
 		3E0A04C926D758F500061809 /* StaffCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A04C826D758F500061809 /* StaffCardCell.swift */; };
+		3E0A04D726D8032F00061809 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A04D626D8032F00061809 /* HeaderView.swift */; };
 		3E0AB1D426D42B280005FAE5 /* ScoreCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0AB1D326D42B280005FAE5 /* ScoreCard.swift */; };
 		3E0AB1D926D42B400005FAE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0AB1D826D42B400005FAE5 /* User.swift */; };
 		3E0AB1E426D42CA80005FAE5 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0AB1E326D42CA80005FAE5 /* AppError.swift */; };
@@ -53,6 +54,7 @@
 		1690613AA1A60B294BFD5E2C /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E0A04C326D758DB00061809 /* FellowCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FellowCardCell.swift; sourceTree = "<group>"; };
 		3E0A04C826D758F500061809 /* StaffCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffCardCell.swift; sourceTree = "<group>"; };
+		3E0A04D626D8032F00061809 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		3E0AB1D326D42B280005FAE5 /* ScoreCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCard.swift; sourceTree = "<group>"; };
 		3E0AB1D826D42B400005FAE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3E0AB1E326D42CA80005FAE5 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */,
 				3E0A04C326D758DB00061809 /* FellowCardCell.swift */,
 				3E0A04C826D758F500061809 /* StaffCardCell.swift */,
+				3E0A04D626D8032F00061809 /* HeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				3E0A04C426D758DB00061809 /* FellowCardCell.swift in Sources */,
 				3E0AB20026D477A20005FAE5 /* IdUser.swift in Sources */,
 				3E0A04C926D758F500061809 /* StaffCardCell.swift in Sources */,
+				3E0A04D726D8032F00061809 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
