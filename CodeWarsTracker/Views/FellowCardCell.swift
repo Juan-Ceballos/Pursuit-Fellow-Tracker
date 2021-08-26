@@ -14,24 +14,27 @@ class FellowCardCell: UICollectionViewCell {
     
     public lazy var usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Default"
-        label.textColor = .black
-        label.backgroundColor = .systemGreen
+        label.textColor = .systemBackground
         return label
     }()
     
     public lazy var honorLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .systemBackground
+        label.font = .systemFont(ofSize: 33)
         return label
     }()
     
     public lazy var clanLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .systemBackground
         return label
     }()
     
     public lazy var nameLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .systemBackground
+        label.font = .boldSystemFont(ofSize: 22)
         return label
     }()
     
@@ -56,60 +59,44 @@ class FellowCardCell: UICollectionViewCell {
     }
     
     private func commonInit()   {
-        setupUsernameLabelConstraints()
-        setupHonorLabelConstraints()
-        setupClanLabelConstraints()
         setupNameLabelConstraints()
-        setupPointsThisWeekLabelConstraints()
-        setupPointsThisMonthLabelConstraints()
+        setupUsernameLabelConstraints()
+        setupClanLabelConstraints()
+        setupHonorLabelConstraints()
+    }
+    
+    private func setupNameLabelConstraints() {
+        addSubview(nameLabel)
+        nameLabel.snp.makeConstraints { (make) in
+            make.leading.equalToSuperview().offset(11)
+            make.top.equalToSuperview().offset(11)
+        }
     }
     
     private func setupUsernameLabelConstraints() {
         addSubview(usernameLabel)
         usernameLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(8)
-        }
-    }
-    
-    private func setupHonorLabelConstraints() {
-        addSubview(honorLabel)
-        honorLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(usernameLabel.snp.bottom).offset(8)
+            make.leading.equalToSuperview().offset(11)
+            make.top.equalTo(nameLabel.snp.bottom).offset(22)
         }
     }
     
     private func setupClanLabelConstraints() {
         addSubview(clanLabel)
         clanLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(honorLabel.snp.bottom).offset(8)
+            make.leading.equalToSuperview().offset(11)
+            make.top.equalTo(usernameLabel.snp.bottom).offset(8)
         }
     }
     
-    private func setupNameLabelConstraints() {
-        addSubview(nameLabel)
-        nameLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
+    private func setupHonorLabelConstraints() {
+        addSubview(honorLabel)
+        honorLabel.snp.makeConstraints { (make) in
+            make.leading.equalToSuperview().offset(11)
             make.top.equalTo(clanLabel.snp.bottom).offset(8)
         }
     }
     
-    private func setupPointsThisWeekLabelConstraints() {
-        addSubview(pointsThisWeekLabel)
-        pointsThisWeekLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(nameLabel.snp.bottom).offset(8)
-        }
-    }
     
-    private func setupPointsThisMonthLabelConstraints() {
-        addSubview(pointsThisMonthLabel)
-        pointsThisMonthLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(pointsThisWeekLabel.snp.bottom).offset(8)
-        }
-    }
     
 }

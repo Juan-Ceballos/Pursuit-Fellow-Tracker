@@ -33,7 +33,7 @@ class ScoreCardView: UIView {
     public lazy var cv: UICollectionView = {
         let layout = createLayout()
         let mainCV = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        mainCV.backgroundColor = .systemYellow
+        mainCV.backgroundColor = .systemBackground
         return mainCV
     }()
     

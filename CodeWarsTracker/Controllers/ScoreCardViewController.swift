@@ -20,7 +20,7 @@ class ScoreCardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemTeal
+        view.backgroundColor = .systemBackground
         loadScoreCardData()
         configureCollectionView()
         configureDataSource()
@@ -36,8 +36,11 @@ class ScoreCardViewController: UIViewController {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FellowCardCell.reuseIdentifier, for: indexPath) as? FellowCardCell else {
                 fatalError()
             }
-            cell.backgroundColor = .systemBackground
-            cell.usernameLabel.text = item.username
+            cell.backgroundColor = .systemBlue
+            cell.nameLabel.text = item.name
+            cell.usernameLabel.text = "Codewars: \(item.username)"
+            cell.clanLabel.text = "Clan: \(item.clan ?? "No Clan")"
+            cell.honorLabel.text = String(item.honor ?? 0)
             return cell
         })
         
@@ -51,7 +54,7 @@ class ScoreCardViewController: UIViewController {
                 headerView.textLabel.text = "Staff"
 
             } else {
-                headerView.textLabel.text = "Fellow"
+                headerView.textLabel.text = "Fellows"
             }
             headerView.textLabel.textAlignment = .left
             headerView.textLabel.font = UIFont.preferredFont(forTextStyle: .headline)
