@@ -11,7 +11,7 @@ struct UserWrapper: Decodable {
     let users: [User]
 }
 
-struct User: Decodable {
+struct User: Decodable, Hashable {
     let id: Int
     let username: String
     let honor: Int?

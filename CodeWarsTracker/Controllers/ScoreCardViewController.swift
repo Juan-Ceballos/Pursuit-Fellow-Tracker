@@ -14,11 +14,45 @@ class ScoreCardViewController: UIViewController {
     override func loadView() {
         view = scoreCardView
     }
+    
+    private typealias DataSource = UICollectionViewDiffableDataSource<Section, User>
+    private var dataSource: DataSource!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemTeal
         loadScoreCardData()
+        configureCollectionView()
+        configureDataSource()
+    }
+    
+    private func configureCollectionView() {
+        scoreCardView.cv.register(FellowCardCell.self, forCellWithReuseIdentifier: FellowCardCell.reuseIdentifier)
+    }
+    
+    private func configureDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, User>(collectionView: scoreCardView.cv, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FellowCardCell.reuseIdentifier, for: indexPath) as? FellowCardCell else {
+                fatalError()
+            }
+            cell.backgroundColor = .systemBackground
+            cell.usernameLabel.text = "Default"
+            return cell
+        })
+        
+        var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
+        snapshot.appendSections([.fellow])
+        CWTAPIClient.fetchAllUsers { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                print("\(error)")
+            case .success(let users):
+                DispatchQueue.main.async {
+                    snapshot.appendItems(users, toSection: .fellow)
+                    self?.dataSource.apply(snapshot, animatingDifferences: false)
+                }
+            }
+        }
     }
     
     private func loadScoreCardData(){
@@ -35,6 +69,8 @@ class ScoreCardViewController: UIViewController {
             }
         }
     }
+    
+    
 
 
 }

@@ -24,6 +24,7 @@ class ScoreCardView: UIView {
     public lazy var cv: UICollectionView = {
         let layout = createLayout()
         let mainCV = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        mainCV.backgroundColor = .systemYellow
         return mainCV
     }()
     
@@ -31,7 +32,8 @@ class ScoreCardView: UIView {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3))
-        let group = NSCollectionLayoutGroup(layoutSize: groupSize)
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0)
         let section = NSCollectionLayoutSection(group: group)
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
