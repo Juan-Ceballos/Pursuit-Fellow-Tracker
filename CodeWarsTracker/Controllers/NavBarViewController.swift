@@ -6,8 +6,16 @@
 //
 
 import UIKit
+import DropDown
 
 class NavBarViewController: UIViewController {
+    
+    private let tabBarMenu:DropDown = {
+        let menu = DropDown()
+        let menuItems = ["Find a Pairing", "How to Pair"," How to Use", "Create Account"]
+        menu.dataSource = menuItems
+        return menu
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +23,7 @@ class NavBarViewController: UIViewController {
             return
         }
         addNavBarItems(image: image)
+        addDropDownListener()
     }
     
 
@@ -22,16 +31,34 @@ class NavBarViewController: UIViewController {
         
         let button = UIButton(type: .custom)
         button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(popOverViewController), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showDropDownMenu), for: .touchUpInside)
         
         let barButtonItem = UIBarButtonItem(customView: button)
+        tabBarMenu.frame = navigationController?.navigationBar.frame ?? .zero
+        tabBarMenu.anchorView = barButtonItem
         
         navigationItem.rightBarButtonItem = barButtonItem
     }
     
-    @objc private func popOverViewController(){
-        
-        //navigationController?.pushViewController(firstProfilelVC, animated: true)
+    private func addDropDownListener(){
+        tabBarMenu.selectionAction = { index, title in
+            switch index {
+            case 0:
+                break
+            case 1:
+                break
+            case 2:
+                break
+            case 3:
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    @objc private func showDropDownMenu(){
+        tabBarMenu.show()
     }
 
 }

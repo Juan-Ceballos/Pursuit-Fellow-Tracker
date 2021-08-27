@@ -24,12 +24,6 @@ public enum Section: CaseIterable {
 
 class ScoreCardView: UIView {
     
-//    public lazy var scoreboardCardContainerView:UIView = {
-//        let view = UIView()
-//        view.backgroundColor = .systemBlue
-//        return view
-//    }()
-    
     public lazy var cv: UICollectionView = {
         let layout = createLayout()
         let mainCV = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
@@ -137,8 +131,6 @@ class ScoreCardView: UIView {
         scoreboardContainerStackView.snp.makeConstraints { mkr in
             mkr.centerX.equalToSuperview()
             mkr.top.equalTo(safeAreaLayoutGuide).offset(10)
-            //mkr.edges.equalTo(self).offset(8)
-            //mkr.size.height.lessThanOrEqualTo(self).multipliedBy(0.5)
         }
     }
     

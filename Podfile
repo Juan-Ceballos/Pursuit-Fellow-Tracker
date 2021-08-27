@@ -7,6 +7,7 @@ target 'CodeWarsTracker' do
 
   # Pods for CodeWarsTracker
     pod 'SnapKit'
+    pod 'DropDown'
 
   target 'CodeWarsTrackerTests' do
     inherit! :search_paths
