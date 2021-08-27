@@ -51,7 +51,7 @@ class ScoreCardView: UIView {
     public lazy var scoreboardContainerStackView: UIStackView = {
         let stackview = UIStackView()
         stackview.axis = .vertical
-        stackview.spacing = 8
+        stackview.spacing = 13
         stackview.distribution = .equalSpacing
         stackview.alignment = .center
         stackview.backgroundColor = .systemBlue
@@ -66,9 +66,9 @@ class ScoreCardView: UIView {
     public lazy var scoreboardDataStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 8
+        stackView.spacing = 13
         stackView.alignment = .center
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fillEqually
         stackView.backgroundColor = .systemBlue
         stackView.addArrangedSubview(scoreboardWeeklyLabel)
         stackView.addArrangedSubview(scoreboardMonthlyLabel)
@@ -133,17 +133,18 @@ class ScoreCardView: UIView {
         scoreboardContainerStackView.snp.makeConstraints { mkr in
             mkr.centerX.equalToSuperview()
             mkr.top.equalTo(safeAreaLayoutGuide).offset(10)
+            mkr.width.equalToSuperview().offset(-21)
         }
     }
     
     private func scoreboardContainerStackViewSubView1Contrainsts(){
-//        for subview in scoreboardContainerStackView.arrangedSubviews{
+        for subview in scoreboardContainerStackView.arrangedSubviews{
 //            subview.snp.makeConstraints { mkr in
 //                mkr.width.equalToSuperview().offset(-8)
 //            }
-////            subview.layoutIfNeeded()
-////            subview.sizeToFit()
-//        }
+            subview.sizeToFit()
+            subview.layoutIfNeeded()
+        }
     }
     
     private func setupCollectionViewConstraints() {
