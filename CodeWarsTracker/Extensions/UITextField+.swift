@@ -26,4 +26,9 @@ extension UITextField {
         self.leftViewMode = .always
         self.rightViewMode = .always
     }
+    
+    func highlightBorderSelected(borderWidth: CGFloat, borderColor: CGColor?){
+        self.layer.borderWidth = borderWidth
+        self.layer.borderColor = borderColor
+    }
 }

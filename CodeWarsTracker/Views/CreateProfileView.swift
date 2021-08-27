@@ -160,14 +160,42 @@ class CreateProfileView: UIView {
     private func containerViewStackViewSubViewContrainsts () {
         for (index, subview) in containerStackView.arrangedSubviews.enumerated(){
             subview.snp.makeConstraints { mkr in
-                mkr.width.equalTo(containerStackView).offset(-20)
+                mkr.width.equalTo(containerStackView).offset(-21)
             }
             
             subview.layer.cornerRadius = 8
             subview.layoutIfNeeded()
             subview.sizeToFit()
         }
+        
+        let textFields = [nameTextField, emailTextField, githubUserNameTextField, codewarsUserNameTextField]
+        let otherUIs = [selecUserSegmentedControl,loginCreateButton]
+        
+        for tf in textFields {
+            tf.snp.makeConstraints { mkr in
+                mkr.height.equalTo(containerStackView).multipliedBy(0.2).offset(-21)
+            }
+            tf.setHorizontalPaddingPoints(13)
+            tf.delegate = self
+        }
+        
+//        for ui in otherUIs {
+//            ui.snp.makeConstraints { mkr in
+//                mkr.height.equalTo(containerStackView).multipliedBy(0.1).offset(-21)
+//            }
+//        }
     }
     
 
+}
+
+extension CreateProfileView: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.highlightBorderSelected(borderWidth: 3, borderColor: UIColor.systemBlue.cgColor)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.highlightBorderSelected(borderWidth: 0, borderColor: UIColor.systemBackground.cgColor)
+    }
 }

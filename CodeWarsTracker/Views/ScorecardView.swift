@@ -88,27 +88,27 @@ class ScoreCardView: UIView {
     public lazy var scoreboardWeeklyLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemBackground
-        label.numberOfLines = 3
+        label.numberOfLines = 5
         label.font = UIFont.preferredFont(forTextStyle: .body)
-        label.text = "Weekly\nFellows:\nStaff:"
+        label.text = "Weekly"
         return label
     }()
     
     public lazy var scoreboardMonthlyLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemBackground
-        label.numberOfLines = 3
+        label.numberOfLines = 5
         label.font = UIFont.preferredFont(forTextStyle: .body)
-        label.text = "Monthly\nFellows:\nStaff:"
+        label.text = "Monthly"
         return label
     }()
     
     public lazy var scoreboardAllTimeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemBackground
-        label.numberOfLines = 3
+        label.numberOfLines = 5
         label.font = UIFont.preferredFont(forTextStyle: .body)
-        label.text = "All Time\nFellows:\nStaff:"
+        label.text = "All Time"
         return label
     }()
     
