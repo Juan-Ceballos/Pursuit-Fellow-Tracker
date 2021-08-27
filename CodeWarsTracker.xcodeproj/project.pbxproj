@@ -27,6 +27,10 @@
 		B3E7524322C97D4C7BB44379 /* Pods_CodeWarsTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1A94353D1F8E416F54FC22 /* Pods_CodeWarsTrackerTests.framework */; };
 		BA229D6F33FD7572A282A465 /* Pods_CodeWarsTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1433D67A9032F8B08B6E30D2 /* Pods_CodeWarsTracker.framework */; };
 		F110DB4526D5DBC8007BA3A3 /* ScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */; };
+		F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */; };
+		F1AF46A926D87F7F001F7327 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */; };
+		F1AF46AB26D87F9A001F7327 /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */; };
+		F1AF46AD26D8AF4B001F7327 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46AC26D8AF4B001F7327 /* UITextField+.swift */; };
 		F4C8DF27C5529637BBD03696 /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1690613AA1A60B294BFD5E2C /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +83,10 @@
 		D354AC7882F44AB5E962EEF9 /* Pods-CodeWarsTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTrackerTests.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTrackerTests/Pods-CodeWarsTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1764549936F4EACD3D0E770 /* Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTracker-CodeWarsTrackerUITests/Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCardView.swift; sourceTree = "<group>"; };
+		F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarViewController.swift; sourceTree = "<group>"; };
+		F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
+		F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
+		F1AF46AC26D8AF4B001F7327 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		F6D8733F5C605B29BD1CDBB7 /* Pods-CodeWarsTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTrackerTests.release.xcconfig"; path = "Target Support Files/Pods-CodeWarsTrackerTests/Pods-CodeWarsTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		F73FE2A454D4947730BF9339 /* Pods-CodeWarsTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTracker.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTracker/Pods-CodeWarsTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,17 +119,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3E0AB1C926D4224E0005FAE5 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		3E0AB1CA26D422550005FAE5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				3E6AB7F226CC5ED000DF9A11 /* ScoreCardViewController.swift */,
+				F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */,
+				F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -189,13 +192,13 @@
 		3E6AB7ED26CC5ED000DF9A11 /* CodeWarsTracker */ = {
 			isa = PBXGroup;
 			children = (
+				F13BA23526D6C90A007780F2 /* Extensions */,
 				F110DB4326D5DB8C007BA3A3 /* Views */,
 				3E0AB1F326D430AB0005FAE5 /* Secrets */,
 				3E0AB1E226D42C720005FAE5 /* NetworkingServices */,
 				3E0AB1CC26D4226B0005FAE5 /* SupportingFiles */,
 				3E0AB1CB26D4225C0005FAE5 /* Models */,
 				3E0AB1CA26D422550005FAE5 /* Controllers */,
-				3E0AB1C926D4224E0005FAE5 /* Extensions */,
 				3E6AB7F726CC5ED400DF9A11 /* Assets.xcassets */,
 				3E6AB7FC26CC5ED400DF9A11 /* Info.plist */,
 			);
@@ -237,8 +240,17 @@
 				3E0A04C326D758DB00061809 /* FellowCardCell.swift */,
 				3E0A04C826D758F500061809 /* StaffCardCell.swift */,
 				3E0A04D626D8032F00061809 /* HeaderView.swift */,
+				F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F13BA23526D6C90A007780F2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F1AF46AC26D8AF4B001F7327 /* UITextField+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		F6EAF4476B6153638CA8CFB3 /* Pods */ = {
@@ -491,18 +503,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1AF46A926D87F7F001F7327 /* CreateProfileViewController.swift in Sources */,
 				3E0AB1E926D42CB90005FAE5 /* NetworkHelper.swift in Sources */,
 				3E0AB1F526D430C20005FAE5 /* Secrets.swift in Sources */,
+				F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */,
 				3E0AB1D426D42B280005FAE5 /* ScoreCard.swift in Sources */,
 				3E0AB1D926D42B400005FAE5 /* User.swift in Sources */,
 				3E6AB7F326CC5ED000DF9A11 /* ScoreCardViewController.swift in Sources */,
 				F110DB4526D5DBC8007BA3A3 /* ScoreCardView.swift in Sources */,
+				F1AF46AB26D87F9A001F7327 /* CreateProfileView.swift in Sources */,
 				3E0AB1EF26D42CFC0005FAE5 /* CWTAPIClient.swift in Sources */,
 				3E6AB7EF26CC5ED000DF9A11 /* AppDelegate.swift in Sources */,
 				3E6AB7F126CC5ED000DF9A11 /* SceneDelegate.swift in Sources */,
 				3E0AB1E426D42CA80005FAE5 /* AppError.swift in Sources */,
 				3E0A04C426D758DB00061809 /* FellowCardCell.swift in Sources */,
 				3E0AB20026D477A20005FAE5 /* IdUser.swift in Sources */,
+				F1AF46AD26D8AF4B001F7327 /* UITextField+.swift in Sources */,
 				3E0A04C926D758F500061809 /* StaffCardCell.swift in Sources */,
 				3E0A04D726D8032F00061809 /* HeaderView.swift in Sources */,
 			);

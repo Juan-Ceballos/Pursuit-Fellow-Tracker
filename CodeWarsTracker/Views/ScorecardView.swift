@@ -24,12 +24,6 @@ public enum Section: CaseIterable {
 
 class ScoreCardView: UIView {
     
-//    public lazy var scoreboardCardContainerView:UIView = {
-//        let view = UIView()
-//        view.backgroundColor = .systemBlue
-//        return view
-//    }()
-    
     public lazy var cv: UICollectionView = {
         let layout = createLayout()
         let mainCV = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
@@ -57,7 +51,7 @@ class ScoreCardView: UIView {
     public lazy var scoreboardContainerStackView: UIStackView = {
         let stackview = UIStackView()
         stackview.axis = .vertical
-        stackview.spacing = 8
+        stackview.spacing = 13
         stackview.distribution = .equalSpacing
         stackview.alignment = .center
         stackview.backgroundColor = .systemBlue
@@ -65,15 +59,16 @@ class ScoreCardView: UIView {
         stackview.addArrangedSubview(scoreboardDataStackView)
         stackview.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         stackview.isLayoutMarginsRelativeArrangement = true
+        stackview.layer.cornerRadius = 8
         return stackview
     }()
     
     public lazy var scoreboardDataStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 8
+        stackView.spacing = 13
         stackView.alignment = .center
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fillEqually
         stackView.backgroundColor = .systemBlue
         stackView.addArrangedSubview(scoreboardWeeklyLabel)
         stackView.addArrangedSubview(scoreboardMonthlyLabel)
@@ -93,27 +88,27 @@ class ScoreCardView: UIView {
     public lazy var scoreboardWeeklyLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemBackground
-        label.numberOfLines = 3
+        label.numberOfLines = 5
         label.font = UIFont.preferredFont(forTextStyle: .body)
-        label.text = "Weekly\nFellows:\nStaff:"
+        label.text = "Weekly"
         return label
     }()
     
     public lazy var scoreboardMonthlyLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemBackground
-        label.numberOfLines = 3
+        label.numberOfLines = 5
         label.font = UIFont.preferredFont(forTextStyle: .body)
-        label.text = "Monthly\nFellows:\nStaff:"
+        label.text = "Monthly"
         return label
     }()
     
     public lazy var scoreboardAllTimeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemBackground
-        label.numberOfLines = 3
+        label.numberOfLines = 5
         label.font = UIFont.preferredFont(forTextStyle: .body)
-        label.text = "All Time\nFellows:\nStaff:"
+        label.text = "All Time"
         return label
     }()
     
@@ -129,6 +124,7 @@ class ScoreCardView: UIView {
     
     private func commonInit(){
         scoreboardContainerStackViewContrainsts()
+        scoreboardContainerStackViewSubView1Contrainsts()
         setupCollectionViewConstraints()
     }
     
@@ -137,8 +133,17 @@ class ScoreCardView: UIView {
         scoreboardContainerStackView.snp.makeConstraints { mkr in
             mkr.centerX.equalToSuperview()
             mkr.top.equalTo(safeAreaLayoutGuide).offset(10)
-            //mkr.edges.equalTo(self).offset(8)
-            //mkr.size.height.lessThanOrEqualTo(self).multipliedBy(0.5)
+            mkr.width.equalToSuperview().offset(-21)
+        }
+    }
+    
+    private func scoreboardContainerStackViewSubView1Contrainsts(){
+        for subview in scoreboardContainerStackView.arrangedSubviews{
+//            subview.snp.makeConstraints { mkr in
+//                mkr.width.equalToSuperview().offset(-8)
+//            }
+            subview.sizeToFit()
+            subview.layoutIfNeeded()
         }
     }
     
