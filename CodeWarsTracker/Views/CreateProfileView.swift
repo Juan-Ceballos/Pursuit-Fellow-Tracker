@@ -71,9 +71,11 @@ class CreateProfileView: UIView {
         return button
     }()
     
-    public lazy var selecUserPickerView: UIPickerView = {
-        let pickerView = UIPickerView()
-        return pickerView
+    public lazy var selecUserSegmentedControl: UISegmentedControl = {
+        let segConItems:[String] = Section.allCases.map{$0.sectionTitle}
+        let segCon = UISegmentedControl(items: segConItems)
+        segCon.selectedSegmentIndex = 0
+        return segCon
     }()
     
     public lazy var containerStackView: UIStackView = {
@@ -83,9 +85,12 @@ class CreateProfileView: UIView {
         stackView.spacing = 10
         stackView.axis = .vertical
         stackView.backgroundColor = .systemGroupedBackground
-        let subViews = [nameTextField,emailTextField,githubUserName,codewarsUserName, selecUserPickerView, loginCreateButton]
+        //stackView.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        let subViews = [nameTextField,emailTextField,githubUserName,codewarsUserName, selecUserSegmentedControl, loginCreateButton]
         for view in subViews {
             stackView.addArrangedSubview(view)
+            //view.sizeToFit()
+            //view.layoutIfNeeded()
         }
 
         return stackView

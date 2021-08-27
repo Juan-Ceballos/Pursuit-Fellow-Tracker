@@ -19,25 +19,6 @@ class CreateProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        createdProfileView.selecUserPickerView.dataSource = self
-        createdProfileView.selecUserPickerView.delegate = self
     }
 
-}
-
-extension CreateProfileViewController: UIPickerViewDataSource{
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerViewElements.count
-    }
-}
-
-extension CreateProfileViewController: UIPickerViewDelegate {
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerViewElements[row].sectionTitle
-    }
 }
