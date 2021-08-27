@@ -59,6 +59,7 @@ class ScoreCardView: UIView {
         stackview.addArrangedSubview(scoreboardDataStackView)
         stackview.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         stackview.isLayoutMarginsRelativeArrangement = true
+        stackview.layer.cornerRadius = 8
         return stackview
     }()
     
@@ -123,6 +124,7 @@ class ScoreCardView: UIView {
     
     private func commonInit(){
         scoreboardContainerStackViewContrainsts()
+        scoreboardContainerStackViewSubView1Contrainsts()
         setupCollectionViewConstraints()
     }
     
@@ -132,6 +134,16 @@ class ScoreCardView: UIView {
             mkr.centerX.equalToSuperview()
             mkr.top.equalTo(safeAreaLayoutGuide).offset(10)
         }
+    }
+    
+    private func scoreboardContainerStackViewSubView1Contrainsts(){
+//        for subview in scoreboardContainerStackView.arrangedSubviews{
+//            subview.snp.makeConstraints { mkr in
+//                mkr.width.equalToSuperview().offset(-8)
+//            }
+////            subview.layoutIfNeeded()
+////            subview.sizeToFit()
+//        }
     }
     
     private func setupCollectionViewConstraints() {

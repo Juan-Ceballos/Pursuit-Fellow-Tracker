@@ -30,8 +30,11 @@ class CreateProfileView: UIView {
         let textfield = UITextField()
         textfield.placeholder = "Name *"
         textfield.textContentType = .name
-        textfield.textAlignment = .center
+        //textfield.textAlignment = .center
         textfield.backgroundColor = .systemBackground
+        textfield.adjustsFontSizeToFitWidth = true
+        textfield.minimumFontSize = 12
+        textfield.font = UIFont.systemFont(ofSize: 34)
         return textfield
     }()
     
@@ -39,26 +42,36 @@ class CreateProfileView: UIView {
         let textfield = UITextField()
         textfield.placeholder = "Pursuit Email Address *"
         textfield.textContentType = .emailAddress
-        textfield.textAlignment = .center
+        //textfield.textAlignment = .center
         textfield.backgroundColor = .systemBackground
+        textfield.adjustsFontSizeToFitWidth = true
+        textfield.minimumFontSize = 12
+        textfield.font = UIFont.systemFont(ofSize: 34)
         return textfield
     }()
     
-    public lazy var githubUserName: UITextField = {
+    public lazy var githubUserNameTextField: UITextField = {
         let textfield = UITextField()
         textfield.placeholder = "GitHub Username *"
         textfield.textContentType = .username
-        textfield.textAlignment = .center
+        //textfield.textAlignment = .center
         textfield.backgroundColor = .systemBackground
+        textfield.adjustsFontSizeToFitWidth = true
+        textfield.minimumFontSize = 12
+        textfield.font = UIFont.systemFont(ofSize: 34)
+
         return textfield
     }()
     
-    public lazy var codewarsUserName: UITextField = {
+    public lazy var codewarsUserNameTextField: UITextField = {
         let textfield = UITextField()
         textfield.placeholder = "Codewars Username *"
         textfield.textContentType = .username
-        textfield.textAlignment = .center
+        //textfield.textAlignment = .center
         textfield.backgroundColor = .systemBackground
+        textfield.adjustsFontSizeToFitWidth = true
+        textfield.minimumFontSize = 13
+        textfield.font = UIFont.systemFont(ofSize: 34)
         return textfield
     }()
     
@@ -66,7 +79,7 @@ class CreateProfileView: UIView {
         let button = UIButton()
         button.setTitle("SIGN UP", for: .normal)
         button.tintColor = .systemBackground
-        button.titleLabel?.font = .systemFont(ofSize: 26, weight: .bold)
+        button.titleLabel?.font = .systemFont(ofSize: 21, weight: .bold)
         button.backgroundColor = .systemBlue
         return button
     }()
@@ -82,13 +95,15 @@ class CreateProfileView: UIView {
         let stackView = UIStackView()
         stackView.distribution = .fillProportionally
         stackView.alignment = .center
-        stackView.spacing = 10
+        stackView.spacing = 20
         stackView.axis = .vertical
         stackView.backgroundColor = .systemGroupedBackground
-        //stackView.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        let subViews = [nameTextField,emailTextField,githubUserName,codewarsUserName, selecUserSegmentedControl, loginCreateButton]
+        stackView.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        let subViews = [nameTextField,emailTextField,githubUserNameTextField,codewarsUserNameTextField, selecUserSegmentedControl, loginCreateButton]
         for view in subViews {
             stackView.addArrangedSubview(view)
+            //view.frame.size.height = 500
             //view.sizeToFit()
             //view.layoutIfNeeded()
         }
@@ -111,6 +126,7 @@ class CreateProfileView: UIView {
         //errorLabelConstrainsts()
         containerViewContrainsts()
         containerViewStackViewContrainsts()
+        containerViewStackViewSubViewContrainsts()
     }
     
 //    private func errorLabelConstrainsts(){
@@ -137,8 +153,21 @@ class CreateProfileView: UIView {
         containerView.addSubview(containerStackView)
         containerStackView.snp.makeConstraints { mkr in
             mkr.center.equalTo(containerView)
-            //mkr.height.equalTo(containerView)
+            mkr.edges.lessThanOrEqualTo(containerView)
         }
     }
+    
+    private func containerViewStackViewSubViewContrainsts () {
+        for (index, subview) in containerStackView.arrangedSubviews.enumerated(){
+            subview.snp.makeConstraints { mkr in
+                mkr.width.equalTo(containerStackView).offset(-20)
+            }
+            
+            subview.layer.cornerRadius = 8
+            subview.layoutIfNeeded()
+            subview.sizeToFit()
+        }
+    }
+    
 
 }
