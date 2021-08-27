@@ -50,7 +50,8 @@ class NavBarViewController: UIViewController {
             case 2:
                 break
             case 3:
-                break
+                let createProfileVC = CreateProfileViewController()
+                self.present(createProfileVC, animated: true, completion: nil)
             default:
                 break
             }
