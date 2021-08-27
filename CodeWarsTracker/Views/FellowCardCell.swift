@@ -40,11 +40,13 @@ class FellowCardCell: UICollectionViewCell {
     
     public lazy var pointsThisWeekLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .systemBackground
         return label
     }()
     
     public lazy var pointsThisMonthLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .systemBackground
         return label
     }()
     
@@ -63,6 +65,8 @@ class FellowCardCell: UICollectionViewCell {
         setupUsernameLabelConstraints()
         setupClanLabelConstraints()
         setupHonorLabelConstraints()
+        setupPointsThisWeekLabel()
+        setupPointsThisMonthLabel()
     }
     
     private func setupNameLabelConstraints() {
@@ -97,6 +101,20 @@ class FellowCardCell: UICollectionViewCell {
         }
     }
     
+    private func setupPointsThisWeekLabel() {
+        addSubview(pointsThisWeekLabel)
+        pointsThisWeekLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(usernameLabel.snp.centerY)
+            make.trailing.equalToSuperview().offset(-11)
+        }
+    }
     
+    private func setupPointsThisMonthLabel() {
+        addSubview(pointsThisMonthLabel)
+        pointsThisMonthLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(pointsThisWeekLabel.snp.bottom).offset(11)
+            make.trailing.equalToSuperview().offset(-11)
+        }
+    }
     
 }

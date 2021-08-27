@@ -41,6 +41,8 @@ class ScoreCardViewController: NavBarViewController {
             cell.usernameLabel.text = "Codewars: \(item.username)"
             cell.clanLabel.text = "Clan: \(item.clan ?? "No Clan")"
             cell.honorLabel.text = String(item.honor ?? 0)
+            cell.pointsThisWeekLabel.text = "This Week: \(String(item.pointThisWeek ?? 0))"
+            cell.pointsThisMonthLabel.text = "This Month: \(String(item.pointThisMonth ?? 0))"
             return cell
         })
         
@@ -74,7 +76,7 @@ class ScoreCardViewController: NavBarViewController {
                     for user in users {
                         if user.role == "staff" {
                             staff.append(user)
-                        } else {
+                        } else if user.role == "fellow" {
                             fellows.append(user)
                         }
                     }
