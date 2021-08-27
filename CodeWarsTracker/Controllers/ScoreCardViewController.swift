@@ -28,7 +28,8 @@ class ScoreCardViewController: NavBarViewController {
     
     private func configureCollectionView() {
         scoreCardView.cv.register(FellowCardCell.self, forCellWithReuseIdentifier: FellowCardCell.reuseIdentifier)
-        scoreCardView.cv.register(HeaderView.self, forSupplementaryViewOfKind: "header", withReuseIdentifier: HeaderView.reuseIdentifier)
+        scoreCardView.cv.register(HeaderView.self, forSupplementaryViewOfKind: Constants.headerElementKind, withReuseIdentifier: HeaderView.reuseIdentifier)
+        scoreCardView.cv.register(BannerView.self, forSupplementaryViewOfKind: Constants.badgeElementKind, withReuseIdentifier: BannerView.reuseIdentifier)
     }
     
     private func configureDataSource() {
@@ -46,21 +47,37 @@ class ScoreCardViewController: NavBarViewController {
             return cell
         })
         
-        dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
-            
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView else {
-                fatalError()
-            }
-            
-            if self.dataSource.itemIdentifier(for: indexPath)!.role == "staff" {
-                headerView.textLabel.text = "Staff"
+        dataSource.supplementaryViewProvider = { [weak self] (collectionView, kind, indexPath) in
+            if kind == Constants.headerElementKind {
+                if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView {
+                    if self?.dataSource.itemIdentifier(for: indexPath)!.role == "staff" {
+                        headerView.textLabel.text = "Staff"
 
-            } else {
-                headerView.textLabel.text = "Fellows"
+                    } else {
+                        headerView.textLabel.text = "Fellows"
+                    }
+                    
+                    headerView.textLabel.textAlignment = .left
+                    headerView.textLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+                    return headerView
+                }
             }
-            headerView.textLabel.textAlignment = .left
-            headerView.textLabel.font = UIFont.preferredFont(forTextStyle: .headline)
-            return headerView
+            
+            
+            guard let strongSelf = self, let sequence = strongSelf.dataSource.itemIdentifier(for: indexPath) else { return nil }
+            if let badgeView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BannerView.reuseIdentifier, for: indexPath) as? BannerView {
+                if sequence.role != "staff" {
+                    badgeView.isHidden = true
+                    return badgeView
+                }
+                badgeView.isHidden = false
+                badgeView.staffLabel.text = "Staff"
+                return badgeView
+                
+            }
+            
+            fatalError()
+            
         }
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
@@ -72,8 +89,9 @@ class ScoreCardViewController: NavBarViewController {
             case .failure(let error):
                 print("\(error)")
             case .success(let users):
+                let usersSorted = users.sorted {$0.honor ?? 0 > $1.honor ?? 0}
                 DispatchQueue.main.async {
-                    for user in users {
+                    for user in usersSorted {
                         if user.role == "staff" {
                             staff.append(user)
                         } else if user.role == "fellow" {
