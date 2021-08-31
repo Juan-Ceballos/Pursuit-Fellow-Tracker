@@ -15,6 +15,7 @@ class BannerView: UICollectionReusableView {
         label.textAlignment = .center
         label.font = UIFont.preferredFont(forTextStyle: .headline)
         label.text = "Staff"
+        label.backgroundColor = .systemYellow
         return label
     }()
     
