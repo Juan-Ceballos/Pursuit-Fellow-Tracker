@@ -11,7 +11,7 @@ struct UserWrapper: Decodable {
     let users: [User]
 }
 
-struct User: Decodable, Hashable {
+struct User: Codable, Hashable {
     let id: Int
     let username: String
     let honor: Int?
@@ -24,6 +24,21 @@ struct User: Decodable, Hashable {
     let email: String?
     let clan: String?
     let githubUsername: String?
+    
+    init(_ dict: [String:Any]) {
+        self.id = dict["id"] as? Int ?? 0
+        self.username = dict["username"] as? String ?? ""
+        self.honor = dict["honor"] as? Int ?? 0
+        self.codewarsid = dict["codewarsid"] as? String ?? ""
+        self.name = dict["name"] as? String ?? ""
+        self.role = dict["role"] as? String ?? ""
+        self.language = dict["language"] as? String ?? ""
+        self.pointThisWeek = dict["pointThisWeek"] as? Int ?? 0
+        self.pointThisMonth = dict["pointThisMonth"] as? Int ?? 0
+        self.email = dict["email"] as? String ?? ""
+        self.clan = dict["clan"] as? String ?? ""
+        self.githubUsername = dict["githubUsername"] as? String ?? ""
+    }
 }
 
 private enum CodingKeys: String, CodingKey {
