@@ -109,7 +109,7 @@ class ScoreCardViewController: NavBarViewController {
     private func loadScoreCardData(){
         CWTAPIClient.getScoreboardData { [weak self] (result) in
             switch result {
-            case .failure(let appError):
+            case .failure( _):
                 return
             case .success(let scoreboardData):
                 DispatchQueue.main.async {

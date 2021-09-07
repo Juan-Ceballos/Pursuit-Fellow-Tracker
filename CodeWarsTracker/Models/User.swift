@@ -12,13 +12,13 @@ struct UserWrapper: Decodable {
 }
 
 struct User: Codable, Hashable {
-    let id: Int
+    let id: Int?
     let username: String
     let honor: Int?
     let codewarsid: String?
     let name: String
     let role: String
-    let language: String
+    let language: String?
     let pointThisWeek: Int?
     let pointThisMonth: Int?
     let email: String?
@@ -26,17 +26,17 @@ struct User: Codable, Hashable {
     let githubUsername: String?
     
     init(_ dict: [String:Any]) {
-        self.id = dict["id"] as? Int ?? 0
+        self.id = dict["id"] as? Int
         self.username = dict["username"] as? String ?? ""
-        self.honor = dict["honor"] as? Int ?? 0
-        self.codewarsid = dict["codewarsid"] as? String ?? ""
+        self.honor = dict["honor"] as? Int
+        self.codewarsid = dict["codewarsid"] as? String
         self.name = dict["name"] as? String ?? ""
         self.role = dict["role"] as? String ?? ""
-        self.language = dict["language"] as? String ?? ""
-        self.pointThisWeek = dict["pointThisWeek"] as? Int ?? 0
-        self.pointThisMonth = dict["pointThisMonth"] as? Int ?? 0
+        self.language = dict["language"] as? String
+        self.pointThisWeek = dict["pointThisWeek"] as? Int
+        self.pointThisMonth = dict["pointThisMonth"] as? Int
         self.email = dict["email"] as? String ?? ""
-        self.clan = dict["clan"] as? String ?? ""
+        self.clan = dict["clan"] as? String
         self.githubUsername = dict["githubUsername"] as? String ?? ""
     }
 }

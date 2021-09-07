@@ -26,6 +26,11 @@ class CreateProfileView: UIView {
         return view
     }()
     
+    public lazy var textFields: [UITextField] = {
+        let arr = [nameTextField,emailTextField, codewarsUserNameTextField, githubUserNameTextField]
+        return arr
+    }()
+    
     public lazy var nameTextField: UITextField = {
         let textfield = UITextField()
         textfield.placeholder = "Name *"
@@ -138,6 +143,8 @@ class CreateProfileView: UIView {
 //        }
 //    }
     
+    
+    
     private func containerViewContrainsts(){
         addSubview(containerView)
         containerView.snp.makeConstraints { mkr in
@@ -176,7 +183,7 @@ class CreateProfileView: UIView {
                 mkr.height.equalTo(containerStackView).multipliedBy(0.2).offset(-21)
             }
             tf.setHorizontalPaddingPoints(13)
-            tf.delegate = self
+        
         }
         
 //        for ui in otherUIs {
@@ -189,13 +196,3 @@ class CreateProfileView: UIView {
 
 }
 
-extension CreateProfileView: UITextFieldDelegate {
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.highlightBorderSelected(borderWidth: 3, borderColor: UIColor.systemBlue.cgColor)
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.highlightBorderSelected(borderWidth: 0, borderColor: UIColor.systemBackground.cgColor)
-    }
-}
