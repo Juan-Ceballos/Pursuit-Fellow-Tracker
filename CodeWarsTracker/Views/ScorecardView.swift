@@ -37,18 +37,27 @@ class ScoreCardView: UIView {
         return mainCV
     }()
     
+    public lazy var searchBar: UISearchBar = {
+        let sb = UISearchBar()
+        sb.barStyle = .default
+        sb.enablesReturnKeyAutomatically = false
+        return sb
+    }()
+    
     private func createLayout() -> UICollectionViewLayout {
         let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.125))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerFooterSize, elementKind: Constants.headerElementKind, alignment: .top)
-        let badgeAnchor = NSCollectionLayoutAnchor(edges: [.top, .leading])
-        let badgeSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.1))
-        let badge = NSCollectionLayoutSupplementaryItem(layoutSize: badgeSize, elementKind: Constants.badgeElementKind, containerAnchor: badgeAnchor)
+        let itemInsets: CGFloat = 8
+        let groupInsets: CGFloat = 8
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize, supplementaryItems: [badge])
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: itemInsets, leading: itemInsets, bottom: itemInsets, trailing: itemInsets)
+
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0)
+
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         let section = NSCollectionLayoutSection(group: group)
         section.boundarySupplementaryItems = [sectionHeader]
         let layout = UICollectionViewCompositionalLayout(section: section)
@@ -133,7 +142,9 @@ class ScoreCardView: UIView {
     private func commonInit(){
         scoreboardContainerStackViewContrainsts()
         scoreboardContainerStackViewSubView1Contrainsts()
+        setupSearchBarConstraints()
         setupCollectionViewConstraints()
+        setupSearchBarConstraints()
     }
     
     private func scoreboardContainerStackViewContrainsts(){
@@ -155,13 +166,24 @@ class ScoreCardView: UIView {
         }
     }
     
+    private func setupSearchBarConstraints() {
+        addSubview(searchBar)
+        searchBar.snp.makeConstraints { (make) in
+            make.top.equalTo(scoreboardContainerStackView.snp.bottom).offset(11)
+            make.left.equalToSuperview().offset(8)
+            make.right.equalToSuperview().offset(-8)
+        }
+    }
+    
     private func setupCollectionViewConstraints() {
         addSubview(cv)
         cv.snp.makeConstraints { (make) in
-            make.top.equalTo(scoreboardContainerStackView.snp.bottom).offset(11)
+            //make.top.equalTo(scoreboardContainerStackView.snp.bottom).offset(11)
+            make.top.equalTo(searchBar.snp.bottom).offset(8)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
     }
+    
 }
