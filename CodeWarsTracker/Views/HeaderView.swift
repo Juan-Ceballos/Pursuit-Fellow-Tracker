@@ -28,7 +28,7 @@ class HeaderView: UICollectionReusableView {
     }
     
     private func commonInit()   {
-      setupTextLabelConstraints()
+        setupTextLabelConstraints()
     }
     
     private func setupTextLabelConstraints() {
@@ -39,7 +39,7 @@ class HeaderView: UICollectionReusableView {
             textLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
-        
+            
         ])
     }
     

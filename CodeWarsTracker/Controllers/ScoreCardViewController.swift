@@ -17,19 +17,58 @@ class ScoreCardViewController: NavBarViewController {
     
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, User>
     private var dataSource: DataSource!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         loadScoreCardData()
         configureCollectionView()
         configureDataSource()
+        scoreCardView.searchBar.delegate = self
+    }
+    
+    private func performSearch(searchQuery: String?) {
+        var filteredFellows = [User]()
+        var filteredStaff = [User]()
+        CWTAPIClient.fetchAllUsers { (result) in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let users):
+                let usersSorted = users.sorted {$0.honor ?? 0 > $1.honor ?? 0}
+                for user in usersSorted {
+                    if user.role == "staff" {
+                        filteredStaff.append(user)
+                    } else if user.role == "fellow" {
+                        filteredFellows.append(user)
+                    }
+                }
+                
+                if let searchQuery = searchQuery, !searchQuery.isEmpty {
+                    filteredFellows = filteredFellows.filter { $0.name.contains(searchQuery) }
+                    filteredStaff = filteredStaff.filter { $0.name.contains(searchQuery) }
+                }
+                var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
+                snapshot.deleteAllItems()
+                self.dataSource.apply(snapshot)
+                snapshot.appendSections([.fellow, .staff])
+                snapshot.appendItems(filteredFellows, toSection: .fellow)
+                snapshot.appendItems(filteredStaff, toSection: .staff)
+                //snapshot.reloadSections(<#T##identifiers: [Section]##[Section]#>)
+                //snapshot.appendSections([.fellow, .staff])
+                
+                //snapshot.appendItems(filteredFellows, toSection: .fellow)
+                //snapshot.appendItems(filteredStaff, toSection: .staff)
+                
+                self.dataSource.apply(snapshot, animatingDifferences: true)
+            }
+        }
+        
     }
     
     private func configureCollectionView() {
         scoreCardView.cv.register(FellowCardCell.self, forCellWithReuseIdentifier: FellowCardCell.reuseIdentifier)
         scoreCardView.cv.register(HeaderView.self, forSupplementaryViewOfKind: Constants.headerElementKind, withReuseIdentifier: HeaderView.reuseIdentifier)
-        scoreCardView.cv.register(BannerView.self, forSupplementaryViewOfKind: Constants.badgeElementKind, withReuseIdentifier: BannerView.reuseIdentifier)
     }
     
     private func configureDataSource() {
@@ -44,40 +83,34 @@ class ScoreCardViewController: NavBarViewController {
             cell.honorLabel.text = String(item.honor ?? 0)
             cell.pointsThisWeekLabel.text = "This Week: \(String(item.pointThisWeek ?? 0))"
             cell.pointsThisMonthLabel.text = "This Month: \(String(item.pointThisMonth ?? 0))"
+            if let itemRole = self.dataSource.itemIdentifier(for: indexPath)?.role {
+                if itemRole != "staff" {
+                    DispatchQueue.main.async {
+                        cell.bannerView.isHidden = true
+                    }
+                } else {
+                    cell.bannerView.isHidden = false
+                }
+            }
             return cell
         })
         
-        dataSource.supplementaryViewProvider = { [weak self] (collectionView, kind, indexPath) in
-            if kind == Constants.headerElementKind {
-                if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView {
-                    if self?.dataSource.itemIdentifier(for: indexPath)!.role == "staff" {
-                        headerView.textLabel.text = "Staff"
-
-                    } else {
-                        headerView.textLabel.text = "Fellows"
-                    }
-                    
-                    headerView.textLabel.textAlignment = .left
-                    headerView.textLabel.font = UIFont.preferredFont(forTextStyle: .headline)
-                    return headerView
-                }
+        dataSource.supplementaryViewProvider = {
+            (collectionView, kind, indexPath) in
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView else {
+                fatalError()
             }
             
-            
-            guard let strongSelf = self, let sequence = strongSelf.dataSource.itemIdentifier(for: indexPath) else { return nil }
-            if let badgeView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BannerView.reuseIdentifier, for: indexPath) as? BannerView {
-                if sequence.role != "staff" {
-                    badgeView.isHidden = true
-                    return badgeView
-                }
-                badgeView.isHidden = false
-                badgeView.staffLabel.text = "Staff"
-                return badgeView
-                
+            switch indexPath.section {
+            case 0:
+                headerView.textLabel.text = "Fellows"
+            case 1:
+                headerView.textLabel.text = "Staff"
+            default:
+                fatalError("Invalid Section, for headerview supplementary view provider")
             }
             
-            fatalError()
-            
+            return headerView
         }
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
@@ -122,8 +155,24 @@ class ScoreCardViewController: NavBarViewController {
         }
     }
     
-    
-
-
 }
 
+extension ScoreCardViewController: UISearchBarDelegate    {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        performSearch(searchQuery: searchText)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+}
+
+extension ScoreCardViewController: UICollectionViewDelegateFlowLayout {
+    
+}
