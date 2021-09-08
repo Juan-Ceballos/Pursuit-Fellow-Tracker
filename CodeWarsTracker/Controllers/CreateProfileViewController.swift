@@ -10,16 +10,6 @@ import UIKit
 class CreateProfileViewController: UIViewController {
     
     private let createdProfileView = CreateProfileView()
-    private lazy var segControl = createdProfileView.selecUserSegmentedControl
-    private lazy var nameTextField = createdProfileView.nameTextField
-    private lazy var emailTextField = createdProfileView.emailTextField
-    private lazy var codewarsUserNameTextField = createdProfileView.codewarsUserNameTextField
-    private lazy var githubUserNameTextField = createdProfileView.githubUserNameTextField
-    private lazy var segCon = createdProfileView.selecUserSegmentedControl
-    private lazy var loginCreateButton = createdProfileView.loginCreateButton
-    private lazy var textFields = createdProfileView.textFields
-    
-    
     
     private var segControlElementSection:Section = Section.allCases[0]
     
@@ -35,34 +25,43 @@ class CreateProfileViewController: UIViewController {
     }
     
     private func textFieldDelegates(){
-        for textField in textFields {
+        for textField in createdProfileView.textFields {
             textField.delegate = self
         }
     }
     
     private func addButtonTargets(){
-        loginCreateButton.addTarget(self, action: #selector(loginButtonPress), for: .touchUpInside)
+        createdProfileView.loginCreateButton.addTarget(self, action: #selector(loginButtonPress), for: .touchUpInside)
     }
     
     @objc private func loginButtonPress(){
-        let name = nameTextField.text ?? ""
-        let pursuitEmailAddr = emailTextField.text ?? ""
-        let githubuserName  = githubUserNameTextField.text ?? ""
-        let codewarsUsername = codewarsUserNameTextField.text ?? ""
+        //error handling
+        guard let name = createdProfileView.nameTextField.text,
+              let pursuitEmailAddr = createdProfileView.emailTextField.text,
+              let githubuserName  = createdProfileView.githubUserNameTextField.text,
+              let codewarsUsername = createdProfileView.codewarsUserNameTextField.text
+              else {
+            //temporary alert if fields are missing, need to add error labels
+            self.showAlert(title: "Missing Fields", message: "All fields must not be empty", completion: nil)
+            return
+        }
         let role = segControlElementSection.sectionTitle
-        //let userType
         let postUserData:[String:Any] = ["email": pursuitEmailAddr,
                                          "githubUsername": githubuserName,
                                          "name": name,
                                          "role": role.lowercased(),
                                          "username": codewarsUsername]
-        let user = User(postUserData)
+        
+        guard let user = User(postUserData) else {
+            self.showAlert(title: "Data Error", message: "User not able to be initialized, missing values on dictionary keys", completion: nil)
+            return
+        }
         postUser(user)
     }
     
     
     private func addSegControl(){
-        segControl.addTarget(self, action: #selector(segmentControl(_:)), for: .valueChanged)
+        createdProfileView.selecUserSegmentedControl.addTarget(self, action: #selector(segmentControl(_:)), for: .valueChanged)
     }
     
     private func postUser(_ user: User){

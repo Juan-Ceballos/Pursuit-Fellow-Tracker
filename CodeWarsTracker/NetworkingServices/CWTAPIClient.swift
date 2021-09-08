@@ -75,7 +75,7 @@ class CWTAPIClient {
         NetworkHelper.shared.performDataTask(request: urlRequest) { (result) in
             switch result {
             case .failure(let appError):
-                print(appError)
+                completion(.failure(appError))
             case .success(let data):
                 do {
                     let scoreboard = try JSONDecoder().decode(ScoreBoard.self, from: data)
@@ -88,7 +88,7 @@ class CWTAPIClient {
     }
     
     static func postUser(user: User, completion: @escaping (Result<Bool, AppError>)->()){
-        let endPointURLString = "https://codewars-tracker-be.herokuapp.com/users"
+        let endPointURLString = RequestURLString.query
 
         guard let url = URL(string: endPointURLString) else {
             completion(.failure(.badURL(endPointURLString)))

@@ -92,7 +92,10 @@ class CodeWarsTrackerTests: XCTestCase {
                         "name": "Test User1",
                         "role": "staff",
                         "username": "testUser1"]
-        let user = User(postUser)
+        guard let user = User(postUser) else {
+            XCTFail("unable to create user")
+            return
+        }
         
         //Act
         CWTAPIClient.postUser(user: user) { result in
