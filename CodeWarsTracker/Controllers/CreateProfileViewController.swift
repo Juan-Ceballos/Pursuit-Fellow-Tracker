@@ -22,6 +22,8 @@ class CreateProfileViewController: UIViewController {
         addSegControl()
         addButtonTargets()
         textFieldDelegates()
+        addDropDownListener()
+        addTargetForDropDownToLabel()
     }
     
     private func textFieldDelegates(){
@@ -36,32 +38,46 @@ class CreateProfileViewController: UIViewController {
     
     @objc private func loginButtonPress(){
         //error handling
-        guard let name = createdProfileView.nameTextField.text,
-              let pursuitEmailAddr = createdProfileView.emailTextField.text,
-              let githubuserName  = createdProfileView.githubUserNameTextField.text,
-              let codewarsUsername = createdProfileView.codewarsUserNameTextField.text
-              else {
+        guard let name = createdProfileView.nameTextField.text,!name.isEmpty,
+              let pursuitEmailAddr = createdProfileView.emailTextField.text,!pursuitEmailAddr.isEmpty,
+              let githubuserName  = createdProfileView.githubUserNameTextField.text,!githubuserName.isEmpty,
+              let codewarsUsername = createdProfileView.codewarsUserNameTextField.text,!codewarsUsername.isEmpty
+        else {
             //temporary alert if fields are missing, need to add error labels
-            self.showAlert(title: "Missing Fields", message: "All fields must not be empty", completion: nil)
+            self.createdProfileView.errorLabel.text = "All fields must not be empty"
+            self.createdProfileView.errorLabel.textColor = .systemRed
+            //self.showAlert(title: "Missing Fields", message: "All fields must not be empty", completion: nil)
             return
         }
+        let cohort = createdProfileView.labelForDropDownMenu.text == "Choose your cohort￼" ? nil : createdProfileView.labelForDropDownMenu.text
         let role = segControlElementSection.sectionTitle
         let postUserData:[String:Any] = ["email": pursuitEmailAddr,
                                          "githubUsername": githubuserName,
                                          "name": name,
                                          "role": role.lowercased(),
-                                         "username": codewarsUsername]
+                                         "username": codewarsUsername,
+                                         "cohort": cohort
+        ]
+        
+        createdProfileView.errorLabel.text = "Create an account"
+        createdProfileView.errorLabel.textColor = .label
         
         guard let user = User(postUserData) else {
             self.showAlert(title: "Data Error", message: "User not able to be initialized, missing values on dictionary keys", completion: nil)
             return
         }
-        postUser(user)
+        print(user)
+        //postUser(user)
     }
     
     
     private func addSegControl(){
         createdProfileView.selecUserSegmentedControl.addTarget(self, action: #selector(segmentControl(_:)), for: .valueChanged)
+    }
+    
+    private func addTargetForDropDownToLabel(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showDropDownMenu))
+        createdProfileView.labelForDropDownMenu.addGestureRecognizer(tapGesture)
     }
     
     private func postUser(_ user: User){
@@ -92,6 +108,36 @@ class CreateProfileViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    private func addDropDownListener(){
+        createdProfileView.cohortDropdownMenu.selectionAction = { index, title in
+            self.addImageWith(string: title, on: self.createdProfileView.labelForDropDownMenu)
+        }
+    }
+    
+    @objc private func showDropDownMenu(){
+        createdProfileView.cohortDropdownMenu.show()
+    }
+    
+    private func addImageWith(string: String, on label: UILabel) {
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = UIImage(systemName: "arrowtriangle.down.fill")
+        // Set bound to reposition
+        let imageOffsetY: CGFloat = -5.0
+        let xCoor = UIScreen.main.bounds.width / 4
+        imageAttachment.bounds = CGRect(x: xCoor - (string == "Choose your cohort" ? 21 : -12 ), y: imageOffsetY, width: imageAttachment.image!.size.width, height: imageAttachment.image!.size.height)
+        // Create string with attachment
+        let attachmentString = NSAttributedString(attachment: imageAttachment)
+        // Initialize mutable string
+        let completeText = NSMutableAttributedString(string: "")
+        // Add your text to mutable string
+        let textAfterIcon = NSAttributedString(string: string)
+        completeText.append(textAfterIcon)
+        // Add image to mutable string
+        completeText.append(attachmentString)
+        label.attributedText = completeText
+        
     }
 }
 

@@ -24,6 +24,7 @@ struct User: Codable, Hashable {
     let email: String?
     let clan: String?
     let githubUsername: String?
+    let cohort: String?
     
     init?(_ dict: [String:Any]) {
         self.id = dict["id"] as? Int
@@ -38,6 +39,7 @@ struct User: Codable, Hashable {
         self.email = dict["email"] as? String
         self.clan = dict["clan"] as? String
         self.githubUsername = dict["githubUsername"] as? String
+        self.cohort = dict["cohort"] as? String
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -53,6 +55,7 @@ struct User: Codable, Hashable {
         case email
         case clan
         case githubUsername = "github_username"
+        case cohort
     }
     
 }
