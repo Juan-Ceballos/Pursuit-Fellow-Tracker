@@ -56,7 +56,7 @@ class CreateProfileViewController: UIViewController {
                                          "name": name,
                                          "role": role.lowercased(),
                                          "username": codewarsUsername,
-                                         "cohort": cohort
+                                         "cohort": cohort as Any
         ]
         
         createdProfileView.errorLabel.text = "Create an account"
@@ -149,4 +149,10 @@ extension CreateProfileViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.highlightBorderSelected(borderWidth: 0, borderColor: UIColor.systemBackground.cgColor)
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
 }

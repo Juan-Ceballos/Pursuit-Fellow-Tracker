@@ -208,7 +208,7 @@ class CreateProfileView: UIView {
     }
     
     private func containerViewStackViewSubViewContrainsts () {
-        for (index, subview) in containerStackView.arrangedSubviews.enumerated(){
+        for (_, subview) in containerStackView.arrangedSubviews.enumerated(){
             subview.snp.makeConstraints { mkr in
                 mkr.width.equalTo(containerStackView).offset(-21)
             }
