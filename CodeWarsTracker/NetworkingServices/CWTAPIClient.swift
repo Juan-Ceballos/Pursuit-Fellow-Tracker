@@ -75,7 +75,7 @@ class CWTAPIClient {
         NetworkHelper.shared.performDataTask(request: urlRequest) { (result) in
             switch result {
             case .failure(let appError):
-                print(appError)
+                completion(.failure(appError))
             case .success(let data):
                 do {
                     let scoreboard = try JSONDecoder().decode(ScoreBoard.self, from: data)
@@ -84,6 +84,32 @@ class CWTAPIClient {
                     completion(.failure(.decodingError(error)))
                 }
             }
+        }
+    }
+    
+    static func postUser(user: User, completion: @escaping (Result<Bool, AppError>)->()){
+        let endPointURLString = RequestURLString.query
+
+        guard let url = URL(string: endPointURLString) else {
+            completion(.failure(.badURL(endPointURLString)))
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            let data = try JSONEncoder().encode(user)
+            request.httpBody = data
+            NetworkHelper.shared.performDataTask(request: request) { (result) in
+                switch result{
+                case .failure(let appError):
+                    completion(.failure(.networkClientError(appError)))
+                case .success:
+                    completion(.success(true))
+                }
+            }
+        }catch{
+            completion(.failure(.encodingError(error)))
         }
     }
 }

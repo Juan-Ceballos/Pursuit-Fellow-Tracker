@@ -9,10 +9,22 @@ import Foundation
 
 struct ScoreBoard:Codable {
     let id: Int
-    let fellows_this_week: Int
-    let fellows_this_month: Int
-    let staff_this_week: Int
-    let staff_this_month: Int
-    let fellows_all_time: Int
-    let staff_all_time: Int
+    let fellowsThisWeek: Int
+    let fellowsThisMonth: Int
+    let staffThisWeek: Int
+    let staffThisMonth: Int
+    let fellowsAllTime: Int
+    let staffAllTime: Int
+    
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case fellowsThisWeek = "fellows_this_week"
+        case fellowsThisMonth = "fellows_this_month"
+        case staffThisWeek = "staff_this_week"
+        case staffThisMonth = "staff_this_month"
+        case fellowsAllTime = "fellows_all_time"
+        case staffAllTime = "staff_all_time"
+    }
 }
+
+

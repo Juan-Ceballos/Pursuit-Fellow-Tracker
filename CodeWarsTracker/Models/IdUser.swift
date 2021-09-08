@@ -24,6 +24,22 @@ struct IdUser: Decodable {
     let clan: String?
     let githubUsername: String?
     let problems: [Problem]
+    
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case username
+        case honor
+        case codewarsid
+        case name
+        case role
+        case language
+        case pointThisWeek = "points_this_week"
+        case pointThisMonth = "points_this_month"
+        case email
+        case clan
+        case githubUsername = "github_username"
+        case problems
+    }
 }
 struct Problem: Decodable {
     let id: String
@@ -32,9 +48,5 @@ struct Problem: Decodable {
     let completedLanguages: [String]
     let completedAt: String
 }
-private enum CodingKeys: String, CodingKey {
-    case pointsThisWeek = "points_this_week"
-    case pointsThisMonth = "points_this_month"
-    case githubUsername = "github_username"
-}
+
 

@@ -79,6 +79,37 @@ class CodeWarsTrackerTests: XCTestCase {
                 XCTAssertEqual(scoreboardData.id, scoreboardId)
             }
         }
+        wait(for: [exp], timeout: 5.0)
+
+    }
+    
+    func testPostUser(){
+        
+        //Arrange
+        let exp = XCTestExpectation(description: "posted user")
+        let postUser = ["email": "test1@pursuit.org",
+                        "githubUsername": "testUser1",
+                        "name": "Test User1",
+                        "role": "staff",
+                        "username": "testUser1"]
+        guard let user = User(postUser) else {
+            XCTFail("unable to create user")
+            return
+        }
+        
+        //Act
+        CWTAPIClient.postUser(user: user) { result in
+            switch result {
+            //Assert
+            case.failure(let error):
+                XCTFail("\(error)")
+            case .success(let success):
+                exp.fulfill()
+                XCTAssert(success == true)
+            }
+        }
+        wait(for: [exp], timeout: 5.0)
+
     }
 
 }

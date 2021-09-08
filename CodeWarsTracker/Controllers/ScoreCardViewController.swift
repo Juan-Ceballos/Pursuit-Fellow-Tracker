@@ -142,13 +142,14 @@ class ScoreCardViewController: NavBarViewController {
     private func loadScoreCardData(){
         CWTAPIClient.getScoreboardData { [weak self] (result) in
             switch result {
-            case .failure(let appError):
+            case .failure(let error):
+                print(error)
                 return
             case .success(let scoreboardData):
                 DispatchQueue.main.async {
-                    self?.scoreCardView.scoreboardWeeklyLabel.text = "Weekly\nFellows: \(scoreboardData.fellows_this_week)\nStaff: \(scoreboardData.staff_this_week)"
-                    self?.scoreCardView.scoreboardMonthlyLabel.text = "Monthly\nFellows: \(scoreboardData.fellows_this_month)\nStaff: \(scoreboardData.staff_this_month)"
-                    self?.scoreCardView.scoreboardAllTimeLabel.text = "All Time\nFellows: \(scoreboardData.fellows_all_time)\nStaff: \(scoreboardData.staff_all_time)"
+                    self?.scoreCardView.scoreboardWeeklyLabel.text = "Weekly\nFellows: \(scoreboardData.fellowsThisWeek)\nStaff: \(scoreboardData.staffThisWeek)"
+                    self?.scoreCardView.scoreboardMonthlyLabel.text = "Monthly\nFellows: \(scoreboardData.fellowsThisMonth)\nStaff: \(scoreboardData.staffThisMonth)"
+                    self?.scoreCardView.scoreboardAllTimeLabel.text = "All Time\nFellows: \(scoreboardData.fellowsAllTime)\nStaff: \(scoreboardData.staffAllTime)"
                 }
             }
         }

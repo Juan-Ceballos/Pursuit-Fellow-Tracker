@@ -29,6 +29,7 @@
 		BA229D6F33FD7572A282A465 /* Pods_CodeWarsTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1433D67A9032F8B08B6E30D2 /* Pods_CodeWarsTracker.framework */; };
 		F110DB4526D5DBC8007BA3A3 /* ScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */; };
 		F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */; };
+		F1A5C0BC26E7011C00783A60 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5C0BB26E7011C00783A60 /* UIViewController+.swift */; };
 		F1AF46A926D87F7F001F7327 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */; };
 		F1AF46AB26D87F9A001F7327 /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */; };
 		F1AF46AD26D8AF4B001F7327 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46AC26D8AF4B001F7327 /* UITextField+.swift */; };
@@ -86,6 +87,7 @@
 		E1764549936F4EACD3D0E770 /* Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTracker-CodeWarsTrackerUITests/Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCardView.swift; sourceTree = "<group>"; };
 		F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarViewController.swift; sourceTree = "<group>"; };
+		F1A5C0BB26E7011C00783A60 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
 		F1AF46AC26D8AF4B001F7327 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				F1AF46AC26D8AF4B001F7327 /* UITextField+.swift */,
+				F1A5C0BB26E7011C00783A60 /* UIViewController+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 			files = (
 				F1AF46A926D87F7F001F7327 /* CreateProfileViewController.swift in Sources */,
 				3E0AB1E926D42CB90005FAE5 /* NetworkHelper.swift in Sources */,
+				F1A5C0BC26E7011C00783A60 /* UIViewController+.swift in Sources */,
 				3E0A04E426D9715B00061809 /* BannerView.swift in Sources */,
 				3E0AB1F526D430C20005FAE5 /* Secrets.swift in Sources */,
 				F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */,
