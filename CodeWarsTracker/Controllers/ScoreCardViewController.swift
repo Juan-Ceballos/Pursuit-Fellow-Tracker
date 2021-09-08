@@ -54,12 +54,6 @@ class ScoreCardViewController: NavBarViewController {
                 snapshot.appendSections([.fellow, .staff])
                 snapshot.appendItems(filteredFellows, toSection: .fellow)
                 snapshot.appendItems(filteredStaff, toSection: .staff)
-                //snapshot.reloadSections(<#T##identifiers: [Section]##[Section]#>)
-                //snapshot.appendSections([.fellow, .staff])
-                
-                //snapshot.appendItems(filteredFellows, toSection: .fellow)
-                //snapshot.appendItems(filteredStaff, toSection: .staff)
-                
                 self.dataSource.apply(snapshot, animatingDifferences: true)
             }
         }
@@ -67,13 +61,13 @@ class ScoreCardViewController: NavBarViewController {
     }
     
     private func configureCollectionView() {
-        scoreCardView.cv.register(FellowCardCell.self, forCellWithReuseIdentifier: FellowCardCell.reuseIdentifier)
+        scoreCardView.cv.register(UserCardCell.self, forCellWithReuseIdentifier: UserCardCell.reuseIdentifier)
         scoreCardView.cv.register(HeaderView.self, forSupplementaryViewOfKind: Constants.headerElementKind, withReuseIdentifier: HeaderView.reuseIdentifier)
     }
     
     private func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, User>(collectionView: scoreCardView.cv, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FellowCardCell.reuseIdentifier, for: indexPath) as? FellowCardCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserCardCell.reuseIdentifier, for: indexPath) as? UserCardCell else {
                 fatalError()
             }
             cell.backgroundColor = .systemBlue

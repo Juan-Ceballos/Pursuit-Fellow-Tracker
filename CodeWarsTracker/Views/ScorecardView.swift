@@ -50,18 +50,26 @@ class ScoreCardView: UIView {
         let itemInsets: CGFloat = 8
         let groupInsets: CGFloat = 8
         
+        let contentSizeCategory = UIApplication.shared.preferredContentSizeCategory
+        print(contentSizeCategory.rawValue)
+        let groupSize: NSCollectionLayoutSize
+        switch contentSizeCategory {
+        case .extraSmall, .small, .medium, .large, .extraLarge, .extraExtraLarge:
+            groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3))
+        default:
+            groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        }
+
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: itemInsets, leading: itemInsets, bottom: itemInsets, trailing: itemInsets)
 
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
 
         group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         let section = NSCollectionLayoutSection(group: group)
         section.boundarySupplementaryItems = [sectionHeader]
         let layout = UICollectionViewCompositionalLayout(section: section)
-        
         return layout
     }
     

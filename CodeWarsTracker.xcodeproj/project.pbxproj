@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3E0A04C426D758DB00061809 /* FellowCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A04C326D758DB00061809 /* FellowCardCell.swift */; };
-		3E0A04C926D758F500061809 /* StaffCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A04C826D758F500061809 /* StaffCardCell.swift */; };
+		3E0A04C426D758DB00061809 /* UserCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A04C326D758DB00061809 /* UserCardCell.swift */; };
 		3E0A04D726D8032F00061809 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A04D626D8032F00061809 /* HeaderView.swift */; };
-		3E0A04E426D9715B00061809 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A04E326D9715B00061809 /* BannerView.swift */; };
 		3E0AB1D426D42B280005FAE5 /* ScoreCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0AB1D326D42B280005FAE5 /* ScoreCard.swift */; };
 		3E0AB1D926D42B400005FAE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0AB1D826D42B400005FAE5 /* User.swift */; };
 		3E0AB1E426D42CA80005FAE5 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0AB1E326D42CA80005FAE5 /* AppError.swift */; };
@@ -58,10 +56,8 @@
 		1433D67A9032F8B08B6E30D2 /* Pods_CodeWarsTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeWarsTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		153DABD380619AAA2DD4864F /* Pods-CodeWarsTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTracker.release.xcconfig"; path = "Target Support Files/Pods-CodeWarsTracker/Pods-CodeWarsTracker.release.xcconfig"; sourceTree = "<group>"; };
 		1690613AA1A60B294BFD5E2C /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E0A04C326D758DB00061809 /* FellowCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FellowCardCell.swift; sourceTree = "<group>"; };
-		3E0A04C826D758F500061809 /* StaffCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffCardCell.swift; sourceTree = "<group>"; };
+		3E0A04C326D758DB00061809 /* UserCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardCell.swift; sourceTree = "<group>"; };
 		3E0A04D626D8032F00061809 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		3E0A04E326D9715B00061809 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		3E0AB1D326D42B280005FAE5 /* ScoreCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCard.swift; sourceTree = "<group>"; };
 		3E0AB1D826D42B400005FAE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3E0AB1E326D42CA80005FAE5 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
@@ -241,10 +237,8 @@
 			isa = PBXGroup;
 			children = (
 				F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */,
-				3E0A04C326D758DB00061809 /* FellowCardCell.swift */,
-				3E0A04C826D758F500061809 /* StaffCardCell.swift */,
+				3E0A04C326D758DB00061809 /* UserCardCell.swift */,
 				3E0A04D626D8032F00061809 /* HeaderView.swift */,
-				3E0A04E326D9715B00061809 /* BannerView.swift */,
 				F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */,
 			);
 			path = Views;
@@ -511,8 +505,11 @@
 			files = (
 				F1AF46A926D87F7F001F7327 /* CreateProfileViewController.swift in Sources */,
 				3E0AB1E926D42CB90005FAE5 /* NetworkHelper.swift in Sources */,
+<<<<<<< Updated upstream
 				F1A5C0BC26E7011C00783A60 /* UIViewController+.swift in Sources */,
 				3E0A04E426D9715B00061809 /* BannerView.swift in Sources */,
+=======
+>>>>>>> Stashed changes
 				3E0AB1F526D430C20005FAE5 /* Secrets.swift in Sources */,
 				F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */,
 				3E0AB1D426D42B280005FAE5 /* ScoreCard.swift in Sources */,
@@ -524,10 +521,9 @@
 				3E6AB7EF26CC5ED000DF9A11 /* AppDelegate.swift in Sources */,
 				3E6AB7F126CC5ED000DF9A11 /* SceneDelegate.swift in Sources */,
 				3E0AB1E426D42CA80005FAE5 /* AppError.swift in Sources */,
-				3E0A04C426D758DB00061809 /* FellowCardCell.swift in Sources */,
+				3E0A04C426D758DB00061809 /* UserCardCell.swift in Sources */,
 				3E0AB20026D477A20005FAE5 /* IdUser.swift in Sources */,
 				F1AF46AD26D8AF4B001F7327 /* UITextField+.swift in Sources */,
-				3E0A04C926D758F500061809 /* StaffCardCell.swift in Sources */,
 				3E0A04D726D8032F00061809 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

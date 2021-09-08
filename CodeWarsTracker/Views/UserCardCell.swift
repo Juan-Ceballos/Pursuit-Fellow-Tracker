@@ -8,9 +8,13 @@
 import UIKit
 import SnapKit
 
-class FellowCardCell: UICollectionViewCell {
+class UserCardCell: UICollectionViewCell {
     
-    static let reuseIdentifier = "fellowCardCell"
+    override func layoutSubviews() {
+        self.layer.cornerRadius = 8
+    }
+    
+    static let reuseIdentifier = "userCardCell"
     
     public lazy var bannerView: UIView = {
         let bView = UIView()
@@ -26,45 +30,70 @@ class FellowCardCell: UICollectionViewCell {
     public lazy var staffTextLabel: UILabel = {
         let label = UILabel()
         label.text = "Staff"
-        label.textAlignment = .center
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.adjustsFontForContentSizeCategory = true
+        label.numberOfLines = 0
+        label.lineBreakMode = .byCharWrapping
         return label
     }()
     
     public lazy var usernameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemBackground
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        label.adjustsFontForContentSizeCategory = true
+        label.numberOfLines = 0
+        label.lineBreakMode = .byCharWrapping
         return label
     }()
     
     public lazy var honorLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemBackground
-        label.font = .systemFont(ofSize: 33)
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.adjustsFontForContentSizeCategory = true
+        label.numberOfLines = 0
+        label.lineBreakMode = .byCharWrapping
         return label
     }()
     
     public lazy var clanLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemBackground
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        label.adjustsFontForContentSizeCategory = true
+        label.numberOfLines = 0
+        label.lineBreakMode = .byCharWrapping
         return label
     }()
     
     public lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemBackground
-        label.font = .boldSystemFont(ofSize: 22)
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.adjustsFontForContentSizeCategory = true
+        label.numberOfLines = 0
+        label.lineBreakMode = .byCharWrapping
         return label
     }()
     
     public lazy var pointsThisWeekLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemBackground
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        label.adjustsFontForContentSizeCategory = true
+        label.numberOfLines = 0
+        label.lineBreakMode = .byCharWrapping
         return label
     }()
     
     public lazy var pointsThisMonthLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemBackground
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        label.adjustsFontForContentSizeCategory = true
+        label.numberOfLines = 0
+        label.lineBreakMode = .byCharWrapping
         return label
     }()
     
@@ -91,17 +120,17 @@ class FellowCardCell: UICollectionViewCell {
     private func setupBannerViewConstraints() {
         addSubview(bannerView)
         bannerView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(11)
+            make.top.equalToSuperview().offset(8)
             make.leading.equalToSuperview().offset(11)
             make.width.equalTo(self.snp.width).multipliedBy(0.15)
-            make.height.equalTo(self.snp.height).multipliedBy(0.1)
+            make.height.equalTo(self.snp.height).multipliedBy(0.2)
         }
     }
     
     private func setupNameLabelConstraints() {
         addSubview(nameLabel)
         nameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(bannerView.snp.bottom).offset(11)
+            make.top.equalTo(bannerView.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(11)
         }
     }
@@ -109,8 +138,9 @@ class FellowCardCell: UICollectionViewCell {
     private func setupUsernameLabelConstraints() {
         addSubview(usernameLabel)
         usernameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(nameLabel.snp.bottom).offset(22)
+            make.top.equalTo(nameLabel.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(11)
+            make.width.equalToSuperview().multipliedBy(0.7)
         }
     }
     
@@ -133,8 +163,9 @@ class FellowCardCell: UICollectionViewCell {
     private func setupPointsThisMonthLabel() {
         addSubview(pointsThisMonthLabel)
         pointsThisMonthLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(pointsThisWeekLabel.snp.bottom).offset(11)
-            make.trailing.equalToSuperview().offset(-11)
+            make.top.equalTo(pointsThisWeekLabel.snp.bottom).offset(8)
+            make.trailing.equalTo(pointsThisWeekLabel.snp.trailing)
+            make.leading.equalTo(pointsThisWeekLabel.snp.leading)
         }
     }
     

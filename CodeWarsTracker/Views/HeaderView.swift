@@ -35,7 +35,7 @@ class HeaderView: UICollectionReusableView {
         addSubview(textLabel)
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            textLabel.bottomAnchor.constraint(equalTo: self.centerYAnchor),
+            textLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             textLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
