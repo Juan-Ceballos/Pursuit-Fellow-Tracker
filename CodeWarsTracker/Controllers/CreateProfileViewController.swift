@@ -66,8 +66,7 @@ class CreateProfileViewController: UIViewController {
             self.showAlert(title: "Data Error", message: "User not able to be initialized, missing values on dictionary keys", completion: nil)
             return
         }
-        print(user)
-        //postUser(user)
+        postUser(user)
     }
     
     
