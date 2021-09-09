@@ -102,8 +102,10 @@ class ScoreCardViewController: NavBarViewController {
             
             switch indexPath.section {
             case 0:
-                headerView.textLabel.text = "Fellows"
+                headerView.textLabel.text = "Leader Board"
             case 1:
+                headerView.textLabel.text = "Fellows"
+            case 2:
                 headerView.textLabel.text = "Staff"
             default:
                 fatalError("Invalid Section, for headerview supplementary view provider")
@@ -115,7 +117,8 @@ class ScoreCardViewController: NavBarViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
         var fellows = [User]()
         var staff = [User]()
-        snapshot.appendSections([.fellow, .staff])
+        var topFellows = [User]()
+        snapshot.appendSections([.leaderBoard, .fellow, .staff])
         CWTAPIClient.fetchAllUsers { [weak self] (result) in
             switch result {
             case .failure(let error):
@@ -130,6 +133,19 @@ class ScoreCardViewController: NavBarViewController {
                             fellows.append(user)
                         }
                     }
+                    let fellowsByWeekPoints = fellows.sorted {$0.pointThisWeek ?? 0 > $1.pointThisWeek ?? 0}
+                    for (index, fellow) in fellowsByWeekPoints.enumerated() {
+                        while topFellows.count < 3 {
+                            if fellow.pointThisWeek ?? 0 > 0 {
+                                var topper = fellowsByWeekPoints[index]
+                                topper.isTopFellow = true
+                                topFellows.append(topper)
+                                break
+                            }
+                        }
+                    }
+                    print(topFellows)
+                    snapshot.appendItems(topFellows, toSection: .leaderBoard)
                     snapshot.appendItems(fellows, toSection: .fellow)
                     snapshot.appendItems(staff, toSection: .staff)
                     self?.dataSource.apply(snapshot, animatingDifferences: false)

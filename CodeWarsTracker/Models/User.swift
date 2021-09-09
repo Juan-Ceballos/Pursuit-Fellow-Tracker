@@ -25,6 +25,7 @@ struct User: Codable, Hashable {
     let clan: String?
     let githubUsername: String?
     let cohort: String?
+    var isTopFellow = false
     
     init?(_ dict: [String:Any]) {
         self.id = dict["id"] as? Int

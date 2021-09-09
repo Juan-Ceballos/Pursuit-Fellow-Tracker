@@ -8,9 +8,10 @@
 import UIKit
 import SnapKit
 
-public enum Section: CaseIterable {
+public enum Section: String, CaseIterable {
     case fellow
     case staff
+    case leaderBoard
     
     var sectionTitle: String {
         switch self {
@@ -18,6 +19,8 @@ public enum Section: CaseIterable {
             return "Fellow"
         case .staff:
             return "Staff"
+        case .leaderBoard:
+            return "LeaderBoard"
         }
     }
 }
@@ -53,10 +56,9 @@ class ScoreCardView: UIView {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: itemInsets, leading: itemInsets, bottom: itemInsets, trailing: itemInsets)
-
+        
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-
         group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         let section = NSCollectionLayoutSection(group: group)
         section.boundarySupplementaryItems = [sectionHeader]
