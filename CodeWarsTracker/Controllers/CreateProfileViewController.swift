@@ -9,10 +9,10 @@ import UIKit
 
 class CreateProfileViewController: UIViewController {
     
-    private let createdProfileView = CreateProfileView()
+    private let createdProfileView = CreateProfileView(alignment: .center)
     
     private var segControlElementSection:Section = Section.allCases[0]
-    
+        
     override func loadView() {
         view = createdProfileView
     }

@@ -7,18 +7,19 @@
 //
 
 import UIKit
+import SnapKit
 
 public enum FormAlignment {
     case top, center
 }
 
-class KeyboardHandlerViewController: UIViewController {
+class KeyboardHandlerView: UIView {
     
     var lowestElement: UIView!
     public lazy var scrollView: UIScrollView = {
         let sv = UIScrollView()
         sv.contentInsetAdjustmentBehavior = .never
-        sv.contentSize = view.frame.size
+        sv.contentSize = self.frame.size
         sv.keyboardDismissMode = .interactive
         return sv
     }()
@@ -34,34 +35,35 @@ class KeyboardHandlerViewController: UIViewController {
     
     private let alignment: FormAlignment
     
+//    override init(frame: CGRect) {
+//        super.init(frame: UIScreen.main.bounds)
+//    }
+    
     public init(alignment: FormAlignment = .top) {
         self.alignment = alignment
-        super.init(nibName: nil, bundle: nil)
+        super.init(frame: UIScreen.main.bounds)
+        commoninit()
     }
     
     public required init?(coder aDecoder: NSCoder) {
-            fatalError("You most likely have a Storyboard controller that uses this class, please remove any instance of LBTAFormController or sublasses of this component from your Storyboard files.")
-        }
+        fatalError("You most likely have a Storyboard controller that uses this class, please remove any instance of LBTAFormController or sublasses of this component from your Storyboard files.")
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        view.addSubview(scrollView)
+    private func commoninit(){
+        self.backgroundColor = .white
+        self.addSubview(scrollView)
         scrollView.fillSuperview()
         scrollView.addSubview(formContainerStackView)
         
         if alignment == .top {
-            formContainerStackView.anchor(top: scrollView.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor)
+            formContainerStackView.anchor(top: scrollView.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor)
         } else {
             formContainerStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
             formContainerStackView.centerInSuperview()
         }
-    }
-    
-    override open func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
-        if formContainerStackView.frame.height > view.frame.height {
+        //viewDidAppear
+        if formContainerStackView.frame.height > self.frame.height {
             scrollView.contentSize.height = formContainerStackView.frame.size.height
         }
         
@@ -70,12 +72,12 @@ class KeyboardHandlerViewController: UIViewController {
     
     private func distanceFromLowestElementToBottom() -> CGFloat {
         if lowestElement != nil {
-            guard let frame = lowestElement.superview?.convert(lowestElement.frame, to: view) else { return 0 }
-            let distance = view.frame.height - frame.origin.y - frame.height
+            guard let frame = lowestElement.superview?.convert(lowestElement.frame, to: self) else { return 0 }
+            let distance = self.frame.height - frame.origin.y - frame.height
             return distance
         }
         
-        return view.frame.height - formContainerStackView.frame.maxY
+        return self.frame.height - formContainerStackView.frame.maxY
     }
     
     private func setupKeyboardNotifications() {
@@ -84,7 +86,7 @@ class KeyboardHandlerViewController: UIViewController {
     }
     
     @objc private func handleKeyboardShow(notification: Notification) {
-        guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue, let statusBarHeight = view.window?.windowScene?.statusBarManager?.statusBarFrame.height else { return }
+        guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue, let statusBarHeight = self.window?.windowScene?.statusBarManager?.statusBarFrame.height else { return }
         let keyboardFrame = value.cgRectValue
         
         scrollView.contentInset.bottom = keyboardFrame.height

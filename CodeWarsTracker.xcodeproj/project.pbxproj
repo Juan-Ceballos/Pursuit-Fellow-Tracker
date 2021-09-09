@@ -29,7 +29,7 @@
 		BA229D6F33FD7572A282A465 /* Pods_CodeWarsTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1433D67A9032F8B08B6E30D2 /* Pods_CodeWarsTracker.framework */; };
 		F110DB4526D5DBC8007BA3A3 /* ScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */; };
 		F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */; };
-		F13FAD4426E92D4C00E74C41 /* KeyboardHandlerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FAD4326E92D4C00E74C41 /* KeyboardHandlerViewController.swift */; };
+		F13FAD4426E92D4C00E74C41 /* KeyboardHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */; };
 		F13FAD4626E9372000E74C41 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FAD4526E9372000E74C41 /* UIView+.swift */; };
 		F1A5C0BC26E7011C00783A60 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5C0BB26E7011C00783A60 /* UIViewController+.swift */; };
 		F1AF46A926D87F7F001F7327 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */; };
@@ -89,7 +89,7 @@
 		E1764549936F4EACD3D0E770 /* Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTracker-CodeWarsTrackerUITests/Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCardView.swift; sourceTree = "<group>"; };
 		F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarViewController.swift; sourceTree = "<group>"; };
-		F13FAD4326E92D4C00E74C41 /* KeyboardHandlerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandlerViewController.swift; sourceTree = "<group>"; };
+		F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandlerView.swift; sourceTree = "<group>"; };
 		F13FAD4526E9372000E74C41 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		F1A5C0BB26E7011C00783A60 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
@@ -133,7 +133,6 @@
 				3E6AB7F226CC5ED000DF9A11 /* ScoreCardViewController.swift */,
 				F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */,
 				F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */,
-				F13FAD4326E92D4C00E74C41 /* KeyboardHandlerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -251,6 +250,7 @@
 				3E0A04D626D8032F00061809 /* HeaderView.swift */,
 				3E0A04E326D9715B00061809 /* BannerView.swift */,
 				F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */,
+				F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -536,7 +536,7 @@
 				F1AF46AD26D8AF4B001F7327 /* UITextField+.swift in Sources */,
 				3E0A04C926D758F500061809 /* StaffCardCell.swift in Sources */,
 				3E0A04D726D8032F00061809 /* HeaderView.swift in Sources */,
-				F13FAD4426E92D4C00E74C41 /* KeyboardHandlerViewController.swift in Sources */,
+				F13FAD4426E92D4C00E74C41 /* KeyboardHandlerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
