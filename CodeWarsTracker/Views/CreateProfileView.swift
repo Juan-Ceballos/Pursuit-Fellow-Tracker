@@ -138,18 +138,16 @@ class CreateProfileView: KeyboardHandlerView {
     
     private func commonInit(){
         containerViewStackViewSubViewContrainsts(formContainerStackView)
+        lowestElement = loginCreateButton
     }
     
     public func containerViewStackViewSubViewContrainsts (_ stackView: UIStackView) {
-        stackView.snp.makeConstraints { mkr in
-            //mkr.height.equalToSuperview().multipliedBy(0.768)
-        }
+
         stackView.distribution = .fillProportionally
         stackView.alignment = .center
         stackView.spacing = 21
         stackView.axis = .vertical
         stackView.backgroundColor = .systemGroupedBackground
-        //stackView.layoutMargins = UIEdgeInsets(top: 21, left: 21, bottom: 21, right: 21)
         stackView.isLayoutMarginsRelativeArrangement = true
         let subViews = [errorLabel,
                         nameTextField,
@@ -161,9 +159,6 @@ class CreateProfileView: KeyboardHandlerView {
                         loginCreateButton]
         for view in subViews {
             stackView.addArrangedSubview(view)
-            //view.frame.size.height = 500
-            //view.sizeToFit()
-            //view.layoutIfNeeded()
         }
         
         for (index, subview) in stackView.arrangedSubviews.enumerated(){
@@ -188,11 +183,6 @@ class CreateProfileView: KeyboardHandlerView {
             tf.setHorizontalPaddingPoints(13)
         }
         
-//        for ui in otherUIs {
-//            ui.snp.makeConstraints { mkr in
-//                //mkr.height.equalTo(100).offset(0)
-//            }
-//        }
     }
     
 

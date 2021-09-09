@@ -4,7 +4,8 @@
 //
 //  Created by Bienbenido Angeles on 9/8/21.
 //  Original Source code from https://github.com/bhlvoong/LBTATools/blob/master/Source/Form/LBTAFormController.swift
-//
+//  retrofitted as UIView from UIViewController for ease of use and modularity with any view that needs keyboard handling
+//  Just pass in formContainerStackView on your view and add subviews/UIElements to it
 
 import UIKit
 import SnapKit
@@ -35,10 +36,6 @@ class KeyboardHandlerView: UIView {
     
     private let alignment: FormAlignment
     
-//    override init(frame: CGRect) {
-//        super.init(frame: UIScreen.main.bounds)
-//    }
-    
     public init(alignment: FormAlignment = .top) {
         self.alignment = alignment
         super.init(frame: UIScreen.main.bounds)
@@ -46,7 +43,7 @@ class KeyboardHandlerView: UIView {
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        fatalError("You most likely have a Storyboard controller that uses this class, please remove any instance of LBTAFormController or sublasses of this component from your Storyboard files.")
+        fatalError("You most likely have a Storyboard controller that uses this class, please remove any instance of  sublasses of this component from your Storyboard files.")
     }
     
     private func commoninit(){
@@ -54,6 +51,7 @@ class KeyboardHandlerView: UIView {
         self.addSubview(scrollView)
         scrollView.fillSuperview()
         scrollView.addSubview(formContainerStackView)
+        setupKeyboardNotifications()
         
         if alignment == .top {
             formContainerStackView.anchor(top: scrollView.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor)
@@ -63,11 +61,11 @@ class KeyboardHandlerView: UIView {
         }
         
         //viewDidAppear
-        if formContainerStackView.frame.height > self.frame.height {
-            scrollView.contentSize.height = formContainerStackView.frame.size.height
-        }
-        
-        _ = distanceToBottom
+//        if formContainerStackView.frame.height > self.frame.height {
+//            scrollView.contentSize.height = formContainerStackView.frame.size.height
+//        }
+//        
+//        _ = distanceToBottom
     }
     
     private func distanceFromLowestElementToBottom() -> CGFloat {
