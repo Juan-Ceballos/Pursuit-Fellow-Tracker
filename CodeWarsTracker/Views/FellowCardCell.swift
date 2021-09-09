@@ -27,6 +27,12 @@ class FellowCardCell: UICollectionViewCell {
         return bView
     }()
     
+    public lazy var leaderBoardBadgeLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        return label
+    }()
+    
     public lazy var staffTextLabel: UILabel = {
         let label = UILabel()
         label.text = "Staff"
@@ -84,6 +90,7 @@ class FellowCardCell: UICollectionViewCell {
     
     private func commonInit()   {
         setupBannerViewConstraints()
+        setupLeaderBoardBadgeLabelConstraints()
         setupNameLabelConstraints()
         setupUsernameLabelConstraints()
         setupClanLabelConstraints()
@@ -99,6 +106,14 @@ class FellowCardCell: UICollectionViewCell {
             make.leading.equalToSuperview().offset(11)
             make.width.equalTo(self.snp.width).multipliedBy(0.15)
             make.height.equalTo(self.snp.height).multipliedBy(0.15)
+        }
+    }
+    
+    private func setupLeaderBoardBadgeLabelConstraints() {
+        addSubview(leaderBoardBadgeLabel)
+        leaderBoardBadgeLabel.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(11)
+            make.leading.equalTo(bannerView.snp.trailing).offset(11)
         }
     }
     

@@ -75,6 +75,7 @@ class ScoreCardViewController: NavBarViewController {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FellowCardCell.reuseIdentifier, for: indexPath) as? FellowCardCell else {
                 fatalError()
             }
+            
             cell.backgroundColor = .systemBlue
             cell.nameLabel.text = item.name
             cell.usernameLabel.text = "Codewars: \(item.username)"
@@ -82,15 +83,27 @@ class ScoreCardViewController: NavBarViewController {
             cell.honorLabel.text = String(item.honor ?? 0)
             cell.pointsThisWeekLabel.text = "This Week: \(String(item.pointThisWeek ?? 0))"
             cell.pointsThisMonthLabel.text = "This Month: \(String(item.pointThisMonth ?? 0))"
-            if let itemRole = self.dataSource.itemIdentifier(for: indexPath)?.role {
-                if itemRole != "staff" {
-                    DispatchQueue.main.async {
-                        cell.bannerView.isHidden = true
-                    }
-                } else {
-                    cell.bannerView.isHidden = false
-                }
+            switch indexPath.section {
+            case 0:
+                cell.bannerView.isHidden = true
+                cell.leaderBoardBadgeLabel.text = "\(indexPath.row + 1)"
+                cell.leaderBoardBadgeLabel.backgroundColor = .systemOrange
+            case 1:
+                cell.bannerView.isHidden = true
+            case 2:
+                cell.bannerView.isHidden = false
+            default:
+                print()
             }
+//            if let item = self.dataSource.itemIdentifier(for: indexPath) {
+//                if item.role != "staff" {
+//                    DispatchQueue.main.async {
+//                        cell.bannerView.isHidden = true
+//                    }
+//                } else {
+//                    cell.bannerView.isHidden = false
+//                }
+//            }
             return cell
         })
         
@@ -144,7 +157,6 @@ class ScoreCardViewController: NavBarViewController {
                             }
                         }
                     }
-                    print(topFellows)
                     snapshot.appendItems(topFellows, toSection: .leaderBoard)
                     snapshot.appendItems(fellows, toSection: .fellow)
                     snapshot.appendItems(staff, toSection: .staff)
