@@ -8,7 +8,6 @@
 import UIKit
 
 class ScoreCardViewController: NavBarViewController {
-    
     private let scoreCardView = ScoreCardView()
     
     override func loadView() {
@@ -17,6 +16,7 @@ class ScoreCardViewController: NavBarViewController {
     
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, User>
     private var dataSource: DataSource!
+    private var allUsers = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,45 +25,44 @@ class ScoreCardViewController: NavBarViewController {
         configureCollectionView()
         configureDataSource()
         scoreCardView.searchBar.delegate = self
+        loadAllUsers()
     }
     
-    private func performSearch(searchQuery: String?) {
-        var filteredFellows = [User]()
-        var filteredStaff = [User]()
+    private func loadAllUsers() {
         CWTAPIClient.fetchAllUsers { (result) in
             switch result {
             case .failure(let error):
                 print(error)
             case .success(let users):
-                let usersSorted = users.sorted {$0.honor ?? 0 > $1.honor ?? 0}
-                for user in usersSorted {
-                    if user.role == "staff" {
-                        filteredStaff.append(user)
-                    } else if user.role == "fellow" {
-                        filteredFellows.append(user)
-                    }
-                }
-                
-                if let searchQuery = searchQuery, !searchQuery.isEmpty {
-                    filteredFellows = filteredFellows.filter { $0.name.contains(searchQuery) }
-                    filteredStaff = filteredStaff.filter { $0.name.contains(searchQuery) }
-                }
-                var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
-                snapshot.deleteAllItems()
-                self.dataSource.apply(snapshot)
-                snapshot.appendSections([.fellow, .staff])
-                snapshot.appendItems(filteredFellows, toSection: .fellow)
-                snapshot.appendItems(filteredStaff, toSection: .staff)
-                //snapshot.reloadSections(<#T##identifiers: [Section]##[Section]#>)
-                //snapshot.appendSections([.fellow, .staff])
-                
-                //snapshot.appendItems(filteredFellows, toSection: .fellow)
-                //snapshot.appendItems(filteredStaff, toSection: .staff)
-                
-                self.dataSource.apply(snapshot, animatingDifferences: true)
+                self.allUsers = users.sorted {$0.honor ?? 0 > $1.honor ?? 0}
+            }
+        }
+    }
+    
+    private func performSearch(searchQuery: String?) {
+        var filteredFellows = [User]()
+        var filteredStaff = [User]()
+        
+        for user in allUsers {
+            if user.role == "staff" {
+                filteredStaff.append(user)
+            } else if user.role == "fellow" {
+                filteredFellows.append(user)
             }
         }
         
+        if let searchQuery = searchQuery, !searchQuery.isEmpty {
+            filteredFellows = filteredFellows.filter { $0.name.contains(searchQuery) }
+            filteredStaff = filteredStaff.filter { $0.name.contains(searchQuery) }
+        }
+        
+        var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
+        snapshot.deleteAllItems()
+        self.dataSource.apply(snapshot)
+        snapshot.appendSections([.fellow, .staff])
+        snapshot.appendItems(filteredFellows, toSection: .fellow)
+        snapshot.appendItems(filteredStaff, toSection: .staff)
+        self.dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     private func configureCollectionView() {
@@ -79,7 +78,7 @@ class ScoreCardViewController: NavBarViewController {
             cell.backgroundColor = .systemBlue
             cell.nameLabel.text = item.name
             cell.usernameLabel.text = "Codewars: \(item.username)"
-            cell.clanLabel.text = "Clan: \(item.clan ?? "No Clan")"
+            cell.clanLabel.text = "Class: \(item.cohort ?? "No Clan")"
             cell.honorLabel.text = String(item.honor ?? 0)
             cell.pointsThisWeekLabel.text = "This Week: \(String(item.pointThisWeek ?? 0))"
             cell.pointsThisMonthLabel.text = "This Month: \(String(item.pointThisMonth ?? 0))"

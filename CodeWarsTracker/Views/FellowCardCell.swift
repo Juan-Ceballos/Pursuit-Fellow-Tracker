@@ -12,6 +12,10 @@ class FellowCardCell: UICollectionViewCell {
     
     static let reuseIdentifier = "fellowCardCell"
     
+    override func layoutSubviews() {
+        self.layer.cornerRadius = 8
+    }
+    
     public lazy var bannerView: UIView = {
         let bView = UIView()
         bView.backgroundColor = .systemYellow
@@ -94,7 +98,7 @@ class FellowCardCell: UICollectionViewCell {
             make.top.equalToSuperview().offset(11)
             make.leading.equalToSuperview().offset(11)
             make.width.equalTo(self.snp.width).multipliedBy(0.15)
-            make.height.equalTo(self.snp.height).multipliedBy(0.1)
+            make.height.equalTo(self.snp.height).multipliedBy(0.15)
         }
     }
     
@@ -103,14 +107,16 @@ class FellowCardCell: UICollectionViewCell {
         nameLabel.snp.makeConstraints { (make) in
             make.top.equalTo(bannerView.snp.bottom).offset(11)
             make.leading.equalToSuperview().offset(11)
+            make.width.equalTo(self.snp.width).multipliedBy(0.65)
         }
     }
     
     private func setupUsernameLabelConstraints() {
         addSubview(usernameLabel)
         usernameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(nameLabel.snp.bottom).offset(22)
+            make.top.equalTo(nameLabel.snp.bottom).offset(11)
             make.leading.equalToSuperview().offset(11)
+            make.width.equalTo(self.snp.width).multipliedBy(0.65)
         }
     }
     
