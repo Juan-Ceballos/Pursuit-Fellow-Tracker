@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import DropDown
 
-class CreateProfileView: UIView {
+class CreateProfileView: KeyboardHandlerView {
 
     public lazy var errorLabel: UILabel = {
         let label = UILabel()
@@ -19,14 +19,6 @@ class CreateProfileView: UIView {
         label.font = UIFont.preferredFont(forTextStyle: .body)
         //label.isHidden = true
         return label
-    }()
-    
-    
-    
-    public lazy var containerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemRed
-        return view
     }()
     
     public lazy var textFields: [UITextField] = {
@@ -88,7 +80,7 @@ class CreateProfileView: UIView {
         let menuItems = ["Choose your cohort","Pursuit-8.1", "Pursuit-8.2","Pursuit-7.1", "Pursuit-7.2"]
         menu.dataSource = menuItems
         menu.anchorView = labelForDropDownMenu
-        menu.frame = containerStackView.frame
+        menu.frame = formContainerStackView.frame
         return menu
     }()
     
@@ -134,14 +126,28 @@ class CreateProfileView: UIView {
         return segCon
     }()
     
-    public lazy var containerStackView: UIStackView = {
-        let stackView = UIStackView()
+    override init(alignment: FormAlignment = .top) {
+        super.init(alignment: alignment)
+        commonInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+    
+    private func commonInit(){
+        containerViewStackViewSubViewContrainsts(formContainerStackView)
+        lowestElement = loginCreateButton
+    }
+    
+    public func containerViewStackViewSubViewContrainsts (_ stackView: UIStackView) {
+
         stackView.distribution = .fillProportionally
         stackView.alignment = .center
         stackView.spacing = 21
         stackView.axis = .vertical
         stackView.backgroundColor = .systemGroupedBackground
-        stackView.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         stackView.isLayoutMarginsRelativeArrangement = true
         let subViews = [errorLabel,
                         nameTextField,
@@ -153,64 +159,16 @@ class CreateProfileView: UIView {
                         loginCreateButton]
         for view in subViews {
             stackView.addArrangedSubview(view)
-            //view.frame.size.height = 500
-            //view.sizeToFit()
-            //view.layoutIfNeeded()
         }
-
-        return stackView
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: UIScreen.main.bounds)
-        self.backgroundColor = .systemBackground
-        commonInit()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        commonInit()
-    }
-    
-    private func commonInit(){
-        //errorLabelConstrainsts()
-        containerViewContrainsts()
-        containerViewStackViewContrainsts()
-        containerViewStackViewSubViewContrainsts()
-    }
-    
-//    private func errorLabelConstrainsts(){
-//        addSubview(errorLabel)
-//        errorLabel.snp.makeConstraints { mkr in
-//            mkr.leading.equalTo(safeAreaLayoutGuide).offset(20)
-//            mkr.top.equalTo(safeAreaLayoutGuide).offset(20)
-//            mkr.trailing.equalTo(safeAreaLayoutGuide).offset(-20)
-//        }
-//    }
-    
-    private func containerViewContrainsts(){
-        addSubview(containerView)
-        containerView.snp.makeConstraints { mkr in
-            mkr.leading.equalTo(self).offset(21)
-            mkr.trailing.equalTo(self).offset(-21)
-            mkr.centerX.equalTo(self)
-            mkr.centerY.equalTo(self)
-            mkr.height.equalTo(self).multipliedBy(0.768)
-        }
-    }
-    
-    private func containerViewStackViewContrainsts(){
-        containerView.addSubview(containerStackView)
-        containerStackView.snp.makeConstraints { mkr in
-            mkr.center.equalTo(containerView)
-            mkr.edges.lessThanOrEqualTo(containerView)
-        }
-    }
-    
-    private func containerViewStackViewSubViewContrainsts () {
-        for (index, subview) in containerStackView.arrangedSubviews.enumerated(){
+        
+        for (index, subview) in stackView.arrangedSubviews.enumerated(){
             subview.snp.makeConstraints { mkr in
-                mkr.width.equalTo(containerStackView).offset(-21)
+                mkr.width.equalTo(stackView).offset(-21)
+                if index == 0 || (5...7).contains(index){
+                    mkr.height.equalTo(self).multipliedBy(0.05)
+                }else if(1...4).contains(index){
+                    mkr.height.equalTo(self).multipliedBy(0.1)
+                }
             }
             
             subview.layer.cornerRadius = 8
@@ -219,21 +177,12 @@ class CreateProfileView: UIView {
         }
         
         let textFields = [nameTextField, emailTextField, githubUserNameTextField, codewarsUserNameTextField]
-        let otherUIs = [labelForDropDownMenu,selecUserSegmentedControl,loginCreateButton]
+        //let otherUIs = [labelForDropDownMenu,selecUserSegmentedControl,loginCreateButton]
         
         for tf in textFields {
-            tf.snp.makeConstraints { mkr in
-                mkr.height.equalTo(containerStackView).multipliedBy(0.14545).offset(-21)
-            }
             tf.setHorizontalPaddingPoints(13)
-        
         }
         
-        for ui in otherUIs {
-            ui.snp.makeConstraints { mkr in
-                mkr.height.equalTo(containerStackView).multipliedBy(0.1).offset(-21)
-            }
-        }
     }
     
 
