@@ -28,6 +28,8 @@
 		B3E7524322C97D4C7BB44379 /* Pods_CodeWarsTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1A94353D1F8E416F54FC22 /* Pods_CodeWarsTrackerTests.framework */; };
 		BA229D6F33FD7572A282A465 /* Pods_CodeWarsTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1433D67A9032F8B08B6E30D2 /* Pods_CodeWarsTracker.framework */; };
 		F110DB4526D5DBC8007BA3A3 /* ScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */; };
+		F12817B226EAD6E30068A55D /* FindPairingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12817B126EAD6E30068A55D /* FindPairingViewController.swift */; };
+		F12817B426EAD7060068A55D /* FindPairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12817B326EAD7060068A55D /* FindPairingView.swift */; };
 		F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */; };
 		F13FAD4426E92D4C00E74C41 /* KeyboardHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */; };
 		F13FAD4626E9372000E74C41 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FAD4526E9372000E74C41 /* UIView+.swift */; };
@@ -88,6 +90,8 @@
 		D354AC7882F44AB5E962EEF9 /* Pods-CodeWarsTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTrackerTests.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTrackerTests/Pods-CodeWarsTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1764549936F4EACD3D0E770 /* Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTracker-CodeWarsTrackerUITests/Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCardView.swift; sourceTree = "<group>"; };
+		F12817B126EAD6E30068A55D /* FindPairingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPairingViewController.swift; sourceTree = "<group>"; };
+		F12817B326EAD7060068A55D /* FindPairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPairingView.swift; sourceTree = "<group>"; };
 		F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarViewController.swift; sourceTree = "<group>"; };
 		F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandlerView.swift; sourceTree = "<group>"; };
 		F13FAD4526E9372000E74C41 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 				3E6AB7F226CC5ED000DF9A11 /* ScoreCardViewController.swift */,
 				F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */,
 				F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */,
+				F12817B126EAD6E30068A55D /* FindPairingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				3E0A04E326D9715B00061809 /* BannerView.swift */,
 				F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */,
 				F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */,
+				F12817B326EAD7060068A55D /* FindPairingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -526,8 +532,10 @@
 				F13FAD4626E9372000E74C41 /* UIView+.swift in Sources */,
 				3E6AB7F326CC5ED000DF9A11 /* ScoreCardViewController.swift in Sources */,
 				F110DB4526D5DBC8007BA3A3 /* ScoreCardView.swift in Sources */,
+				F12817B226EAD6E30068A55D /* FindPairingViewController.swift in Sources */,
 				F1AF46AB26D87F9A001F7327 /* CreateProfileView.swift in Sources */,
 				3E0AB1EF26D42CFC0005FAE5 /* CWTAPIClient.swift in Sources */,
+				F12817B426EAD7060068A55D /* FindPairingView.swift in Sources */,
 				3E6AB7EF26CC5ED000DF9A11 /* AppDelegate.swift in Sources */,
 				3E6AB7F126CC5ED000DF9A11 /* SceneDelegate.swift in Sources */,
 				3E0AB1E426D42CA80005FAE5 /* AppError.swift in Sources */,

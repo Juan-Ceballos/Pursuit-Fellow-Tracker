@@ -44,7 +44,8 @@ class NavBarViewController: UIViewController {
         tabBarMenu.selectionAction = { index, title in
             switch index {
             case 0:
-                break
+                let findPairingVC = FindPairingViewController()
+                self.present(findPairingVC, animated: true, completion: nil)
             case 1:
                 break
             case 2:

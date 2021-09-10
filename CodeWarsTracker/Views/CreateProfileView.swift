@@ -120,7 +120,7 @@ class CreateProfileView: KeyboardHandlerView {
     }()
     
     public lazy var selecUserSegmentedControl: UISegmentedControl = {
-        let segConItems:[String] = Section.allCases.map{$0.sectionTitle}
+        let segConItems:[String] = Section.allCases[0...1].map{$0.sectionTitle}
         let segCon = UISegmentedControl(items: segConItems)
         segCon.selectedSegmentIndex = 0
         return segCon
