@@ -44,7 +44,7 @@ class FindPairingView: UIView {
         let sv = UIStackView()
         sv.axis = .vertical
         sv.spacing = 13
-        //sv.distribution = .fillProportionally
+        sv.distribution = .fillProportionally
         sv.alignment = .center
         sv.isLayoutMarginsRelativeArrangement = true
         return sv
@@ -64,7 +64,7 @@ class FindPairingView: UIView {
         self.backgroundColor = .systemBackground
         loadTextOnView()
         setupStackViewAndContrainsts()
-        //setupStackViewSubViewsAndContrainsts()
+        setupStackViewSubViewsAndContrainsts()
     }
     
     func setupStackViewAndContrainsts(){
@@ -73,7 +73,12 @@ class FindPairingView: UIView {
         subViews.append(tableView)
         for view in subViews {
             stackView.addArrangedSubview(view)
+            view.backgroundColor = .systemGroupedBackground
+            view.layer.cornerRadius = 8
+            view.layoutIfNeeded()
+            view.sizeToFit()
         }
+        
         stackView.snp.makeConstraints { mkr in
             mkr.top.equalToSuperview().offset(8)
             mkr.left.equalToSuperview().offset(8)
@@ -85,20 +90,12 @@ class FindPairingView: UIView {
     
     func setupStackViewSubViewsAndContrainsts(){
         for (index, subview) in stackView.arrangedSubviews.enumerated(){
-            
             subview.snp.makeConstraints { mkr in
-                if index == 0 {
-                    
-                } else if index == 3 {
-                    mkr.height.equalTo(self.safeAreaLayoutGuide).multipliedBy(0.618)
+                if index == 0 || index == 2{
+                    mkr.height.equalTo(50)
                 }
                 mkr.width.equalTo(stackView)
             }
-            
-            subview.backgroundColor = .systemGroupedBackground
-            subview.layer.cornerRadius = 8
-            subview.layoutIfNeeded()
-            //subview.sizeToFit()
         }
     }
     
