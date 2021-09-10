@@ -10,29 +10,29 @@ import SnapKit
 
 class FindPairingView: UIView {
     
-    public var headerLabel: UILabel = {
+    private var headerLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: label.font.pointSize)
         return label
     }()
     
-    public var subHeadLabel: UILabel = {
+    private var subHeadLabel: UILabel = {
         let label = UILabel()
         return label
     }()
     
-    public var listHeaderTitleLabel: UILabel = {
+    private var listHeaderTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: label.font.pointSize)
         return label
     }()
     
     public var tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .plain)
         return tableView
     }()
     
-    public lazy var labels:[UILabel] = {
+    private lazy var labels:[UILabel] = {
         let labels = [headerLabel,subHeadLabel, listHeaderTitleLabel]
         for label in labels {
             label.numberOfLines = 0
@@ -40,7 +40,7 @@ class FindPairingView: UIView {
         return labels
     }()
     
-    var stackView: UIStackView = {
+    private var stackView: UIStackView = {
         let sv = UIStackView()
         sv.axis = .vertical
         sv.spacing = 13
