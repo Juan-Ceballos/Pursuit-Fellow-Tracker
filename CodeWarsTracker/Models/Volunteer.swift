@@ -7,8 +7,11 @@
 
 import Foundation
 
-struct Volunteer:Codable, Hashable {
-    let name: String
-    let contactLink: String?
-    let profileImageURL: String?
+struct Volunteer:Codable, Hashable, TableViewCellConformance {
+    var title: String
+    var subtitle: String?
+    var imageURLLink: String?
+    var other: String?
 }
+
+

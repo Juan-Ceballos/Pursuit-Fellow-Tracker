@@ -31,7 +31,7 @@
 		F12817B226EAD6E30068A55D /* FindPairingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12817B126EAD6E30068A55D /* FindPairingViewController.swift */; };
 		F12817B426EAD7060068A55D /* FindPairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12817B326EAD7060068A55D /* FindPairingView.swift */; };
 		F12817B626EB060C0068A55D /* Volunteer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12817B526EB060C0068A55D /* Volunteer.swift */; };
-		F12817B826EB08430068A55D /* VolunteerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12817B726EB08430068A55D /* VolunteerCell.swift */; };
+		F12817BA26EC2E8A0068A55D /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12817B926EC2E8A0068A55D /* UITableViewCell+.swift */; };
 		F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */; };
 		F13FAD4426E92D4C00E74C41 /* KeyboardHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */; };
 		F13FAD4626E9372000E74C41 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FAD4526E9372000E74C41 /* UIView+.swift */; };
@@ -95,7 +95,7 @@
 		F12817B126EAD6E30068A55D /* FindPairingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPairingViewController.swift; sourceTree = "<group>"; };
 		F12817B326EAD7060068A55D /* FindPairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPairingView.swift; sourceTree = "<group>"; };
 		F12817B526EB060C0068A55D /* Volunteer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Volunteer.swift; sourceTree = "<group>"; };
-		F12817B726EB08430068A55D /* VolunteerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteerCell.swift; sourceTree = "<group>"; };
+		F12817B926EC2E8A0068A55D /* UITableViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+.swift"; sourceTree = "<group>"; };
 		F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarViewController.swift; sourceTree = "<group>"; };
 		F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandlerView.swift; sourceTree = "<group>"; };
 		F13FAD4526E9372000E74C41 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -262,7 +262,6 @@
 				F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */,
 				F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */,
 				F12817B326EAD7060068A55D /* FindPairingView.swift */,
-				F12817B726EB08430068A55D /* VolunteerCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -273,6 +272,7 @@
 				F1AF46AC26D8AF4B001F7327 /* UITextField+.swift */,
 				F1A5C0BB26E7011C00783A60 /* UIViewController+.swift */,
 				F13FAD4526E9372000E74C41 /* UIView+.swift */,
+				F12817B926EC2E8A0068A55D /* UITableViewCell+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -550,8 +550,8 @@
 				F1AF46AD26D8AF4B001F7327 /* UITextField+.swift in Sources */,
 				3E0A04C926D758F500061809 /* StaffCardCell.swift in Sources */,
 				3E0A04D726D8032F00061809 /* HeaderView.swift in Sources */,
+				F12817BA26EC2E8A0068A55D /* UITableViewCell+.swift in Sources */,
 				F13FAD4426E92D4C00E74C41 /* KeyboardHandlerView.swift in Sources */,
-				F12817B826EB08430068A55D /* VolunteerCell.swift in Sources */,
 				F12817B626EB060C0068A55D /* Volunteer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
