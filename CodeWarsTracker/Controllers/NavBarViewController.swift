@@ -47,7 +47,8 @@ class NavBarViewController: UIViewController {
                 let findPairingVC = FindPairingViewController()
                 self.present(findPairingVC, animated: true, completion: nil)
             case 1:
-                break
+                let howToPairVC = HowToPairViewController()
+                self.present(howToPairVC, animated: true, completion: nil)
             case 2:
                 break
             case 3:
