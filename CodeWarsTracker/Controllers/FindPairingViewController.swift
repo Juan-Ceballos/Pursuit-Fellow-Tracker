@@ -47,13 +47,15 @@ class FindPairingViewController: UIViewController {
     
     private func configureDataSource() {
         dataSource = UITableViewDiffableDataSource<String, Volunteer>(tableView: findPairingView.tableView, cellProvider: { tableView, indexPath, volunteerObj in
-            let cell = tableView.dequeueReusableCell(withIdentifier: FindPairingViewController.volunteerCellReuseID, for: indexPath)
+            //let cell = tableView.dequeueReusableCell(withIdentifier: FindPairingViewController.volunteerCellReuseID, for: indexPath)
+            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: FindPairingViewController.volunteerCellReuseID)
             let volunteer = self.volunteers[indexPath.row]
             cell.configureCell(for: volunteer)
+            cell.backgroundColor = .systemGroupedBackground
             return cell
         })
         var snapshot = NSDiffableDataSourceSnapshot<String, Volunteer>()
-        snapshot.appendSections(["People to pair with:"])
+        snapshot.appendSections([""])
         snapshot.appendItems(volunteers)
         dataSource.apply(snapshot, animatingDifferences: false)
         //findPairingView.tableView.updateConstraints()

@@ -30,7 +30,7 @@ class FindPairingView: UIView {
     public var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        tableView.backgroundColor = .systemGroupedBackground
+        //tableView.backgroundColor = .systemGroupedBackground
         return tableView
     }()
     
@@ -46,7 +46,7 @@ class FindPairingView: UIView {
         let sv = UIStackView()
         sv.axis = .vertical
         sv.spacing = 13
-        //sv.distribution = .fillProportionally
+        sv.distribution = .fill
         sv.alignment = .center
         sv.isLayoutMarginsRelativeArrangement = true
         return sv
@@ -97,6 +97,7 @@ class FindPairingView: UIView {
                     mkr.height.equalTo(34)
                 } else if index == 3 {
                     mkr.height.lessThanOrEqualToSuperview().multipliedBy(0.618)
+                    subview.backgroundColor = .systemBackground
                 }
                 mkr.width.equalTo(stackView)
             }
