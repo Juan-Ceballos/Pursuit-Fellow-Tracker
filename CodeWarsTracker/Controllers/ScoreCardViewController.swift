@@ -65,12 +65,14 @@ class ScoreCardViewController: NavBarViewController {
         if let searchQuery = searchQuery, !searchQuery.isEmpty {
             filteredFellows = filteredFellows.filter { $0.name.contains(searchQuery) }
             filteredStaff = filteredStaff.filter { $0.name.contains(searchQuery) }
+        } else {
+            configureDataSource()
         }
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
         snapshot.deleteAllItems()
         self.dataSource.apply(snapshot)
-        snapshot.appendSections([.fellow, .staff])
+        snapshot.appendSections([.leaderBoard, .fellow, .staff])
         snapshot.appendItems(filteredFellows, toSection: .fellow)
         snapshot.appendItems(filteredStaff, toSection: .staff)
         self.dataSource.apply(snapshot, animatingDifferences: true)
