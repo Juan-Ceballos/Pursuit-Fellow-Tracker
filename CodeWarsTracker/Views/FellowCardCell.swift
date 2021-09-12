@@ -120,7 +120,7 @@ class FellowCardCell: UICollectionViewCell {
     private func setupNameLabelConstraints() {
         addSubview(nameLabel)
         nameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(bannerView.snp.bottom).offset(11)
+            make.top.equalTo(bannerView.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(11)
             make.width.equalTo(self.snp.width).multipliedBy(0.65)
         }
@@ -129,7 +129,7 @@ class FellowCardCell: UICollectionViewCell {
     private func setupUsernameLabelConstraints() {
         addSubview(usernameLabel)
         usernameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(nameLabel.snp.bottom).offset(11)
+            make.top.equalTo(nameLabel.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(11)
             make.width.equalTo(self.snp.width).multipliedBy(0.65)
         }
@@ -154,7 +154,7 @@ class FellowCardCell: UICollectionViewCell {
     private func setupPointsThisMonthLabel() {
         addSubview(pointsThisMonthLabel)
         pointsThisMonthLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(pointsThisWeekLabel.snp.bottom).offset(11)
+            make.top.equalTo(pointsThisWeekLabel.snp.bottom).offset(8)
             make.trailing.equalToSuperview().offset(-11)
         }
     }

@@ -22,12 +22,19 @@ class ScoreCardViewController: NavBarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        loadScoreCardData()
+        loadAllUsers()
         configureCollectionView()
         configureDataSource()
+        configureSearchBar()
+        loadScoreCardData()
         scoreCardView.searchBar.delegate = self
-        loadAllUsers()
         refreshControl.addTarget(self, action: #selector(refreshUserData), for: .valueChanged)
+    }
+    
+    private func configureSearchBar() {
+        scoreCardView.searchBar.showsScopeBar = true
+        scoreCardView.searchBar.scopeButtonTitles = ["All", "7.1", "7.2", "8.1", "8.2"]
+        scoreCardView.searchBar.selectedScopeButtonIndex = 0
     }
     
     @objc private func refreshUserData() {
@@ -111,7 +118,7 @@ class ScoreCardViewController: NavBarViewController {
             default:
                 print()
             }
-
+            
             return cell
         })
         
@@ -140,38 +147,36 @@ class ScoreCardViewController: NavBarViewController {
         var staff = [User]()
         var topFellows = [User]()
         snapshot.appendSections([.leaderBoard, .fellow, .staff])
-        CWTAPIClient.fetchAllUsers { [weak self] (result) in
-            switch result {
-            case .failure(let error):
-                print("\(error)")
-            case .success(let users):
-                let usersSorted = users.sorted {$0.honor ?? 0 > $1.honor ?? 0}
-                DispatchQueue.main.async {
-                    for user in usersSorted {
-                        if user.role == "staff" {
-                            staff.append(user)
-                        } else if user.role == "fellow" {
-                            fellows.append(user)
-                        }
-                    }
-                    let fellowsByWeekPoints = fellows.sorted {$0.pointThisWeek ?? 0 > $1.pointThisWeek ?? 0}
-                    for (index, fellow) in fellowsByWeekPoints.enumerated() {
-                        while topFellows.count < 3 {
-                            if fellow.pointThisWeek ?? 0 > 0 {
-                                var topper = fellowsByWeekPoints[index]
-                                topper.isTopFellow = true
-                                topFellows.append(topper)
-                                break
-                            }
-                        }
-                    }
-                    snapshot.appendItems(topFellows, toSection: .leaderBoard)
-                    snapshot.appendItems(fellows, toSection: .fellow)
-                    snapshot.appendItems(staff, toSection: .staff)
-                    self?.dataSource.apply(snapshot, animatingDifferences: false)
+        
+        
+        
+        let usersSorted = allUsers
+        DispatchQueue.main.async {
+            for user in usersSorted {
+                if user.role == "staff" {
+                    staff.append(user)
+                } else if user.role == "fellow" {
+                    fellows.append(user)
                 }
             }
+            let fellowsByWeekPoints = fellows.sorted {$0.pointThisWeek ?? 0 > $1.pointThisWeek ?? 0}
+            for (index, fellow) in fellowsByWeekPoints.enumerated() {
+                while topFellows.count < 3 {
+                    if fellow.pointThisWeek ?? 0 > 0 {
+                        var topper = fellowsByWeekPoints[index]
+                        topper.isTopFellow = true
+                        topFellows.append(topper)
+                        break
+                    }
+                }
+            }
+            snapshot.appendItems(topFellows, toSection: .leaderBoard)
+            snapshot.appendItems(fellows, toSection: .fellow)
+            snapshot.appendItems(staff, toSection: .staff)
+            self.dataSource.apply(snapshot, animatingDifferences: false)
         }
+        
+        
     }
     
     private func loadScoreCardData(){
@@ -204,6 +209,33 @@ extension ScoreCardViewController: UISearchBarDelegate    {
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        switch selectedScope {
+        case 0:
+            loadAllUsers()
+            configureDataSource()
+        case 1:
+            loadAllUsers()
+            allUsers = allUsers.filter {$0.cohort == "Pursuit-7.1"}.sorted {$0.honor ?? 0 > $1.honor ?? 0}
+            configureDataSource()
+        case 2:
+            loadAllUsers()
+            allUsers = allUsers.filter {$0.cohort == "Pursuit-7.2"}.sorted {$0.honor ?? 0 > $1.honor ?? 0}
+            configureDataSource()
+        case 3:
+            loadAllUsers()
+            allUsers = allUsers.filter {$0.cohort == "Pursuit-8.1"}.sorted {$0.honor ?? 0 > $1.honor ?? 0}
+            configureDataSource()
+        case 4:
+            loadAllUsers()
+            allUsers = allUsers.filter {$0.cohort == "Pursuit-8.2"}.sorted {$0.honor ?? 0 > $1.honor ?? 0}
+            configureDataSource()
+        default:
+            loadAllUsers()
+            configureDataSource()
+        }
     }
     
 }
