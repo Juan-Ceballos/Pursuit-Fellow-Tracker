@@ -17,6 +17,7 @@ class ScoreCardViewController: NavBarViewController {
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, User>
     private var dataSource: DataSource!
     private var allUsers = [User]()
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,16 @@ class ScoreCardViewController: NavBarViewController {
         configureDataSource()
         scoreCardView.searchBar.delegate = self
         loadAllUsers()
+        refreshControl.addTarget(self, action: #selector(refreshUserData), for: .valueChanged)
+    }
+    
+    @objc private func refreshUserData() {
+        loadAllUsers()
+        loadScoreCardData()
+        configureDataSource()
+        DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
+        }
     }
     
     private func loadAllUsers() {
@@ -68,6 +79,7 @@ class ScoreCardViewController: NavBarViewController {
     private func configureCollectionView() {
         scoreCardView.cv.register(FellowCardCell.self, forCellWithReuseIdentifier: FellowCardCell.reuseIdentifier)
         scoreCardView.cv.register(HeaderView.self, forSupplementaryViewOfKind: Constants.headerElementKind, withReuseIdentifier: HeaderView.reuseIdentifier)
+        scoreCardView.cv.refreshControl = refreshControl
     }
     
     private func configureDataSource() {
@@ -86,24 +98,18 @@ class ScoreCardViewController: NavBarViewController {
             switch indexPath.section {
             case 0:
                 cell.bannerView.isHidden = true
+                cell.leaderBoardBadgeLabel.isHidden = false
                 cell.leaderBoardBadgeLabel.text = "\(indexPath.row + 1)"
                 cell.leaderBoardBadgeLabel.backgroundColor = .systemOrange
             case 1:
                 cell.bannerView.isHidden = true
+                cell.leaderBoardBadgeLabel.isHidden = true
             case 2:
                 cell.bannerView.isHidden = false
             default:
                 print()
             }
-//            if let item = self.dataSource.itemIdentifier(for: indexPath) {
-//                if item.role != "staff" {
-//                    DispatchQueue.main.async {
-//                        cell.bannerView.isHidden = true
-//                    }
-//                } else {
-//                    cell.bannerView.isHidden = false
-//                }
-//            }
+
             return cell
         })
         
