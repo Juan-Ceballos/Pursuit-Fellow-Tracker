@@ -17,6 +17,10 @@ class ScoreCardViewController: NavBarViewController {
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, User>
     private var dataSource: DataSource!
     private var allUsers = [User]()
+    private var allSevenPointOneUsers = [User]()
+    private var allSevenPointTwoUsers = [User]()
+    private var allEightPointOneUsers = [User]()
+    private var allEightPointTwoUsers = [User]()
     private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
@@ -24,7 +28,6 @@ class ScoreCardViewController: NavBarViewController {
         view.backgroundColor = .systemBackground
         loadAllUsers()
         configureCollectionView()
-        configureDataSource()
         configureSearchBar()
         loadScoreCardData()
         scoreCardView.searchBar.delegate = self
@@ -34,34 +37,63 @@ class ScoreCardViewController: NavBarViewController {
     private func configureSearchBar() {
         scoreCardView.searchBar.showsScopeBar = true
         scoreCardView.searchBar.scopeButtonTitles = ["All", "7.1", "7.2", "8.1", "8.2"]
-        scoreCardView.searchBar.selectedScopeButtonIndex = 0
     }
     
     @objc private func refreshUserData() {
         loadAllUsers()
         loadScoreCardData()
-        configureDataSource()
         DispatchQueue.main.async {
             self.refreshControl.endRefreshing()
         }
     }
     
     private func loadAllUsers() {
-        CWTAPIClient.fetchAllUsers { (result) in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let users):
-                self.allUsers = users.sorted {$0.honor ?? 0 > $1.honor ?? 0}
+        
+            CWTAPIClient.fetchAllUsers { (result) in
+                switch result {
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        print(error)
+                    }
+                    
+                case .success(let users):
+                    DispatchQueue.main.async {
+                        
+                    
+                    self.allUsers = users.sorted {$0.honor ?? 0 > $1.honor ?? 0}
+                    self.allSevenPointOneUsers = self.allUsers.filter {$0.cohort == "Pursuit-7.1"}
+                    self.allSevenPointTwoUsers = self.allUsers.filter {$0.cohort == "Pursuit-7.2"}
+                    self.allEightPointOneUsers = self.allUsers.filter {$0.cohort == "Pursuit-8.1"}
+                    self.allEightPointTwoUsers = self.allUsers.filter {$0.cohort == "Pursuit-8.2"}
+                    self.configureDataSource()
+                    }
+                }
             }
-        }
+        
+        
     }
     
     private func performSearch(searchQuery: String?) {
         var filteredFellows = [User]()
         var filteredStaff = [User]()
+        var selectedUsers = [User]()
         
-        for user in allUsers {
+        switch scoreCardView.searchBar.selectedScopeButtonIndex {
+        case 0:
+            selectedUsers = allUsers
+        case 1:
+            selectedUsers = allSevenPointOneUsers
+        case 2:
+            selectedUsers = allSevenPointTwoUsers
+        case 3:
+            selectedUsers = allEightPointOneUsers
+        case 4:
+            selectedUsers = allEightPointTwoUsers
+        default:
+            selectedUsers = allUsers
+        }
+        
+        for user in selectedUsers {
             if user.role == "staff" {
                 filteredStaff.append(user)
             } else if user.role == "fellow" {
@@ -86,6 +118,7 @@ class ScoreCardViewController: NavBarViewController {
     }
     
     private func configureCollectionView() {
+        print(allUsers)
         scoreCardView.cv.register(FellowCardCell.self, forCellWithReuseIdentifier: FellowCardCell.reuseIdentifier)
         scoreCardView.cv.register(HeaderView.self, forSupplementaryViewOfKind: Constants.headerElementKind, withReuseIdentifier: HeaderView.reuseIdentifier)
         scoreCardView.cv.refreshControl = refreshControl
@@ -96,29 +129,31 @@ class ScoreCardViewController: NavBarViewController {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FellowCardCell.reuseIdentifier, for: indexPath) as? FellowCardCell else {
                 fatalError()
             }
-            
-            cell.backgroundColor = .systemBlue
-            cell.nameLabel.text = item.name
-            cell.usernameLabel.text = "Codewars: \(item.username)"
-            cell.clanLabel.text = "Class: \(item.cohort ?? "No Clan")"
-            cell.honorLabel.text = String(item.honor ?? 0)
-            cell.pointsThisWeekLabel.text = "This Week: \(String(item.pointThisWeek ?? 0))"
-            cell.pointsThisMonthLabel.text = "This Month: \(String(item.pointThisMonth ?? 0))"
-            switch indexPath.section {
-            case 0:
-                cell.bannerView.isHidden = true
-                cell.leaderBoardBadgeLabel.isHidden = false
-                cell.leaderBoardBadgeLabel.text = "\(indexPath.row + 1)"
-                cell.leaderBoardBadgeLabel.backgroundColor = .systemOrange
-            case 1:
-                cell.bannerView.isHidden = true
-                cell.leaderBoardBadgeLabel.isHidden = true
-            case 2:
-                cell.bannerView.isHidden = false
-            default:
-                print()
+            DispatchQueue.main.async {
+                
+                
+                cell.backgroundColor = .systemBlue
+                cell.nameLabel.text = item.name
+                cell.usernameLabel.text = "Codewars: \(item.username)"
+                cell.clanLabel.text = "Class: \(item.cohort ?? "No Clan")"
+                cell.honorLabel.text = String(item.honor ?? 0)
+                cell.pointsThisWeekLabel.text = "This Week: \(String(item.pointThisWeek ?? 0))"
+                cell.pointsThisMonthLabel.text = "This Month: \(String(item.pointThisMonth ?? 0))"
+                switch indexPath.section {
+                case 0:
+                    cell.bannerView.isHidden = true
+                    cell.leaderBoardBadgeLabel.isHidden = false
+                    cell.leaderBoardBadgeLabel.text = "\(indexPath.row + 1)"
+                    cell.leaderBoardBadgeLabel.backgroundColor = .systemOrange
+                case 1:
+                    cell.bannerView.isHidden = true
+                    cell.leaderBoardBadgeLabel.isHidden = true
+                case 2:
+                    cell.bannerView.isHidden = false
+                default:
+                    print()
+                }
             }
-            
             return cell
         })
         
@@ -127,31 +162,49 @@ class ScoreCardViewController: NavBarViewController {
             guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView else {
                 fatalError()
             }
-            
-            switch indexPath.section {
-            case 0:
-                headerView.textLabel.text = "Leader Board"
-            case 1:
-                headerView.textLabel.text = "Fellows"
-            case 2:
-                headerView.textLabel.text = "Staff"
-            default:
-                fatalError("Invalid Section, for headerview supplementary view provider")
+            DispatchQueue.main.async {
+                
+                
+                
+                
+                switch indexPath.section {
+                case 0:
+                    headerView.textLabel.text = "Leader Board"
+                case 1:
+                    headerView.textLabel.text = "Fellows"
+                case 2:
+                    headerView.textLabel.text = "Staff"
+                default:
+                    fatalError("Invalid Section, for headerview supplementary view provider")
+                }
             }
-            
             return headerView
         }
         
-        var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
-        var fellows = [User]()
-        var staff = [User]()
-        var topFellows = [User]()
-        snapshot.appendSections([.leaderBoard, .fellow, .staff])
-        
-        
-        
-        let usersSorted = allUsers
         DispatchQueue.main.async {
+            
+            
+            var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
+            var fellows = [User]()
+            var staff = [User]()
+            var topFellows = [User]()
+            var usersSorted = [User]()
+            
+            switch self.scoreCardView.searchBar.selectedScopeButtonIndex {
+            case 0:
+                usersSorted = self.allUsers
+            case 1:
+                usersSorted = self.allSevenPointOneUsers
+            case 2:
+                usersSorted = self.allSevenPointTwoUsers
+            case 3:
+                usersSorted = self.allEightPointOneUsers
+            case 4:
+                usersSorted = self.allEightPointTwoUsers
+            default:
+                usersSorted = self.allUsers
+            }
+            
             for user in usersSorted {
                 if user.role == "staff" {
                     staff.append(user)
@@ -159,6 +212,7 @@ class ScoreCardViewController: NavBarViewController {
                     fellows.append(user)
                 }
             }
+            
             let fellowsByWeekPoints = fellows.sorted {$0.pointThisWeek ?? 0 > $1.pointThisWeek ?? 0}
             for (index, fellow) in fellowsByWeekPoints.enumerated() {
                 while topFellows.count < 3 {
@@ -170,12 +224,13 @@ class ScoreCardViewController: NavBarViewController {
                     }
                 }
             }
+            
+            snapshot.appendSections([.leaderBoard, .fellow, .staff])
             snapshot.appendItems(topFellows, toSection: .leaderBoard)
             snapshot.appendItems(fellows, toSection: .fellow)
             snapshot.appendItems(staff, toSection: .staff)
             self.dataSource.apply(snapshot, animatingDifferences: false)
         }
-        
         
     }
     
@@ -212,30 +267,7 @@ extension ScoreCardViewController: UISearchBarDelegate    {
     }
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        switch selectedScope {
-        case 0:
-            loadAllUsers()
-            configureDataSource()
-        case 1:
-            loadAllUsers()
-            allUsers = allUsers.filter {$0.cohort == "Pursuit-7.1"}.sorted {$0.honor ?? 0 > $1.honor ?? 0}
-            configureDataSource()
-        case 2:
-            loadAllUsers()
-            allUsers = allUsers.filter {$0.cohort == "Pursuit-7.2"}.sorted {$0.honor ?? 0 > $1.honor ?? 0}
-            configureDataSource()
-        case 3:
-            loadAllUsers()
-            allUsers = allUsers.filter {$0.cohort == "Pursuit-8.1"}.sorted {$0.honor ?? 0 > $1.honor ?? 0}
-            configureDataSource()
-        case 4:
-            loadAllUsers()
-            allUsers = allUsers.filter {$0.cohort == "Pursuit-8.2"}.sorted {$0.honor ?? 0 > $1.honor ?? 0}
-            configureDataSource()
-        default:
-            loadAllUsers()
-            configureDataSource()
-        }
+        configureDataSource()
     }
     
 }
