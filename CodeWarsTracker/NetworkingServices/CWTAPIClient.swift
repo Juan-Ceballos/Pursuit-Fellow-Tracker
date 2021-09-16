@@ -8,7 +8,7 @@
 import Foundation
 
 class CWTAPIClient {
-    public static func fetchAllUsers(completion: @escaping (Result<[User], AppError>) -> ()) {
+    public static func fetchAllUsers(completion: @escaping (Result<[[User]], AppError>) -> ()) {
         
         let urlString = RequestURLString.base
         
@@ -25,9 +25,20 @@ class CWTAPIClient {
                 print(appError)
             case .success(let data):
                 do {
+                    var usersByCohort = [[User]]()
                     let userWrapper = try JSONDecoder().decode([User].self, from: data)
-                   
-                completion(.success(userWrapper))
+                    let userWrapperSO = userWrapper.filter {$0.cohort == "Pursuit-7.1"}
+                    let userWrapperST = userWrapper.filter {$0.cohort == "Pursuit-7.2"}
+                    let userWrapperEO = userWrapper.filter {$0.cohort == "Pursuit-8.1"}
+                    let userWrapperET = userWrapper.filter {$0.cohort == "Pursuit-8.2"}
+                    
+                    usersByCohort.append(userWrapper)
+                    usersByCohort.append(userWrapperSO)
+                    usersByCohort.append(userWrapperST)
+                    usersByCohort.append(userWrapperEO)
+                    usersByCohort.append(userWrapperET)
+                    
+                    completion(.success(usersByCohort))
                 } catch {
                     completion(.failure(.decodingError(error)))
                 }
@@ -89,7 +100,7 @@ class CWTAPIClient {
     
     static func postUser(user: User, completion: @escaping (Result<Bool, AppError>)->()){
         let endPointURLString = RequestURLString.query
-
+        
         guard let url = URL(string: endPointURLString) else {
             completion(.failure(.badURL(endPointURLString)))
             return

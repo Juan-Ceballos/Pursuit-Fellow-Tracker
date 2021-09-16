@@ -16,11 +16,8 @@ class ScoreCardViewController: NavBarViewController {
     
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, User>
     private var dataSource: DataSource!
-    private var allUsers = [User]()
-    private var allSevenPointOneUsers = [User]()
-    private var allSevenPointTwoUsers = [User]()
-    private var allEightPointOneUsers = [User]()
-    private var allEightPointTwoUsers = [User]()
+    private var allUsers = [[User]]()
+    private var allCurrentUsers = [User]()
     private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
@@ -28,15 +25,14 @@ class ScoreCardViewController: NavBarViewController {
         view.backgroundColor = .systemBackground
         loadAllUsers()
         configureCollectionView()
-        configureSearchBar()
         loadScoreCardData()
         scoreCardView.searchBar.delegate = self
         refreshControl.addTarget(self, action: #selector(refreshUserData), for: .valueChanged)
+        scoreCardView.segmentedControl.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
     }
     
-    private func configureSearchBar() {
-        scoreCardView.searchBar.showsScopeBar = true
-        scoreCardView.searchBar.scopeButtonTitles = ["All", "7.1", "7.2", "8.1", "8.2"]
+    @objc func segmentValueChanged(_ sender: UISegmentedControl!) {
+        configureDataSource()
     }
     
     @objc private func refreshUserData() {
@@ -48,51 +44,41 @@ class ScoreCardViewController: NavBarViewController {
     }
     
     private func loadAllUsers() {
-        
-            CWTAPIClient.fetchAllUsers { (result) in
-                switch result {
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        print(error)
-                    }
-                    
-                case .success(let users):
-                    DispatchQueue.main.async {
-                        
-                    
-                    self.allUsers = users.sorted {$0.honor ?? 0 > $1.honor ?? 0}
-                    self.allSevenPointOneUsers = self.allUsers.filter {$0.cohort == "Pursuit-7.1"}
-                    self.allSevenPointTwoUsers = self.allUsers.filter {$0.cohort == "Pursuit-7.2"}
-                    self.allEightPointOneUsers = self.allUsers.filter {$0.cohort == "Pursuit-8.1"}
-                    self.allEightPointTwoUsers = self.allUsers.filter {$0.cohort == "Pursuit-8.2"}
-                    self.configureDataSource()
-                    }
+        CWTAPIClient.fetchAllUsers { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    print(error)
+                }
+            case .success(let users):
+                DispatchQueue.main.async {
+                    self?.allUsers = users
+                    self?.configureDataSource()
                 }
             }
-        
-        
+        }
     }
     
     private func performSearch(searchQuery: String?) {
         var filteredFellows = [User]()
         var filteredStaff = [User]()
         var selectedUsers = [User]()
-        
-        switch scoreCardView.searchBar.selectedScopeButtonIndex {
+
+        switch self.scoreCardView.segmentedControl.selectedSegmentIndex {
         case 0:
-            selectedUsers = allUsers
+            selectedUsers = self.allUsers[0].sorted {$0.honor ?? 0 > $1.honor ?? 0}
         case 1:
-            selectedUsers = allSevenPointOneUsers
+            selectedUsers = self.allUsers[1].sorted {$0.honor ?? 0 > $1.honor ?? 0}
         case 2:
-            selectedUsers = allSevenPointTwoUsers
+            selectedUsers = self.allUsers[2].sorted {$0.honor ?? 0 > $1.honor ?? 0}
         case 3:
-            selectedUsers = allEightPointOneUsers
+            selectedUsers = self.allUsers[3].sorted {$0.honor ?? 0 > $1.honor ?? 0}
         case 4:
-            selectedUsers = allEightPointTwoUsers
+            selectedUsers = self.allUsers[4].sorted {$0.honor ?? 0 > $1.honor ?? 0}
         default:
-            selectedUsers = allUsers
+            selectedUsers = self.allUsers[0].sorted {$0.honor ?? 0 > $1.honor ?? 0}
         }
-        
+
         for user in selectedUsers {
             if user.role == "staff" {
                 filteredStaff.append(user)
@@ -100,14 +86,14 @@ class ScoreCardViewController: NavBarViewController {
                 filteredFellows.append(user)
             }
         }
-        
+
         if let searchQuery = searchQuery, !searchQuery.isEmpty {
             filteredFellows = filteredFellows.filter { $0.name.contains(searchQuery) }
             filteredStaff = filteredStaff.filter { $0.name.contains(searchQuery) }
         } else {
             configureDataSource()
         }
-        
+
         var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
         snapshot.deleteAllItems()
         self.dataSource.apply(snapshot)
@@ -130,8 +116,6 @@ class ScoreCardViewController: NavBarViewController {
                 fatalError()
             }
             DispatchQueue.main.async {
-                
-                
                 cell.backgroundColor = .systemBlue
                 cell.nameLabel.text = item.name
                 cell.usernameLabel.text = "Codewars: \(item.username)"
@@ -163,10 +147,6 @@ class ScoreCardViewController: NavBarViewController {
                 fatalError()
             }
             DispatchQueue.main.async {
-                
-                
-                
-                
                 switch indexPath.section {
                 case 0:
                     headerView.textLabel.text = "Leader Board"
@@ -182,27 +162,25 @@ class ScoreCardViewController: NavBarViewController {
         }
         
         DispatchQueue.main.async {
-            
-            
             var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
             var fellows = [User]()
             var staff = [User]()
             var topFellows = [User]()
             var usersSorted = [User]()
             
-            switch self.scoreCardView.searchBar.selectedScopeButtonIndex {
+            switch self.scoreCardView.segmentedControl.selectedSegmentIndex {
             case 0:
-                usersSorted = self.allUsers
+                usersSorted = self.allUsers[0].sorted {$0.honor ?? 0 > $1.honor ?? 0}
             case 1:
-                usersSorted = self.allSevenPointOneUsers
+                usersSorted = self.allUsers[1].sorted {$0.honor ?? 0 > $1.honor ?? 0}
             case 2:
-                usersSorted = self.allSevenPointTwoUsers
+                usersSorted = self.allUsers[2].sorted {$0.honor ?? 0 > $1.honor ?? 0}
             case 3:
-                usersSorted = self.allEightPointOneUsers
+                usersSorted = self.allUsers[3].sorted {$0.honor ?? 0 > $1.honor ?? 0}
             case 4:
-                usersSorted = self.allEightPointTwoUsers
+                usersSorted = self.allUsers[4].sorted {$0.honor ?? 0 > $1.honor ?? 0}
             default:
-                usersSorted = self.allUsers
+                usersSorted = self.allUsers[0].sorted {$0.honor ?? 0 > $1.honor ?? 0}
             }
             
             for user in usersSorted {
@@ -224,7 +202,6 @@ class ScoreCardViewController: NavBarViewController {
                     }
                 }
             }
-            
             snapshot.appendSections([.leaderBoard, .fellow, .staff])
             snapshot.appendItems(topFellows, toSection: .leaderBoard)
             snapshot.appendItems(fellows, toSection: .fellow)
@@ -264,10 +241,6 @@ extension ScoreCardViewController: UISearchBarDelegate    {
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        configureDataSource()
     }
     
 }
