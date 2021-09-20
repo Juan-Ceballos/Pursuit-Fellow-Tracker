@@ -33,7 +33,7 @@ class CodeWarsTrackerTests: XCTestCase {
     
     func testFetchAllUsers() {
         let exp = XCTestExpectation(description: "fetched all users")
-        let firstUserIdInAPI = 5
+        let firstUserIdInAPI = 226
         CWTAPIClient.fetchAllUsers { (result) in
             switch result {
             case .failure(let appError):
@@ -42,7 +42,7 @@ class CodeWarsTrackerTests: XCTestCase {
             case .success(let users):
                 exp.fulfill()
                 
-                XCTAssertEqual(users[0].id, firstUserIdInAPI)
+                XCTAssertEqual(users[0][0].id, firstUserIdInAPI)
             }
         }
         

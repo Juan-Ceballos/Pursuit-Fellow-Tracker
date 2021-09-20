@@ -104,7 +104,6 @@ class ScoreCardViewController: NavBarViewController {
     }
     
     private func configureCollectionView() {
-        print(allUsers)
         scoreCardView.cv.register(FellowCardCell.self, forCellWithReuseIdentifier: FellowCardCell.reuseIdentifier)
         scoreCardView.cv.register(HeaderView.self, forSupplementaryViewOfKind: Constants.headerElementKind, withReuseIdentifier: HeaderView.reuseIdentifier)
         scoreCardView.cv.refreshControl = refreshControl
@@ -193,7 +192,7 @@ class ScoreCardViewController: NavBarViewController {
             
             let fellowsByWeekPoints = fellows.sorted {$0.pointThisWeek ?? 0 > $1.pointThisWeek ?? 0}
             for (index, fellow) in fellowsByWeekPoints.enumerated() {
-                while topFellows.count < 3 {
+                while topFellows.count < 3 && fellowsByWeekPoints[0].pointThisWeek == 0 && fellowsByWeekPoints[0].pointThisWeek != nil {
                     if fellow.pointThisWeek ?? 0 > 0 {
                         var topper = fellowsByWeekPoints[index]
                         topper.isTopFellow = true
