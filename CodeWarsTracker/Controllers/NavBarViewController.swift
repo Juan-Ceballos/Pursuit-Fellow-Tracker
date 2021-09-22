@@ -19,15 +19,21 @@ class NavBarViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let image = UIImage(systemName: "line.horizontal.3") else {
+        guard let image = UIImage(systemName: "line.horizontal.3"), let titleImage = UIImage(named: "pursuit_logo") else {
             return
         }
-        addNavBarItems(image: image)
+        addNavBarItems(image: image, titleImage: titleImage)
         addDropDownListener()
     }
     
 
-    private func addNavBarItems(image: UIImage){
+    private func addNavBarItems(image: UIImage, titleImage: UIImage){
+        let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: 270, height: 50))
+         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 270, height: 50))
+         imageView.contentMode = .scaleAspectFit
+         imageView.image = titleImage
+         logoContainer.addSubview(imageView)
+        navigationItem.titleView = logoContainer
         
         let button = UIButton(type: .custom)
         button.setImage(image, for: .normal)
@@ -44,16 +50,17 @@ class NavBarViewController: UIViewController {
         tabBarMenu.selectionAction = { index, title in
             switch index {
             case 0:
-                let findPairingVC = FindPairingViewController()
-                self.present(findPairingVC, animated: true, completion: nil)
+                let findPairingVC = FindPairingViewController(dropDown: self.tabBarMenu)
+                self.navigationController?.pushViewController(findPairingVC, animated: true)
             case 1:
-                let howToPairVC = HowToPairViewController()
-                self.present(howToPairVC, animated: true, completion: nil)
+                let howToPairVC = HowToPairViewController(dropDown: self.tabBarMenu)
+                self.navigationController?.pushViewController(howToPairVC, animated: true)
             case 2:
-                break
+                let howToUseVC = HowToUseViewController(dropDown: self.tabBarMenu)
+                self.navigationController?.pushViewController(howToUseVC, animated: true)
             case 3:
-                let createProfileVC = CreateProfileViewController()
-                self.present(createProfileVC, animated: true, completion: nil)
+                let createProfileVC = CreateProfileViewController(dropDown: self.tabBarMenu)
+                self.navigationController?.pushViewController(createProfileVC, animated: true)
             default:
                 break
             }

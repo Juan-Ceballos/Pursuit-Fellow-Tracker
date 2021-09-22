@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+import DropDown
 
 class FindPairingViewController: UIViewController {
     
@@ -18,16 +19,35 @@ class FindPairingViewController: UIViewController {
     
     var volunteers: [Volunteer] = [Volunteer]()
     
+    var selectedMenu:String
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        delegatesAndDataSources()
         loadVolunteers()
-        configureTableView()
         configureDataSource()
+    }
+    
+    override func viewDidLoad() {
+        addNavBarTitles()
+        delegatesAndDataSources()
+        configureTableView()
     }
     
     override func loadView() {
         view = findPairingView
+    }
+    
+    init(dropDown: DropDown) {
+        self.selectedMenu = dropDown.selectedItem ?? ""
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func addNavBarTitles(){
+        navigationItem.title = selectedMenu
     }
     
     private func delegatesAndDataSources(){

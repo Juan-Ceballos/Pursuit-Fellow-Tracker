@@ -26,10 +26,11 @@ extension NSMutableAttributedString {
         let attributes:[NSAttributedString.Key : Any] = [
             .font : boldFont
         ]
-        guard let strRange = NSRange(value.string) else { return value }
-        self.addAttributes(attributes, range: strRange)
+        let rangeOfString = 0..<value.string.count
+        let range = NSRange(rangeOfString)
+        value.addAttributes(attributes, range: range)
         
-        self.append(self)
+        self.append(value)
         return self
     }
     
@@ -80,25 +81,25 @@ extension NSMutableAttributedString {
         return self
     }
     
-    @discardableResult
-    func setAsLink(textToFind:String, linkURL:String) -> Bool {
+    func setAsLink(textToFind:String, linkURL:String) -> NSMutableAttributedString? {
         
         let foundRange = self.mutableString.range(of: textToFind)
+        
         if foundRange.location != NSNotFound {
             self.addAttribute(.link, value: linkURL, range: foundRange)
-            return true
+            return self
+        } else {
+            return nil
         }
-        return false
     }
     
     func list(listStrings:[NSMutableAttributedString], bullet: String? = nil) -> NSMutableAttributedString {
-        var tempListString = listStrings
+        let tempListString = listStrings
         var attributes : [NSAttributedString.Key : Any] = [
             .font: UIFont.preferredFont(forTextStyle: .body),
         ]
-        
+                
         let paragraphStyle = NSMutableParagraphStyle()
-        
         
         if let bullet = bullet {
             paragraphStyle.headIndent = (bullet as NSString).size(withAttributes: attributes).width
@@ -108,12 +109,13 @@ extension NSMutableAttributedString {
             self.append(joinedString)
             return self
         } else {
-            let bullet = 1
+            let bullet = listStrings.count
             paragraphStyle.headIndent = (String(bullet) as NSString).size(withAttributes: attributes).width
             attributes[.paragraphStyle] = paragraphStyle
             let joinedString = tempListString.joined(separator: "\n\n", attributes: attributes)
             //let list = NSMutableAttributedString(string: joinedString, attributes: attributes)
             self.append(joinedString)
+            //print(joinedString)
             return self
         }
     }
@@ -121,16 +123,22 @@ extension NSMutableAttributedString {
 }
 
 extension Array where Element == NSMutableAttributedString {
-    mutating func joined(separator: String, attributes: [NSAttributedString.Key : Any]) -> NSMutableAttributedString {
+    func joined(separator: String, attributes: [NSAttributedString.Key : Any]) -> NSMutableAttributedString {
         let initialNSMutAtrStr = NSMutableAttributedString()
         //let seperatorNSMutAtrStr = NSMutableAttributedString(string: separator)
         for (index,element) in self.enumerated(){
-            var tempNSMutAtrStr = NSMutableAttributedString(string: element.string + separator, attributes: attributes)
-            if index == self.count-1{
-                tempNSMutAtrStr = NSMutableAttributedString(string: element.string, attributes: attributes)
+            let value = element
+            let rangeOfString = 0..<value.string.count
+            let range = NSRange(rangeOfString)
+            value.addAttributes(attributes, range: range)
+            let nsAtrStrSep = NSAttributedString(string: separator)
+            
+            if index != self.count-1{
+                value.append(nsAtrStrSep)
             }
-            initialNSMutAtrStr.append(tempNSMutAtrStr)
+            initialNSMutAtrStr.append(value)
         }
+        
         
         return initialNSMutAtrStr
     }
