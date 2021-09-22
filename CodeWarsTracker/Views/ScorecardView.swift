@@ -40,16 +40,9 @@ class ScoreCardView: UIView {
         return mainCV
     }()
     
-    public lazy var searchBar: UISearchBar = {
-        let sb = UISearchBar()
-        sb.barStyle = .default
-        sb.enablesReturnKeyAutomatically = false
-        return sb
-    }()
-    
     private func createLayout() -> UICollectionViewLayout {
         let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.125))
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerFooterSize, elementKind: Constants.headerElementKind, alignment: .top)
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerFooterSize, elementKind: Constants.headerElementKind, alignment: .topLeading)
         let itemInsets: CGFloat = 8
         let groupInsets: CGFloat = 8
         
@@ -63,7 +56,6 @@ class ScoreCardView: UIView {
         let section = NSCollectionLayoutSection(group: group)
         section.boundarySupplementaryItems = [sectionHeader]
         let layout = UICollectionViewCompositionalLayout(section: section)
-        
         return layout
     }
     
@@ -131,6 +123,24 @@ class ScoreCardView: UIView {
         return label
     }()
     
+    public lazy var segmentedControl: UISegmentedControl = {
+        let sC = UISegmentedControl()
+        sC.insertSegment(withTitle: "All", at: 0, animated: false)
+        sC.insertSegment(withTitle: "7.1", at: 1, animated: false)
+        sC.insertSegment(withTitle: "7.2", at: 2, animated: false)
+        sC.insertSegment(withTitle: "8.1", at: 3, animated: false)
+        sC.insertSegment(withTitle: "8.2", at: 4, animated: false)
+        sC.selectedSegmentIndex = 0
+        return sC
+    }()
+    
+    public lazy var searchBar: UISearchBar = {
+        let sb = UISearchBar()
+        sb.barStyle = .default
+        sb.enablesReturnKeyAutomatically = false
+        return sb
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
@@ -143,10 +153,10 @@ class ScoreCardView: UIView {
     
     private func commonInit(){
         scoreboardContainerStackViewContrainsts()
+        setupSearchBarConstraints()
         scoreboardContainerStackViewSubView1Contrainsts()
-        setupSearchBarConstraints()
+        setupSegmentedControlConstraints()
         setupCollectionViewConstraints()
-        setupSearchBarConstraints()
     }
     
     private func scoreboardContainerStackViewContrainsts(){
@@ -155,6 +165,15 @@ class ScoreCardView: UIView {
             mkr.centerX.equalToSuperview()
             mkr.top.equalTo(safeAreaLayoutGuide).offset(10)
             mkr.width.equalToSuperview().offset(-21)
+        }
+    }
+    
+    private func setupSearchBarConstraints() {
+        addSubview(searchBar)
+        searchBar.snp.makeConstraints { (make) in
+            make.top.equalTo(scoreboardContainerStackView.snp.bottom).offset(8)
+            make.leading.equalToSuperview().offset(8)
+            make.trailing.equalToSuperview().offset(-8)
         }
     }
     
@@ -168,12 +187,13 @@ class ScoreCardView: UIView {
         }
     }
     
-    private func setupSearchBarConstraints() {
-        addSubview(searchBar)
-        searchBar.snp.makeConstraints { (make) in
-            make.top.equalTo(scoreboardContainerStackView.snp.bottom).offset(11)
-            make.left.equalToSuperview().offset(8)
-            make.right.equalToSuperview().offset(-8)
+    private func setupSegmentedControlConstraints() {
+        addSubview(segmentedControl)
+        segmentedControl.snp.makeConstraints { (make) in
+            make.top.equalTo(searchBar.snp.bottom).offset(8)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.05)
         }
     }
     
@@ -181,7 +201,7 @@ class ScoreCardView: UIView {
         addSubview(cv)
         cv.snp.makeConstraints { (make) in
             //make.top.equalTo(scoreboardContainerStackView.snp.bottom).offset(11)
-            make.top.equalTo(searchBar.snp.bottom).offset(8)
+            make.top.equalTo(segmentedControl.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)

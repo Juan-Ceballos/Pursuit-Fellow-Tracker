@@ -42,7 +42,7 @@ class CodeWarsTrackerTests: XCTestCase {
             case .success(let users):
                 exp.fulfill()
                 
-                XCTAssertEqual(users[0].id, firstUserIdInAPI)
+                XCTAssertEqual(users[0][0].id, firstUserIdInAPI)
             }
         }
         

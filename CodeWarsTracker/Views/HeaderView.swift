@@ -33,14 +33,10 @@ class HeaderView: UICollectionReusableView {
     
     private func setupTextLabelConstraints() {
         addSubview(textLabel)
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            textLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            textLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
-            
-        ])
+        textLabel.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(8)
+            make.centerY.equalToSuperview()
+        }
     }
     
 }
