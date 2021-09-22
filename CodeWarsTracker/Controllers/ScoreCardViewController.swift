@@ -266,10 +266,11 @@ extension ScoreCardViewController: UICollectionViewDelegate{
         let user = userSec[indexPath.row]
         let userId = user.id
         
-        guard let userId = userId, let url = URL(string: RequestURLString.feFellow + String(userId)) else {
+        guard let userIdUW = userId, let url = URL(string: RequestURLString.feFellow + String(userIdUW)) else {
             return
         }
         let webVC = SFSafariViewController(url: url)
         present(webVC, animated: true, completion: nil)
     }
+
 }
