@@ -10,10 +10,20 @@ import SnapKit
 import DropDown
 
 class CreateProfileView: KeyboardHandlerView {
+    
+//    public var userImageView:UIImageView = {
+//        let frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+//        let imageView = UIImageView()
+//        let image = UIImage(named: "person.circle")
+//        imageView.image = image
+//        imageView.contentMode = .scaleAspectFill
+//        imageView.clipsToBounds = true
+//        return imageView
+//    }()
 
-    public lazy var errorLabel: UILabel = {
+    public var errorLabel: UILabel = {
         let label = UILabel()
-        label.text = "Create an account"
+        label.text = "Create your Codewars account"
         label.numberOfLines = 3
         label.textAlignment = .center
         label.font = UIFont.preferredFont(forTextStyle: .body)
@@ -26,7 +36,7 @@ class CreateProfileView: KeyboardHandlerView {
         return arr
     }()
     
-    public lazy var nameTextField: UITextField = {
+    public var nameTextField: UITextField = {
         let textfield = UITextField()
         textfield.placeholder = "Name *"
         textfield.textContentType = .name
@@ -34,11 +44,11 @@ class CreateProfileView: KeyboardHandlerView {
         textfield.backgroundColor = .systemBackground
         textfield.adjustsFontSizeToFitWidth = true
         textfield.minimumFontSize = 12
-        textfield.font = UIFont.systemFont(ofSize: 34)
+        textfield.font = UIFont.systemFont(ofSize: 21)
         return textfield
     }()
     
-    public lazy var emailTextField: UITextField = {
+    public var emailTextField: UITextField = {
         let textfield = UITextField()
         textfield.placeholder = "Pursuit Email Address *"
         textfield.textContentType = .emailAddress
@@ -46,11 +56,11 @@ class CreateProfileView: KeyboardHandlerView {
         textfield.backgroundColor = .systemBackground
         textfield.adjustsFontSizeToFitWidth = true
         textfield.minimumFontSize = 12
-        textfield.font = UIFont.systemFont(ofSize: 34)
+        textfield.font = UIFont.systemFont(ofSize: 21)
         return textfield
     }()
     
-    public lazy var githubUserNameTextField: UITextField = {
+    public var githubUserNameTextField: UITextField = {
         let textfield = UITextField()
         textfield.placeholder = "GitHub Username *"
         textfield.textContentType = .username
@@ -58,12 +68,12 @@ class CreateProfileView: KeyboardHandlerView {
         textfield.backgroundColor = .systemBackground
         textfield.adjustsFontSizeToFitWidth = true
         textfield.minimumFontSize = 12
-        textfield.font = UIFont.systemFont(ofSize: 34)
+        textfield.font = UIFont.systemFont(ofSize: 21)
 
         return textfield
     }()
     
-    public lazy var codewarsUserNameTextField: UITextField = {
+    public var codewarsUserNameTextField: UITextField = {
         let textfield = UITextField()
         textfield.placeholder = "Codewars Username *"
         textfield.textContentType = .username
@@ -71,7 +81,7 @@ class CreateProfileView: KeyboardHandlerView {
         textfield.backgroundColor = .systemBackground
         textfield.adjustsFontSizeToFitWidth = true
         textfield.minimumFontSize = 13
-        textfield.font = UIFont.systemFont(ofSize: 34)
+        textfield.font = UIFont.systemFont(ofSize: 21)
         return textfield
     }()
     
@@ -85,7 +95,7 @@ class CreateProfileView: KeyboardHandlerView {
     }()
     
     
-    public lazy var labelForDropDownMenu: UILabel = {
+    public var labelForDropDownMenu: UILabel = {
         let label = UILabel()
         // Create Attachment
         let imageAttachment = NSTextAttachment()
@@ -110,7 +120,7 @@ class CreateProfileView: KeyboardHandlerView {
         return label
     }()
     
-    public lazy var loginCreateButton: UIButton = {
+    public var loginCreateButton: UIButton = {
         let button = UIButton()
         button.setTitle("SIGN UP", for: .normal)
         button.tintColor = .systemBackground
@@ -119,7 +129,7 @@ class CreateProfileView: KeyboardHandlerView {
         return button
     }()
     
-    public lazy var selecUserSegmentedControl: UISegmentedControl = {
+    public var selecUserSegmentedControl: UISegmentedControl = {
         let segConItems:[String] = Section.allCases[0...1].map{$0.sectionTitle}
         let segCon = UISegmentedControl(items: segConItems)
         segCon.selectedSegmentIndex = 0
@@ -150,6 +160,7 @@ class CreateProfileView: KeyboardHandlerView {
         stackView.backgroundColor = .systemGroupedBackground
         stackView.isLayoutMarginsRelativeArrangement = true
         let subViews = [errorLabel,
+                        //userImageView,
                         nameTextField,
                         emailTextField,
                         githubUserNameTextField,
@@ -163,11 +174,13 @@ class CreateProfileView: KeyboardHandlerView {
         
         for (index, subview) in stackView.arrangedSubviews.enumerated(){
             subview.snp.makeConstraints { mkr in
-                mkr.width.equalTo(stackView).offset(-21)
+                
                 if index == 0 || (5...7).contains(index){
-                    mkr.height.equalTo(self).multipliedBy(0.05)
+                    mkr.height.equalTo(55)
+                    mkr.width.equalTo(stackView).offset(-55)
                 }else if(1...4).contains(index){
-                    mkr.height.equalTo(self).multipliedBy(0.1)
+                    mkr.height.equalTo(55)
+                    mkr.width.equalTo(stackView).offset(-55)
                 }
             }
             
@@ -181,6 +194,13 @@ class CreateProfileView: KeyboardHandlerView {
         
         for tf in textFields {
             tf.setHorizontalPaddingPoints(13)
+        }
+        
+        let screenHeight = self.frame.height
+        
+        //update scroll view screen size if stackview is big
+        if stackView.frame.height > screenHeight {
+            scrollView.contentSize = stackView.frame.size
         }
         
     }

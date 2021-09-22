@@ -10,7 +10,7 @@ import DropDown
 
 class CreateProfileViewController: UIViewController {
     
-    private let createdProfileView = CreateProfileView(alignment: .center)
+    private let createdProfileView = CreateProfileView(alignment: .top)
     
     private var segControlElementSection:Section = Section.allCases[0]
     

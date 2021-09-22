@@ -44,6 +44,10 @@
 		F1A00AE626FB0F110046E183 /* NSAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AE526FB0F110046E183 /* NSAttributedString+.swift */; };
 		F1A00AEA26FB1D700046E183 /* PanZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AE926FB1D700046E183 /* PanZoomView.swift */; };
 		F1A00AEC26FB2C600046E183 /* NSTextAttachment+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AEB26FB2C600046E183 /* NSTextAttachment+.swift */; };
+		F1A00AF026FB6CB30046E183 /* PursuitColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AEF26FB6CB30046E183 /* PursuitColors.swift */; };
+		F1A00AF226FB7A780046E183 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AF126FB7A780046E183 /* UIColor+.swift */; };
+		F1A00AF426FB828F0046E183 /* ThemeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AF326FB828F0046E183 /* ThemeSettings.swift */; };
+		F1A00AF626FBB5360046E183 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AF526FBB5360046E183 /* ThemeManager.swift */; };
 		F1A5C0BC26E7011C00783A60 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5C0BB26E7011C00783A60 /* UIViewController+.swift */; };
 		F1AF46A926D87F7F001F7327 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */; };
 		F1AF46AB26D87F9A001F7327 /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */; };
@@ -117,6 +121,10 @@
 		F1A00AE526FB0F110046E183 /* NSAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+.swift"; sourceTree = "<group>"; };
 		F1A00AE926FB1D700046E183 /* PanZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanZoomView.swift; sourceTree = "<group>"; };
 		F1A00AEB26FB2C600046E183 /* NSTextAttachment+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+.swift"; sourceTree = "<group>"; };
+		F1A00AEF26FB6CB30046E183 /* PursuitColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PursuitColors.swift; sourceTree = "<group>"; };
+		F1A00AF126FB7A780046E183 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		F1A00AF326FB828F0046E183 /* ThemeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettings.swift; sourceTree = "<group>"; };
+		F1A00AF526FBB5360046E183 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		F1A5C0BB26E7011C00783A60 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
@@ -173,6 +181,9 @@
 				3E0AB1D826D42B400005FAE5 /* User.swift */,
 				3E0AB1FF26D477A20005FAE5 /* IdUser.swift */,
 				F12817B526EB060C0068A55D /* Volunteer.swift */,
+				F1A00AEF26FB6CB30046E183 /* PursuitColors.swift */,
+				F1A00AF326FB828F0046E183 /* ThemeSettings.swift */,
+				F1A00AF526FBB5360046E183 /* ThemeManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -300,6 +311,7 @@
 				F1A00AE326FB0BB70046E183 /* UIImage+.swift */,
 				F1A00AE526FB0F110046E183 /* NSAttributedString+.swift */,
 				F1A00AEB26FB2C600046E183 /* NSTextAttachment+.swift */,
+				F1A00AF126FB7A780046E183 /* UIColor+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -562,6 +574,7 @@
 				3E0A04E426D9715B00061809 /* BannerView.swift in Sources */,
 				3E0AB1F526D430C20005FAE5 /* Secrets.swift in Sources */,
 				F12817BC26EC5E4A0068A55D /* HowToPairView.swift in Sources */,
+				F1A00AF026FB6CB30046E183 /* PursuitColors.swift in Sources */,
 				F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */,
 				3E0AB1D426D42B280005FAE5 /* ScoreCard.swift in Sources */,
 				3E0AB1D926D42B400005FAE5 /* User.swift in Sources */,
@@ -577,6 +590,7 @@
 				3E6AB7EF26CC5ED000DF9A11 /* AppDelegate.swift in Sources */,
 				3E6AB7F126CC5ED000DF9A11 /* SceneDelegate.swift in Sources */,
 				3E0AB1E426D42CA80005FAE5 /* AppError.swift in Sources */,
+				F1A00AF426FB828F0046E183 /* ThemeSettings.swift in Sources */,
 				F1A00AE426FB0BB70046E183 /* UIImage+.swift in Sources */,
 				3E0A04C426D758DB00061809 /* FellowCardCell.swift in Sources */,
 				F1A00ADC26FA76990046E183 /* HowToUseView.swift in Sources */,
@@ -584,7 +598,9 @@
 				F1A00AEA26FB1D700046E183 /* PanZoomView.swift in Sources */,
 				F1AF46AD26D8AF4B001F7327 /* UITextField+.swift in Sources */,
 				3E0A04C926D758F500061809 /* StaffCardCell.swift in Sources */,
+				F1A00AF626FBB5360046E183 /* ThemeManager.swift in Sources */,
 				3E0A04D726D8032F00061809 /* HeaderView.swift in Sources */,
+				F1A00AF226FB7A780046E183 /* UIColor+.swift in Sources */,
 				F12817BA26EC2E8A0068A55D /* UITableViewCell+.swift in Sources */,
 				F1A00AE226FAB0970046E183 /* HowToUseViewController.swift in Sources */,
 				F13FAD4426E92D4C00E74C41 /* KeyboardHandlerView.swift in Sources */,
