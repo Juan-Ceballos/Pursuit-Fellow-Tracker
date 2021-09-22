@@ -33,7 +33,7 @@ class CodeWarsTrackerTests: XCTestCase {
     
     func testFetchAllUsers() {
         let exp = XCTestExpectation(description: "fetched all users")
-        let firstUserIdInAPI = 5
+        let firstUserIdInAPI = 226
         CWTAPIClient.fetchAllUsers { (result) in
             switch result {
             case .failure(let appError):
@@ -46,7 +46,7 @@ class CodeWarsTrackerTests: XCTestCase {
             }
         }
         
-        wait(for: [exp], timeout: 5.0)
+        wait(for: [exp], timeout: 15.0)
         
     }
     
