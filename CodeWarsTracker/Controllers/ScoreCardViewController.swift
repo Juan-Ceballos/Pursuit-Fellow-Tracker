@@ -63,7 +63,7 @@ class ScoreCardViewController: NavBarViewController {
         var filteredFellows = [User]()
         var filteredStaff = [User]()
         var selectedUsers = [User]()
-
+        
         switch self.scoreCardView.segmentedControl.selectedSegmentIndex {
         case 0:
             selectedUsers = self.allUsers[0].sorted {$0.honor ?? 0 > $1.honor ?? 0}
@@ -78,7 +78,7 @@ class ScoreCardViewController: NavBarViewController {
         default:
             selectedUsers = self.allUsers[0].sorted {$0.honor ?? 0 > $1.honor ?? 0}
         }
-
+        
         for user in selectedUsers {
             if user.role == "staff" {
                 filteredStaff.append(user)
@@ -86,18 +86,28 @@ class ScoreCardViewController: NavBarViewController {
                 filteredFellows.append(user)
             }
         }
-
+        
         if let searchQuery = searchQuery, !searchQuery.isEmpty {
             filteredFellows = filteredFellows.filter { $0.name.contains(searchQuery) }
             filteredStaff = filteredStaff.filter { $0.name.contains(searchQuery) }
         } else {
             configureDataSource()
         }
-
+        
+        let fellowsByWeekPoints = selectedUsers.sorted {$0.pointThisWeek ?? 0 > $1.pointThisWeek ?? 0}
+        let fellowsRemoveZeros = fellowsByWeekPoints.filter {$0.pointThisWeek != 0}
+        var lead = [User]()
+        var count = 0
+        while count < fellowsRemoveZeros.count && count < 3 {
+            var tempFellow = fellowsRemoveZeros[count]
+            tempFellow.isTopFellow = true
+            lead.append(tempFellow)
+            count += 1
+        }
+        
         var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
-        snapshot.deleteAllItems()
-        self.dataSource.apply(snapshot)
         snapshot.appendSections([.leaderBoard, .fellow, .staff])
+        snapshot.appendItems(lead, toSection: .leaderBoard)
         snapshot.appendItems(filteredFellows, toSection: .fellow)
         snapshot.appendItems(filteredStaff, toSection: .staff)
         self.dataSource.apply(snapshot, animatingDifferences: true)
@@ -145,12 +155,14 @@ class ScoreCardViewController: NavBarViewController {
             guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView else {
                 fatalError()
             }
+            
             DispatchQueue.main.async {
                 switch indexPath.section {
                 case 0:
-                    headerView.textLabel.text = "Leader Board"
+                    headerView.textLabel.text = "This Week's Top Scores"
                 case 1:
                     headerView.textLabel.text = "Fellows"
+
                 case 2:
                     headerView.textLabel.text = "Staff"
                 default:
@@ -164,7 +176,6 @@ class ScoreCardViewController: NavBarViewController {
             var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
             var fellows = [User]()
             var staff = [User]()
-            var topFellows = [User]()
             var usersSorted = [User]()
             
             switch self.scoreCardView.segmentedControl.selectedSegmentIndex {
@@ -191,18 +202,19 @@ class ScoreCardViewController: NavBarViewController {
             }
             
             let fellowsByWeekPoints = fellows.sorted {$0.pointThisWeek ?? 0 > $1.pointThisWeek ?? 0}
-            for (index, fellow) in fellowsByWeekPoints.enumerated() {
-                while topFellows.count < 3 && fellowsByWeekPoints[0].pointThisWeek == 0 && fellowsByWeekPoints[0].pointThisWeek != nil {
-                    if fellow.pointThisWeek ?? 0 > 0 {
-                        var topper = fellowsByWeekPoints[index]
-                        topper.isTopFellow = true
-                        topFellows.append(topper)
-                        break
-                    }
-                }
+            let fellowsRemoveZeros = fellowsByWeekPoints.filter {$0.pointThisWeek != 0}
+            print(fellowsRemoveZeros.count)
+            var lead = [User]()
+            var count = 0
+            while count < fellowsRemoveZeros.count && count < 3 {
+                var tempFellow = fellowsRemoveZeros[count]
+                tempFellow.isTopFellow = true
+                lead.append(tempFellow)
+                count += 1
             }
+            
             snapshot.appendSections([.leaderBoard, .fellow, .staff])
-            snapshot.appendItems(topFellows, toSection: .leaderBoard)
+            snapshot.appendItems(lead, toSection: .leaderBoard)
             snapshot.appendItems(fellows, toSection: .fellow)
             snapshot.appendItems(staff, toSection: .staff)
             self.dataSource.apply(snapshot, animatingDifferences: false)
