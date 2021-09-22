@@ -28,9 +28,22 @@
 		B3E7524322C97D4C7BB44379 /* Pods_CodeWarsTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1A94353D1F8E416F54FC22 /* Pods_CodeWarsTrackerTests.framework */; };
 		BA229D6F33FD7572A282A465 /* Pods_CodeWarsTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1433D67A9032F8B08B6E30D2 /* Pods_CodeWarsTracker.framework */; };
 		F110DB4526D5DBC8007BA3A3 /* ScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */; };
+		F12817B226EAD6E30068A55D /* FindPairingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12817B126EAD6E30068A55D /* FindPairingViewController.swift */; };
+		F12817B426EAD7060068A55D /* FindPairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12817B326EAD7060068A55D /* FindPairingView.swift */; };
+		F12817B626EB060C0068A55D /* Volunteer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12817B526EB060C0068A55D /* Volunteer.swift */; };
+		F12817BA26EC2E8A0068A55D /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12817B926EC2E8A0068A55D /* UITableViewCell+.swift */; };
+		F12817BC26EC5E4A0068A55D /* HowToPairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12817BB26EC5E490068A55D /* HowToPairView.swift */; };
+		F12817C026EC633E0068A55D /* HowToPairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12817BF26EC633E0068A55D /* HowToPairViewController.swift */; };
 		F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */; };
 		F13FAD4426E92D4C00E74C41 /* KeyboardHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */; };
 		F13FAD4626E9372000E74C41 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FAD4526E9372000E74C41 /* UIView+.swift */; };
+		F1A00ADC26FA76990046E183 /* HowToUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00ADB26FA76990046E183 /* HowToUseView.swift */; };
+		F1A00ADE26FA78040046E183 /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00ADD26FA78040046E183 /* NSMutableAttributedString+.swift */; };
+		F1A00AE226FAB0970046E183 /* HowToUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AE126FAB0970046E183 /* HowToUseViewController.swift */; };
+		F1A00AE426FB0BB70046E183 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AE326FB0BB70046E183 /* UIImage+.swift */; };
+		F1A00AE626FB0F110046E183 /* NSAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AE526FB0F110046E183 /* NSAttributedString+.swift */; };
+		F1A00AEA26FB1D700046E183 /* PanZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AE926FB1D700046E183 /* PanZoomView.swift */; };
+		F1A00AEC26FB2C600046E183 /* NSTextAttachment+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AEB26FB2C600046E183 /* NSTextAttachment+.swift */; };
 		F1A5C0BC26E7011C00783A60 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5C0BB26E7011C00783A60 /* UIViewController+.swift */; };
 		F1AF46A926D87F7F001F7327 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */; };
 		F1AF46AB26D87F9A001F7327 /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */; };
@@ -88,9 +101,22 @@
 		D354AC7882F44AB5E962EEF9 /* Pods-CodeWarsTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTrackerTests.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTrackerTests/Pods-CodeWarsTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1764549936F4EACD3D0E770 /* Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTracker-CodeWarsTrackerUITests/Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCardView.swift; sourceTree = "<group>"; };
+		F12817B126EAD6E30068A55D /* FindPairingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPairingViewController.swift; sourceTree = "<group>"; };
+		F12817B326EAD7060068A55D /* FindPairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPairingView.swift; sourceTree = "<group>"; };
+		F12817B526EB060C0068A55D /* Volunteer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Volunteer.swift; sourceTree = "<group>"; };
+		F12817B926EC2E8A0068A55D /* UITableViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+.swift"; sourceTree = "<group>"; };
+		F12817BB26EC5E490068A55D /* HowToPairView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPairView.swift; sourceTree = "<group>"; };
+		F12817BF26EC633E0068A55D /* HowToPairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPairViewController.swift; sourceTree = "<group>"; };
 		F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarViewController.swift; sourceTree = "<group>"; };
 		F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandlerView.swift; sourceTree = "<group>"; };
 		F13FAD4526E9372000E74C41 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		F1A00ADB26FA76990046E183 /* HowToUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseView.swift; sourceTree = "<group>"; };
+		F1A00ADD26FA78040046E183 /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
+		F1A00AE126FAB0970046E183 /* HowToUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseViewController.swift; sourceTree = "<group>"; };
+		F1A00AE326FB0BB70046E183 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		F1A00AE526FB0F110046E183 /* NSAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+.swift"; sourceTree = "<group>"; };
+		F1A00AE926FB1D700046E183 /* PanZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanZoomView.swift; sourceTree = "<group>"; };
+		F1A00AEB26FB2C600046E183 /* NSTextAttachment+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+.swift"; sourceTree = "<group>"; };
 		F1A5C0BB26E7011C00783A60 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
@@ -133,6 +159,9 @@
 				3E6AB7F226CC5ED000DF9A11 /* ScoreCardViewController.swift */,
 				F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */,
 				F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */,
+				F12817B126EAD6E30068A55D /* FindPairingViewController.swift */,
+				F12817BF26EC633E0068A55D /* HowToPairViewController.swift */,
+				F1A00AE126FAB0970046E183 /* HowToUseViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -143,6 +172,7 @@
 				3E0AB1D326D42B280005FAE5 /* ScoreCard.swift */,
 				3E0AB1D826D42B400005FAE5 /* User.swift */,
 				3E0AB1FF26D477A20005FAE5 /* IdUser.swift */,
+				F12817B526EB060C0068A55D /* Volunteer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,6 +281,10 @@
 				3E0A04E326D9715B00061809 /* BannerView.swift */,
 				F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */,
 				F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */,
+				F12817B326EAD7060068A55D /* FindPairingView.swift */,
+				F12817BB26EC5E490068A55D /* HowToPairView.swift */,
+				F1A00ADB26FA76990046E183 /* HowToUseView.swift */,
+				F1A00AE926FB1D700046E183 /* PanZoomView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -261,6 +295,11 @@
 				F1AF46AC26D8AF4B001F7327 /* UITextField+.swift */,
 				F1A5C0BB26E7011C00783A60 /* UIViewController+.swift */,
 				F13FAD4526E9372000E74C41 /* UIView+.swift */,
+				F12817B926EC2E8A0068A55D /* UITableViewCell+.swift */,
+				F1A00ADD26FA78040046E183 /* NSMutableAttributedString+.swift */,
+				F1A00AE326FB0BB70046E183 /* UIImage+.swift */,
+				F1A00AE526FB0F110046E183 /* NSAttributedString+.swift */,
+				F1A00AEB26FB2C600046E183 /* NSTextAttachment+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -515,28 +554,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A00ADE26FA78040046E183 /* NSMutableAttributedString+.swift in Sources */,
+				F12817C026EC633E0068A55D /* HowToPairViewController.swift in Sources */,
 				F1AF46A926D87F7F001F7327 /* CreateProfileViewController.swift in Sources */,
 				3E0AB1E926D42CB90005FAE5 /* NetworkHelper.swift in Sources */,
 				F1A5C0BC26E7011C00783A60 /* UIViewController+.swift in Sources */,
 				3E0A04E426D9715B00061809 /* BannerView.swift in Sources */,
 				3E0AB1F526D430C20005FAE5 /* Secrets.swift in Sources */,
+				F12817BC26EC5E4A0068A55D /* HowToPairView.swift in Sources */,
 				F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */,
 				3E0AB1D426D42B280005FAE5 /* ScoreCard.swift in Sources */,
 				3E0AB1D926D42B400005FAE5 /* User.swift in Sources */,
 				F13FAD4626E9372000E74C41 /* UIView+.swift in Sources */,
 				3E6AB7F326CC5ED000DF9A11 /* ScoreCardViewController.swift in Sources */,
 				F110DB4526D5DBC8007BA3A3 /* ScoreCardView.swift in Sources */,
+				F12817B226EAD6E30068A55D /* FindPairingViewController.swift in Sources */,
 				F1AF46AB26D87F9A001F7327 /* CreateProfileView.swift in Sources */,
+				F1A00AE626FB0F110046E183 /* NSAttributedString+.swift in Sources */,
+				F1A00AEC26FB2C600046E183 /* NSTextAttachment+.swift in Sources */,
 				3E0AB1EF26D42CFC0005FAE5 /* CWTAPIClient.swift in Sources */,
+				F12817B426EAD7060068A55D /* FindPairingView.swift in Sources */,
 				3E6AB7EF26CC5ED000DF9A11 /* AppDelegate.swift in Sources */,
 				3E6AB7F126CC5ED000DF9A11 /* SceneDelegate.swift in Sources */,
 				3E0AB1E426D42CA80005FAE5 /* AppError.swift in Sources */,
+				F1A00AE426FB0BB70046E183 /* UIImage+.swift in Sources */,
 				3E0A04C426D758DB00061809 /* FellowCardCell.swift in Sources */,
+				F1A00ADC26FA76990046E183 /* HowToUseView.swift in Sources */,
 				3E0AB20026D477A20005FAE5 /* IdUser.swift in Sources */,
+				F1A00AEA26FB1D700046E183 /* PanZoomView.swift in Sources */,
 				F1AF46AD26D8AF4B001F7327 /* UITextField+.swift in Sources */,
 				3E0A04C926D758F500061809 /* StaffCardCell.swift in Sources */,
 				3E0A04D726D8032F00061809 /* HeaderView.swift in Sources */,
+				F12817BA26EC2E8A0068A55D /* UITableViewCell+.swift in Sources */,
+				F1A00AE226FAB0970046E183 /* HowToUseViewController.swift in Sources */,
 				F13FAD4426E92D4C00E74C41 /* KeyboardHandlerView.swift in Sources */,
+				F12817B626EB060C0068A55D /* Volunteer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

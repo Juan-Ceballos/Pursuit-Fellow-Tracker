@@ -14,4 +14,12 @@ extension UIViewController {
     alertController.addAction(okAction)
     present(alertController, animated: true)
   }
+    
+    public convenience init(view: UIView) {
+        self.init(nibName: nil, bundle: nil)
+        self.view = view
+        //view.backgroundColor = .systemBackground
+        
+    }
+    
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class ScoreCardViewController: NavBarViewController {
     private let scoreCardView = ScoreCardView()
@@ -27,6 +28,7 @@ class ScoreCardViewController: NavBarViewController {
         configureCollectionView()
         loadScoreCardData()
         scoreCardView.searchBar.delegate = self
+        scoreCardView.cv.delegate = self
         refreshControl.addTarget(self, action: #selector(refreshUserData), for: .valueChanged)
         scoreCardView.segmentedControl.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
     }
@@ -104,7 +106,6 @@ class ScoreCardViewController: NavBarViewController {
             lead.append(tempFellow)
             count += 1
         }
-        
         var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
         snapshot.appendSections([.leaderBoard, .fellow, .staff])
         snapshot.appendItems(lead, toSection: .leaderBoard)
@@ -256,6 +257,19 @@ extension ScoreCardViewController: UISearchBarDelegate    {
     
 }
 
-extension ScoreCardViewController: UICollectionViewDelegateFlowLayout {
-    
+extension ScoreCardViewController: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let snap = dataSource.snapshot()
+        let snapSects = snap.sectionIdentifiers
+        let selectedSection = snapSects[indexPath.section]
+        let userSec = snap.itemIdentifiers(inSection: selectedSection)
+        let user = userSec[indexPath.row]
+        let userId = user.id
+        
+        guard let userId = userId, let url = URL(string: RequestURLString.feFellow + String(userId)) else {
+            return
+        }
+        let webVC = SFSafariViewController(url: url)
+        present(webVC, animated: true, completion: nil)
+    }
 }

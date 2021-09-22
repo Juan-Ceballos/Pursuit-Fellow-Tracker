@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import DropDown
 
 class CreateProfileViewController: UIViewController {
     
     private let createdProfileView = CreateProfileView(alignment: .center)
     
     private var segControlElementSection:Section = Section.allCases[0]
+    
+    private var selectedMenu:String
         
     override func loadView() {
         view = createdProfileView
@@ -24,12 +27,26 @@ class CreateProfileViewController: UIViewController {
         textFieldDelegates()
         addDropDownListener()
         addTargetForDropDownToLabel()
+        addNavBarTitles()
+    }
+    
+    init(dropDown: DropDown) {
+        self.selectedMenu = dropDown.selectedItem ?? ""
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func textFieldDelegates(){
         for textField in createdProfileView.textFields {
             textField.delegate = self
         }
+    }
+    
+    private func addNavBarTitles(){
+        navigationItem.title = selectedMenu
     }
     
     private func addButtonTargets(){
