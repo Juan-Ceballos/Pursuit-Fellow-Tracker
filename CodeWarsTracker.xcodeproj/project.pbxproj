@@ -42,7 +42,8 @@
 		F1A00AE226FAB0970046E183 /* HowToUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AE126FAB0970046E183 /* HowToUseViewController.swift */; };
 		F1A00AE426FB0BB70046E183 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AE326FB0BB70046E183 /* UIImage+.swift */; };
 		F1A00AE626FB0F110046E183 /* NSAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AE526FB0F110046E183 /* NSAttributedString+.swift */; };
-		F1A00AE826FB16F10046E183 /* NSTextAttachment+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AE726FB16F10046E183 /* NSTextAttachment+.swift */; };
+		F1A00AEA26FB1D700046E183 /* PanZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AE926FB1D700046E183 /* PanZoomView.swift */; };
+		F1A00AEC26FB2C600046E183 /* NSTextAttachment+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AEB26FB2C600046E183 /* NSTextAttachment+.swift */; };
 		F1A5C0BC26E7011C00783A60 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5C0BB26E7011C00783A60 /* UIViewController+.swift */; };
 		F1AF46A926D87F7F001F7327 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */; };
 		F1AF46AB26D87F9A001F7327 /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */; };
@@ -114,7 +115,8 @@
 		F1A00AE126FAB0970046E183 /* HowToUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseViewController.swift; sourceTree = "<group>"; };
 		F1A00AE326FB0BB70046E183 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		F1A00AE526FB0F110046E183 /* NSAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+.swift"; sourceTree = "<group>"; };
-		F1A00AE726FB16F10046E183 /* NSTextAttachment+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+.swift"; sourceTree = "<group>"; };
+		F1A00AE926FB1D700046E183 /* PanZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanZoomView.swift; sourceTree = "<group>"; };
+		F1A00AEB26FB2C600046E183 /* NSTextAttachment+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+.swift"; sourceTree = "<group>"; };
 		F1A5C0BB26E7011C00783A60 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				F12817B326EAD7060068A55D /* FindPairingView.swift */,
 				F12817BB26EC5E490068A55D /* HowToPairView.swift */,
 				F1A00ADB26FA76990046E183 /* HowToUseView.swift */,
+				F1A00AE926FB1D700046E183 /* PanZoomView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -296,7 +299,7 @@
 				F1A00ADD26FA78040046E183 /* NSMutableAttributedString+.swift */,
 				F1A00AE326FB0BB70046E183 /* UIImage+.swift */,
 				F1A00AE526FB0F110046E183 /* NSAttributedString+.swift */,
-				F1A00AE726FB16F10046E183 /* NSTextAttachment+.swift */,
+				F1A00AEB26FB2C600046E183 /* NSTextAttachment+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -551,7 +554,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1A00AE826FB16F10046E183 /* NSTextAttachment+.swift in Sources */,
 				F1A00ADE26FA78040046E183 /* NSMutableAttributedString+.swift in Sources */,
 				F12817C026EC633E0068A55D /* HowToPairViewController.swift in Sources */,
 				F1AF46A926D87F7F001F7327 /* CreateProfileViewController.swift in Sources */,
@@ -569,6 +571,7 @@
 				F12817B226EAD6E30068A55D /* FindPairingViewController.swift in Sources */,
 				F1AF46AB26D87F9A001F7327 /* CreateProfileView.swift in Sources */,
 				F1A00AE626FB0F110046E183 /* NSAttributedString+.swift in Sources */,
+				F1A00AEC26FB2C600046E183 /* NSTextAttachment+.swift in Sources */,
 				3E0AB1EF26D42CFC0005FAE5 /* CWTAPIClient.swift in Sources */,
 				F12817B426EAD7060068A55D /* FindPairingView.swift in Sources */,
 				3E6AB7EF26CC5ED000DF9A11 /* AppDelegate.swift in Sources */,
@@ -578,6 +581,7 @@
 				3E0A04C426D758DB00061809 /* FellowCardCell.swift in Sources */,
 				F1A00ADC26FA76990046E183 /* HowToUseView.swift in Sources */,
 				3E0AB20026D477A20005FAE5 /* IdUser.swift in Sources */,
+				F1A00AEA26FB1D700046E183 /* PanZoomView.swift in Sources */,
 				F1AF46AD26D8AF4B001F7327 /* UITextField+.swift in Sources */,
 				3E0A04C926D758F500061809 /* StaffCardCell.swift in Sources */,
 				3E0A04D726D8032F00061809 /* HeaderView.swift in Sources */,

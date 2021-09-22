@@ -93,30 +93,47 @@ extension NSMutableAttributedString {
         }
     }
     
-    func list(listStrings:[NSMutableAttributedString], bullet: String? = nil) -> NSMutableAttributedString {
-        let tempListString = listStrings
+    /*bullet point needs to be done creating arr of NSMutableAttributedString
+     Ex:
+     var listStrings = [
+         "Log into your Codewars account and navigate to My Account",
+         "Scroll down to the section that is titled: Webhooks.",
+         "Copy and paste this following URL into the 'Payload url' box: https://codewars-tracker-be.herokuapp.com/codewars",
+         "Click on the 'Update' button at the bottom of the page."
+     ].map { str -> NSMutableAttributedString in
+         bullet += 1
+         return NSMutableAttributedString(string: String(bullet) + ". " + str)
+     }
+ */
+    func list(listNSStrings:[NSMutableAttributedString]? = nil, listStrings:[String]? = nil , bullet: String? = nil) throws -> NSMutableAttributedString {
+        var tempListString = listNSStrings
         var attributes : [NSAttributedString.Key : Any] = [
             .font: UIFont.preferredFont(forTextStyle: .body),
         ]
                 
         let paragraphStyle = NSMutableParagraphStyle()
         
-        if let bullet = bullet {
+        if let listStrings = listStrings {
+            let bullet = bullet != nil ? bullet! : "-"
+            tempListString = listStrings.map{NSMutableAttributedString(string:bullet + " " + $0)}
             paragraphStyle.headIndent = (bullet as NSString).size(withAttributes: attributes).width
             attributes[.paragraphStyle] = paragraphStyle
-            let joinedString = tempListString.joined(separator: "\n\n", attributes: attributes)
+            let joinedString = tempListString!.joined(separator: "\n\n", attributes: attributes)
             //let list = NSMutableAttributedString(string: joinedString, attributes: attributes)
             self.append(joinedString)
             return self
-        } else {
-            let bullet = listStrings.count
+        } else if let listNSStrings = tempListString, bullet == nil{
+            //func is default to list by numbers
+            let bullet = listNSStrings.count
             paragraphStyle.headIndent = (String(bullet) as NSString).size(withAttributes: attributes).width
             attributes[.paragraphStyle] = paragraphStyle
-            let joinedString = tempListString.joined(separator: "\n\n", attributes: attributes)
+            let joinedString = tempListString!.joined(separator: "\n\n", attributes: attributes)
             //let list = NSMutableAttributedString(string: joinedString, attributes: attributes)
             self.append(joinedString)
             //print(joinedString)
             return self
+        } else {
+            fatalError("If using an array of NSMutableAttributedString, do not include a bullet point and format it in beforehand via an array of strings. jump to def. of NSMutableAttributedString.list() for an example.")
         }
     }
     

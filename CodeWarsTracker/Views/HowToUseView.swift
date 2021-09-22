@@ -15,7 +15,7 @@ class HowToUseView: UIView {
         label.numberOfLines = 0
         return label
     }()
-
+    
     public var subHeadLabel: UITextView = {
         let textView = UITextView()
         textView.isEditable = false
@@ -61,7 +61,7 @@ class HowToUseView: UIView {
 \n\nFirst, you should create an account with Codewars. It is free and very quick.
 """)
         linkText1 = linkText1.setAsLink(textToFind: "Codewars", linkURL: "https://codewars.com/") ?? NSMutableAttributedString()
-
+        
         //list
         var bullet = 0
         var listStrings = [
@@ -73,36 +73,39 @@ class HowToUseView: UIView {
             bullet += 1
             return NSMutableAttributedString(string: String(bullet) + ". " + str)
         }
-        print(listStrings)
         listStrings[0] = listStrings[0].setAsLink(textToFind: "My Account", linkURL: "https://www.codewars.com/users/edit") ?? NSMutableAttributedString()
         
         //create image attachment for 2nd element
         let imageAttachment = NSTextAttachment()
         let image = UIImage(named: "codewars_webhook_screenshot")
+        imageAttachment.setUUID("codewars_webhook_screenshot")
         imageAttachment.image = image
         var imageStr = NSAttributedString(attachment: imageAttachment)
         imageStr = imageStr.attributedStringWithResizedImages(with: UIScreen.main.bounds.width)
-        listStrings[1].append(imageStr)
-        
+        listStrings[1].append(imageStr)        
         var linkText2:NSMutableAttributedString = NSMutableAttributedString(string: "\n\nCreate an account on this platform")
         linkText2 = linkText2.setAsLink(textToFind: "Create an account on this platform", linkURL: "https://codewars-tracker-fe.herokuapp.com/createAccount") ?? NSMutableAttributedString()
         //start
         headerLabel.text = headLabelText
-        subHeadLabel.attributedText = NSMutableAttributedString()
-            .normal("""
+        do {
+            
+            subHeadLabel.attributedText = try NSMutableAttributedString()
+                .normal("""
             Codewars is a platform for practicing algorithmic problems in several different languages. It offers a great way to practice both the fundamentals and advanced aspects of any common language.
 
             This application is set up to help you track your progress and consistency in working with Codewars. Every time you complete a problem, an event will be emitted that updates your total poins, your weekly points and your monthly points.
 """)
-            .bold(linkText1)
-            .bold("""
+                .bold(linkText1)
+                .bold("""
 \n\nAfter you create your account, add the webhook by following these steps:\n\n
 """)
-            .list(listStrings: listStrings)
-            .bold(linkText2)
-            .bold("\n\nYou're Good to Go!")
-            .normal("\n\nGo ahead and start solving problems. You can practice alone or pair with others - hopefully both!")
- 
+                .list(listNSStrings: listStrings)
+                .bold(linkText2)
+                .bold("\n\nYou're Good to Go!")
+                .normal("\n\nGo ahead and start solving problems. You can practice alone or pair with others - hopefully both!")
+        } catch {
+            subHeadLabel.text = error.localizedDescription
+        }
     }
     
     private func setupStackViewAndContrainsts(){

@@ -11,9 +11,9 @@ import DropDown
 
 class HowToUseViewController: UIViewController {
 
-    let howToUseView = HowToUseView()
+    private let howToUseView = HowToUseView()
     
-    var selectedMenu: String
+    private var selectedMenu: String
     
     override func loadView() {
         view = howToUseView
@@ -34,7 +34,7 @@ class HowToUseViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func delegates(){
+    private func delegates(){
         howToUseView.subHeadLabel.delegate = self
     }
     
@@ -51,6 +51,19 @@ extension HowToUseViewController: UITextViewDelegate {
         let safariVC = SFSafariViewController(url: URL)
         self.present(safariVC, animated: true, completion: nil)
         return false
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        guard var image = textAttachment.image else {
+            return false
+        }
+        
+        image = UIImage(named: "codewars_webhook_screenshot") ?? UIImage()
+        
+        let sv = PanZoomImageView(image: image)
+        let tempVC = UIViewController(view: sv)
+        present(tempVC, animated: true, completion: nil)
+        return true
     }
 }
 

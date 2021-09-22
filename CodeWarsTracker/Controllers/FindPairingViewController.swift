@@ -17,9 +17,9 @@ class FindPairingViewController: UIViewController {
     
     private static var volunteerCellReuseID = "volunteerCell"
     
-    var volunteers: [Volunteer] = [Volunteer]()
+    private var volunteers: [Volunteer] = [Volunteer]()
     
-    var selectedMenu:String
+    private var selectedMenu:String
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

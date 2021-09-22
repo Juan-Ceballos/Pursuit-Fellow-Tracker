@@ -10,9 +10,9 @@ import DropDown
 
 class HowToPairViewController: UIViewController {
     
-    let howToPairView = HowToPairView()
+    private let howToPairView = HowToPairView()
     
-    var selectedMenu:String
+    private var selectedMenu:String
     
     override func loadView() {
         view = howToPairView
