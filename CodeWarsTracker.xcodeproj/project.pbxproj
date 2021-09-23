@@ -16,7 +16,6 @@
 		3E0AB1E426D42CA80005FAE5 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0AB1E326D42CA80005FAE5 /* AppError.swift */; };
 		3E0AB1E926D42CB90005FAE5 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0AB1E826D42CB90005FAE5 /* NetworkHelper.swift */; };
 		3E0AB1EF26D42CFC0005FAE5 /* CWTAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0AB1EE26D42CFC0005FAE5 /* CWTAPIClient.swift */; };
-		3E0AB1F526D430C20005FAE5 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0AB1F426D430C20005FAE5 /* Secrets.swift */; };
 		3E0AB20026D477A20005FAE5 /* IdUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0AB1FF26D477A20005FAE5 /* IdUser.swift */; };
 		3E6AB7EF26CC5ED000DF9A11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AB7EE26CC5ED000DF9A11 /* AppDelegate.swift */; };
 		3E6AB7F126CC5ED000DF9A11 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AB7F026CC5ED000DF9A11 /* SceneDelegate.swift */; };
@@ -37,6 +36,7 @@
 		F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */; };
 		F13FAD4426E92D4C00E74C41 /* KeyboardHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */; };
 		F13FAD4626E9372000E74C41 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FAD4526E9372000E74C41 /* UIView+.swift */; };
+		F16DD81F26FBDBD400402D39 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16DD81E26FBDBD400402D39 /* Secrets.swift */; };
 		F1A00ADC26FA76990046E183 /* HowToUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00ADB26FA76990046E183 /* HowToUseView.swift */; };
 		F1A00ADE26FA78040046E183 /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00ADD26FA78040046E183 /* NSMutableAttributedString+.swift */; };
 		F1A00AE226FAB0970046E183 /* HowToUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AE126FAB0970046E183 /* HowToUseViewController.swift */; };
@@ -86,7 +86,6 @@
 		3E0AB1E326D42CA80005FAE5 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		3E0AB1E826D42CB90005FAE5 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		3E0AB1EE26D42CFC0005FAE5 /* CWTAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CWTAPIClient.swift; sourceTree = "<group>"; };
-		3E0AB1F426D430C20005FAE5 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		3E0AB1FF26D477A20005FAE5 /* IdUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdUser.swift; sourceTree = "<group>"; };
 		3E6AB7EB26CC5ED000DF9A11 /* CodeWarsTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeWarsTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6AB7EE26CC5ED000DF9A11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +113,7 @@
 		F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarViewController.swift; sourceTree = "<group>"; };
 		F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandlerView.swift; sourceTree = "<group>"; };
 		F13FAD4526E9372000E74C41 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		F16DD81E26FBDBD400402D39 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		F1A00ADB26FA76990046E183 /* HowToUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseView.swift; sourceTree = "<group>"; };
 		F1A00ADD26FA78040046E183 /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
 		F1A00AE126FAB0970046E183 /* HowToUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseViewController.swift; sourceTree = "<group>"; };
@@ -208,14 +208,6 @@
 			path = NetworkingServices;
 			sourceTree = "<group>";
 		};
-		3E0AB1F326D430AB0005FAE5 /* Secrets */ = {
-			isa = PBXGroup;
-			children = (
-				3E0AB1F426D430C20005FAE5 /* Secrets.swift */,
-			);
-			path = Secrets;
-			sourceTree = "<group>";
-		};
 		3E6AB7E226CC5ECF00DF9A11 = {
 			isa = PBXGroup;
 			children = (
@@ -241,9 +233,9 @@
 		3E6AB7ED26CC5ED000DF9A11 /* CodeWarsTracker */ = {
 			isa = PBXGroup;
 			children = (
+				F16DD81D26FBDBC700402D39 /* Secrets */,
 				F13BA23526D6C90A007780F2 /* Extensions */,
 				F110DB4326D5DB8C007BA3A3 /* Views */,
-				3E0AB1F326D430AB0005FAE5 /* Secrets */,
 				3E0AB1E226D42C720005FAE5 /* NetworkingServices */,
 				3E0AB1CC26D4226B0005FAE5 /* SupportingFiles */,
 				3E0AB1CB26D4225C0005FAE5 /* Models */,
@@ -314,6 +306,14 @@
 				F1A00AF126FB7A780046E183 /* UIColor+.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F16DD81D26FBDBC700402D39 /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				F16DD81E26FBDBD400402D39 /* Secrets.swift */,
+			);
+			path = Secrets;
 			sourceTree = "<group>";
 		};
 		F6EAF4476B6153638CA8CFB3 /* Pods */ = {
@@ -572,7 +572,6 @@
 				3E0AB1E926D42CB90005FAE5 /* NetworkHelper.swift in Sources */,
 				F1A5C0BC26E7011C00783A60 /* UIViewController+.swift in Sources */,
 				3E0A04E426D9715B00061809 /* BannerView.swift in Sources */,
-				3E0AB1F526D430C20005FAE5 /* Secrets.swift in Sources */,
 				F12817BC26EC5E4A0068A55D /* HowToPairView.swift in Sources */,
 				F1A00AF026FB6CB30046E183 /* PursuitColors.swift in Sources */,
 				F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */,
@@ -604,6 +603,7 @@
 				F12817BA26EC2E8A0068A55D /* UITableViewCell+.swift in Sources */,
 				F1A00AE226FAB0970046E183 /* HowToUseViewController.swift in Sources */,
 				F13FAD4426E92D4C00E74C41 /* KeyboardHandlerView.swift in Sources */,
+				F16DD81F26FBDBD400402D39 /* Secrets.swift in Sources */,
 				F12817B626EB060C0068A55D /* Volunteer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
