@@ -21,7 +21,9 @@ extension UITableViewCell {
         }
         if let image = obj.imageURLLink {
             //image handling for the future
-            //self.imageView?.image =
+            if let imageLocal = UIImage(named: image) {
+                self.imageView?.image = imageLocal
+            }
         }
     }
 }

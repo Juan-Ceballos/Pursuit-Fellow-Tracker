@@ -12,11 +12,11 @@ class NavBarViewController: UIViewController {
     
     private let tabBarMenu:DropDown = {
         let menu = DropDown()
-        let menuItems = ["Find a Pairing", "How to Pair"," How to Use", "Create Account"]
+        let menuItems = ["Find a Pairing", "How to Pair","How to Use", "Create Account", "Settings"]
         menu.dataSource = menuItems
         return menu
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let image = UIImage(systemName: "line.horizontal.3"), let titleImage = UIImage(named: "pursuit_logo") else {
@@ -26,13 +26,13 @@ class NavBarViewController: UIViewController {
         addDropDownListener()
     }
     
-
+    
     private func addNavBarItems(image: UIImage, titleImage: UIImage){
         let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: 270, height: 50))
-         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 270, height: 50))
-         imageView.contentMode = .scaleAspectFit
-         imageView.image = titleImage
-         logoContainer.addSubview(imageView)
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 270, height: 50))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = titleImage
+        logoContainer.addSubview(imageView)
         navigationItem.titleView = logoContainer
         
         let button = UIButton(type: .custom)
@@ -61,6 +61,9 @@ class NavBarViewController: UIViewController {
             case 3:
                 let createProfileVC = CreateProfileViewController(dropDown: self.tabBarMenu)
                 self.navigationController?.pushViewController(createProfileVC, animated: true)
+            case 4:
+                let settingsVC = SettingsViewController(dropDown: self.tabBarMenu)
+                self.navigationController?.pushViewController(settingsVC, animated: true)
             default:
                 break
             }
@@ -70,5 +73,5 @@ class NavBarViewController: UIViewController {
     @objc private func showDropDownMenu(){
         tabBarMenu.show()
     }
-
+    
 }

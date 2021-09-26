@@ -56,4 +56,8 @@ final class ThemeManager {
             $0.applyTheme(theme)
         }
     }
+    
+    public func setTheme(_ theme: PursuitTheme){
+        self.theme = theme
+    }
 }
