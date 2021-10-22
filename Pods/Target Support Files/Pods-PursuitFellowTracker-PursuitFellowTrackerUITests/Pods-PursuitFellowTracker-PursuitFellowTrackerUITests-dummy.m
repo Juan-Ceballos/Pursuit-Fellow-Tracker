@@ -1,5 +1,0 @@
-#import <Foundation/Foundation.h>
-@interface PodsDummy_Pods_PursuitFellowTracker_PursuitFellowTrackerUITests : NSObject
-@end
-@implementation PodsDummy_Pods_PursuitFellowTracker_PursuitFellowTrackerUITests
-@end
