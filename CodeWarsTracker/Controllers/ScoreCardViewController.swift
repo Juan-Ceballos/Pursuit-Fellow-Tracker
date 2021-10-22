@@ -31,7 +31,6 @@ class ScoreCardViewController: NavBarViewController {
         scoreCardView.cv.delegate = self
         refreshControl.addTarget(self, action: #selector(refreshUserData), for: .valueChanged)
         scoreCardView.segmentedControl.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
-        // test commit
     }
     
     @objc func segmentValueChanged(_ sender: UISegmentedControl!) {
