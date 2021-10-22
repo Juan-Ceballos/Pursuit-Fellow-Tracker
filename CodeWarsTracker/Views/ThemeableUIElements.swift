@@ -285,3 +285,14 @@ class UnHighlightedStackView: UIStackView, Themeable {
     }
     
 }
+
+class HighlightedRefreshControl: UIRefreshControl, Themeable {
+    func applyTheme(_ theme: PursuitTheme) {
+        tintColor = theme.settings.highlightedBgColor
+    }
+    
+    override func didMoveToWindow() {
+        ThemeManager.shared.register(self)
+        super.didMoveToWindow()
+    }
+}
