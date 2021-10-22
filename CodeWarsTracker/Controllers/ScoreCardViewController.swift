@@ -19,7 +19,7 @@ class ScoreCardViewController: NavBarViewController {
     private var dataSource: DataSource!
     private var allUsers = [[User]]()
     private var allCurrentUsers = [User]()
-    private let refreshControl = HighlightedRefreshControl()
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
