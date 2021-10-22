@@ -95,17 +95,17 @@
 		3E0AB1E826D42CB90005FAE5 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		3E0AB1EE26D42CFC0005FAE5 /* CWTAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CWTAPIClient.swift; sourceTree = "<group>"; };
 		3E0AB1FF26D477A20005FAE5 /* IdUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdUser.swift; sourceTree = "<group>"; };
-		3E6AB7EB26CC5ED000DF9A11 /* CodeWarsTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeWarsTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E6AB7EB26CC5ED000DF9A11 /* PursuitFellowTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PursuitFellowTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6AB7EE26CC5ED000DF9A11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E6AB7F026CC5ED000DF9A11 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3E6AB7F226CC5ED000DF9A11 /* ScoreCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCardViewController.swift; sourceTree = "<group>"; };
 		3E6AB7F726CC5ED400DF9A11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E6AB7FA26CC5ED400DF9A11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E6AB7FC26CC5ED400DF9A11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3E6AB80126CC5ED500DF9A11 /* CodeWarsTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeWarsTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E6AB80126CC5ED500DF9A11 /* PursuitFellowTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PursuitFellowTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6AB80526CC5ED500DF9A11 /* CodeWarsTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeWarsTrackerTests.swift; sourceTree = "<group>"; };
 		3E6AB80726CC5ED500DF9A11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3E6AB80C26CC5ED500DF9A11 /* CodeWarsTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeWarsTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E6AB80C26CC5ED500DF9A11 /* PursuitFellowTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PursuitFellowTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6AB81026CC5ED500DF9A11 /* CodeWarsTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeWarsTrackerUITests.swift; sourceTree = "<group>"; };
 		3E6AB81226CC5ED500DF9A11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D1A94353D1F8E416F54FC22 /* Pods_CodeWarsTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeWarsTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,9 +243,9 @@
 		3E6AB7EC26CC5ED000DF9A11 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3E6AB7EB26CC5ED000DF9A11 /* CodeWarsTracker.app */,
-				3E6AB80126CC5ED500DF9A11 /* CodeWarsTrackerTests.xctest */,
-				3E6AB80C26CC5ED500DF9A11 /* CodeWarsTrackerUITests.xctest */,
+				3E6AB7EB26CC5ED000DF9A11 /* PursuitFellowTracker.app */,
+				3E6AB80126CC5ED500DF9A11 /* PursuitFellowTrackerTests.xctest */,
+				3E6AB80C26CC5ED500DF9A11 /* PursuitFellowTrackerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -356,9 +356,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3E6AB7EA26CC5ECF00DF9A11 /* CodeWarsTracker */ = {
+		3E6AB7EA26CC5ECF00DF9A11 /* PursuitFellowTracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3E6AB81526CC5ED500DF9A11 /* Build configuration list for PBXNativeTarget "CodeWarsTracker" */;
+			buildConfigurationList = 3E6AB81526CC5ED500DF9A11 /* Build configuration list for PBXNativeTarget "PursuitFellowTracker" */;
 			buildPhases = (
 				F80FD3137457F65DFD16D9D8 /* [CP] Check Pods Manifest.lock */,
 				3E6AB7E726CC5ECF00DF9A11 /* Sources */,
@@ -370,14 +370,14 @@
 			);
 			dependencies = (
 			);
-			name = CodeWarsTracker;
+			name = PursuitFellowTracker;
 			productName = CodeWarsTracker;
-			productReference = 3E6AB7EB26CC5ED000DF9A11 /* CodeWarsTracker.app */;
+			productReference = 3E6AB7EB26CC5ED000DF9A11 /* PursuitFellowTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3E6AB80026CC5ED500DF9A11 /* CodeWarsTrackerTests */ = {
+		3E6AB80026CC5ED500DF9A11 /* PursuitFellowTrackerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3E6AB81826CC5ED500DF9A11 /* Build configuration list for PBXNativeTarget "CodeWarsTrackerTests" */;
+			buildConfigurationList = 3E6AB81826CC5ED500DF9A11 /* Build configuration list for PBXNativeTarget "PursuitFellowTrackerTests" */;
 			buildPhases = (
 				D6DCBD62AD9CCED417098FEC /* [CP] Check Pods Manifest.lock */,
 				3E6AB7FD26CC5ED500DF9A11 /* Sources */,
@@ -389,14 +389,14 @@
 			dependencies = (
 				3E6AB80326CC5ED500DF9A11 /* PBXTargetDependency */,
 			);
-			name = CodeWarsTrackerTests;
+			name = PursuitFellowTrackerTests;
 			productName = CodeWarsTrackerTests;
-			productReference = 3E6AB80126CC5ED500DF9A11 /* CodeWarsTrackerTests.xctest */;
+			productReference = 3E6AB80126CC5ED500DF9A11 /* PursuitFellowTrackerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3E6AB80B26CC5ED500DF9A11 /* CodeWarsTrackerUITests */ = {
+		3E6AB80B26CC5ED500DF9A11 /* PursuitFellowTrackerUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3E6AB81B26CC5ED500DF9A11 /* Build configuration list for PBXNativeTarget "CodeWarsTrackerUITests" */;
+			buildConfigurationList = 3E6AB81B26CC5ED500DF9A11 /* Build configuration list for PBXNativeTarget "PursuitFellowTrackerUITests" */;
 			buildPhases = (
 				EB27DA686EDE1F63ED341437 /* [CP] Check Pods Manifest.lock */,
 				3E6AB80826CC5ED500DF9A11 /* Sources */,
@@ -409,9 +409,9 @@
 			dependencies = (
 				3E6AB80E26CC5ED500DF9A11 /* PBXTargetDependency */,
 			);
-			name = CodeWarsTrackerUITests;
+			name = PursuitFellowTrackerUITests;
 			productName = CodeWarsTrackerUITests;
-			productReference = 3E6AB80C26CC5ED500DF9A11 /* CodeWarsTrackerUITests.xctest */;
+			productReference = 3E6AB80C26CC5ED500DF9A11 /* PursuitFellowTrackerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -436,7 +436,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3E6AB7E626CC5ECF00DF9A11 /* Build configuration list for PBXProject "CodeWarsTracker" */;
+			buildConfigurationList = 3E6AB7E626CC5ECF00DF9A11 /* Build configuration list for PBXProject "PursuitFellowTracker" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -449,9 +449,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3E6AB7EA26CC5ECF00DF9A11 /* CodeWarsTracker */,
-				3E6AB80026CC5ED500DF9A11 /* CodeWarsTrackerTests */,
-				3E6AB80B26CC5ED500DF9A11 /* CodeWarsTrackerUITests */,
+				3E6AB7EA26CC5ECF00DF9A11 /* PursuitFellowTracker */,
+				3E6AB80026CC5ED500DF9A11 /* PursuitFellowTrackerTests */,
+				3E6AB80B26CC5ED500DF9A11 /* PursuitFellowTrackerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -661,12 +661,12 @@
 /* Begin PBXTargetDependency section */
 		3E6AB80326CC5ED500DF9A11 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3E6AB7EA26CC5ECF00DF9A11 /* CodeWarsTracker */;
+			target = 3E6AB7EA26CC5ECF00DF9A11 /* PursuitFellowTracker */;
 			targetProxy = 3E6AB80226CC5ED500DF9A11 /* PBXContainerItemProxy */;
 		};
 		3E6AB80E26CC5ED500DF9A11 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3E6AB7EA26CC5ECF00DF9A11 /* CodeWarsTracker */;
+			target = 3E6AB7EA26CC5ECF00DF9A11 /* PursuitFellowTracker */;
 			targetProxy = 3E6AB80D26CC5ED500DF9A11 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -858,7 +858,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CodeWarsTracker.app/CodeWarsTracker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PursuitFellowTracker.app/PursuitFellowTracker";
 			};
 			name = Debug;
 		};
@@ -881,7 +881,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CodeWarsTracker.app/CodeWarsTracker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PursuitFellowTracker.app/PursuitFellowTracker";
 			};
 			name = Release;
 		};
@@ -930,7 +930,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3E6AB7E626CC5ECF00DF9A11 /* Build configuration list for PBXProject "CodeWarsTracker" */ = {
+		3E6AB7E626CC5ECF00DF9A11 /* Build configuration list for PBXProject "PursuitFellowTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3E6AB81326CC5ED500DF9A11 /* Debug */,
@@ -939,7 +939,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3E6AB81526CC5ED500DF9A11 /* Build configuration list for PBXNativeTarget "CodeWarsTracker" */ = {
+		3E6AB81526CC5ED500DF9A11 /* Build configuration list for PBXNativeTarget "PursuitFellowTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3E6AB81626CC5ED500DF9A11 /* Debug */,
@@ -948,7 +948,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3E6AB81826CC5ED500DF9A11 /* Build configuration list for PBXNativeTarget "CodeWarsTrackerTests" */ = {
+		3E6AB81826CC5ED500DF9A11 /* Build configuration list for PBXNativeTarget "PursuitFellowTrackerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3E6AB81926CC5ED500DF9A11 /* Debug */,
@@ -957,7 +957,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3E6AB81B26CC5ED500DF9A11 /* Build configuration list for PBXNativeTarget "CodeWarsTrackerUITests" */ = {
+		3E6AB81B26CC5ED500DF9A11 /* Build configuration list for PBXNativeTarget "PursuitFellowTrackerUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3E6AB81C26CC5ED500DF9A11 /* Debug */,
