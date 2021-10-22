@@ -10,14 +10,14 @@ import UIKit
 class HowToPairView: UIView {
     
     private var headerLabel: UILabel = {
-        let label = UILabel()
+        let label = HighlightedLabel()
         label.font = UIFont.boldSystemFont(ofSize: label.font.pointSize)
         label.numberOfLines = 0
         return label
     }()
     
     private var subHeadLabel: UITextView = {
-        let textView = UITextView()
+        let textView = UnhighlightedTextView()
         textView.isEditable = false
         textView.font = UIFont.systemFont(ofSize: 21)
         return textView
@@ -49,7 +49,7 @@ class HowToPairView: UIView {
     }
     
     private func commonInit(){
-        backgroundColor = .systemBackground
+        //backgroundColor = .systemBackground
         loadTextOnView()
         setupStackViewAndContrainsts()
         setupStackViewSubViewsAndContrainsts()
@@ -111,7 +111,7 @@ class HowToPairView: UIView {
         
         for (index, subview) in stackView.arrangedSubviews.enumerated(){
             if index == 0 {
-                subview.backgroundColor = .systemGroupedBackground
+                //subview.backgroundColor = .systemGroupedBackground
             }
             subview.layer.cornerRadius = 8
             subview.layoutIfNeeded()

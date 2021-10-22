@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-class HowToPairViewController: UIViewController {
+class HowToPairViewController: HighlightedViewController {
     
     private let howToPairView = HowToPairView()
     

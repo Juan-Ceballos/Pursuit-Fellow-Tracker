@@ -132,11 +132,48 @@ class HighlightedTableViewCell: UITableViewCell, Themeable {
     }
 }
 
-class HighlightedTextField: UITextView, Themeable {
+class HighlightedTextView: UITextView, Themeable {
+    func applyTheme(_ theme: PursuitTheme) {
+        backgroundColor = theme.settings.highlightedBgColor
+        textColor = theme.settings.textColor
+        sizeToFit()
+    }
+    
+    override func didMoveToWindow() {
+        ThemeManager.shared.register(self)
+        super.didMoveToWindow()
+    }
+}
+
+class UnhighlightedTextView: UITextView, Themeable {
     func applyTheme(_ theme: PursuitTheme) {
         backgroundColor = theme.settings.appBgColor
         textColor = theme.settings.highlightedBgColor
         sizeToFit()
+    }
+    
+    override func didMoveToWindow() {
+        ThemeManager.shared.register(self)
+        super.didMoveToWindow()
+    }
+}
+
+class HighlightedTextField: UITextField, Themeable {
+    func applyTheme(_ theme: PursuitTheme) {
+        backgroundColor = theme.settings.highlightedBgColor
+        textColor = theme.settings.textColor
+    }
+    
+    override func didMoveToWindow() {
+        ThemeManager.shared.register(self)
+        super.didMoveToWindow()
+    }
+}
+
+class UnhighlightedTextField: UITextField, Themeable {
+    func applyTheme(_ theme: PursuitTheme) {
+        backgroundColor = theme.settings.appBgColor
+        textColor = theme.settings.highlightedBgColor
     }
     
     override func didMoveToWindow() {
