@@ -43,7 +43,6 @@
 		F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */; };
 		F13FAD4426E92D4C00E74C41 /* KeyboardHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */; };
 		F13FAD4626E9372000E74C41 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FAD4526E9372000E74C41 /* UIView+.swift */; };
-		F16DD81F26FBDBD400402D39 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16DD81E26FBDBD400402D39 /* Secrets.swift */; };
 		F1A00ADC26FA76990046E183 /* HowToUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00ADB26FA76990046E183 /* HowToUseView.swift */; };
 		F1A00ADE26FA78040046E183 /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00ADD26FA78040046E183 /* NSMutableAttributedString+.swift */; };
 		F1A00AE226FAB0970046E183 /* HowToUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AE126FAB0970046E183 /* HowToUseViewController.swift */; };
@@ -60,6 +59,7 @@
 		F1AF46AB26D87F9A001F7327 /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */; };
 		F1AF46AD26D8AF4B001F7327 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46AC26D8AF4B001F7327 /* UITextField+.swift */; };
 		F1B3FB13272244C20099D4AF /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B3FB12272244C20099D4AF /* UserDefaultsManager.swift */; };
+		F1B3FB16272337490099D4AF /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B3FB15272337490099D4AF /* Secrets.swift */; };
 		F4C8DF27C5529637BBD03696 /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1690613AA1A60B294BFD5E2C /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -128,7 +128,6 @@
 		F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarViewController.swift; sourceTree = "<group>"; };
 		F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandlerView.swift; sourceTree = "<group>"; };
 		F13FAD4526E9372000E74C41 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
-		F16DD81E26FBDBD400402D39 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		F1A00ADB26FA76990046E183 /* HowToUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseView.swift; sourceTree = "<group>"; };
 		F1A00ADD26FA78040046E183 /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
 		F1A00AE126FAB0970046E183 /* HowToUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +144,7 @@
 		F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
 		F1AF46AC26D8AF4B001F7327 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		F1B3FB12272244C20099D4AF /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		F1B3FB15272337490099D4AF /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Secrets.swift; path = ../../../../Downloads/Secrets.swift; sourceTree = "<group>"; };
 		F6D8733F5C605B29BD1CDBB7 /* Pods-CodeWarsTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTrackerTests.release.xcconfig"; path = "Target Support Files/Pods-CodeWarsTrackerTests/Pods-CodeWarsTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		F73FE2A454D4947730BF9339 /* Pods-CodeWarsTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTracker.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTracker/Pods-CodeWarsTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -253,7 +253,7 @@
 		3E6AB7ED26CC5ED000DF9A11 /* CodeWarsTracker */ = {
 			isa = PBXGroup;
 			children = (
-				F16DD81D26FBDBC700402D39 /* Secrets */,
+				F1B3FB14272337370099D4AF /* Secrets */,
 				F13BA23526D6C90A007780F2 /* Extensions */,
 				F110DB4326D5DB8C007BA3A3 /* Views */,
 				3E0AB1E226D42C720005FAE5 /* NetworkingServices */,
@@ -332,10 +332,10 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		F16DD81D26FBDBC700402D39 /* Secrets */ = {
+		F1B3FB14272337370099D4AF /* Secrets */ = {
 			isa = PBXGroup;
 			children = (
-				F16DD81E26FBDBD400402D39 /* Secrets.swift */,
+				F1B3FB15272337490099D4AF /* Secrets.swift */,
 			);
 			path = Secrets;
 			sourceTree = "<group>";
@@ -607,6 +607,7 @@
 				F124B7BC26FEFAFF00799E84 /* SettingsModel.swift in Sources */,
 				F124B7C026FF0EAC00799E84 /* ThemeableUIElements.swift in Sources */,
 				F13FAD4626E9372000E74C41 /* UIView+.swift in Sources */,
+				F1B3FB16272337490099D4AF /* Secrets.swift in Sources */,
 				3E6AB7F326CC5ED000DF9A11 /* ScoreCardViewController.swift in Sources */,
 				F110DB4526D5DBC8007BA3A3 /* ScoreCardView.swift in Sources */,
 				F12817B226EAD6E30068A55D /* FindPairingViewController.swift in Sources */,
@@ -635,7 +636,6 @@
 				F12817BA26EC2E8A0068A55D /* UITableViewCell+.swift in Sources */,
 				F1A00AE226FAB0970046E183 /* HowToUseViewController.swift in Sources */,
 				F13FAD4426E92D4C00E74C41 /* KeyboardHandlerView.swift in Sources */,
-				F16DD81F26FBDBD400402D39 /* Secrets.swift in Sources */,
 				F12817B626EB060C0068A55D /* Volunteer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
