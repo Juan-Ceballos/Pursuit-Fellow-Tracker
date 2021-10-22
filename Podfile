@@ -1,20 +1,20 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'CodeWarsTracker' do
+target 'PursuitFellowTracker' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for CodeWarsTracker
+  # Pods for PursuitFellowTracker
     pod 'SnapKit'
     pod 'DropDown'
 
-  target 'CodeWarsTrackerTests' do
+  target 'PursuitFellowTrackerTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  target 'CodeWarsTrackerUITests' do
+  target 'PursuitFellowTrackerUITests' do
     # Pods for testing
   end
 

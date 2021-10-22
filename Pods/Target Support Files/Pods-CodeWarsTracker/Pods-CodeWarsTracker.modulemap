@@ -1,6 +1,0 @@
-framework module Pods_CodeWarsTracker {
-  umbrella header "Pods-CodeWarsTracker-umbrella.h"
-
-  export *
-  module * { export * }
-}
