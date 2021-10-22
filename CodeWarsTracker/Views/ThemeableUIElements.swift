@@ -8,23 +8,11 @@
 import UIKit
 
 class HighlightedViewController: UIViewController, Themeable {
-    
-    var statusFromTheme:UIStatusBarStyle = .default {
-        didSet{
-            setNeedsStatusBarAppearanceUpdate()
-            navigationController?.setNeedsStatusBarAppearanceUpdate()
-        }
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return statusFromTheme
-    }
-    
-    
+        
     func applyTheme(_ theme: PursuitTheme) {
         view.backgroundColor = theme.settings.appBgColor
         navigationController?.navigationBar.tintColor = theme.settings.highlightedBgColor
-        statusFromTheme = theme.settings.statusBarStyle
+        navigationController?.navigationBar.barStyle = theme.settings.statusBarStyle
     }
     
     override func viewDidLoad() {

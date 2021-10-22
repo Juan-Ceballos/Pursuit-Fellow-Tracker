@@ -59,6 +59,7 @@
 		F1AF46A926D87F7F001F7327 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */; };
 		F1AF46AB26D87F9A001F7327 /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */; };
 		F1AF46AD26D8AF4B001F7327 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46AC26D8AF4B001F7327 /* UITextField+.swift */; };
+		F1B3FB13272244C20099D4AF /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B3FB12272244C20099D4AF /* UserDefaultsManager.swift */; };
 		F4C8DF27C5529637BBD03696 /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1690613AA1A60B294BFD5E2C /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +144,7 @@
 		F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
 		F1AF46AC26D8AF4B001F7327 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		F1B3FB12272244C20099D4AF /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		F6D8733F5C605B29BD1CDBB7 /* Pods-CodeWarsTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTrackerTests.release.xcconfig"; path = "Target Support Files/Pods-CodeWarsTrackerTests/Pods-CodeWarsTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		F73FE2A454D4947730BF9339 /* Pods-CodeWarsTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTracker.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTracker/Pods-CodeWarsTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,6 +203,7 @@
 				F1A00AF326FB828F0046E183 /* ThemeSettings.swift */,
 				F1A00AF526FBB5360046E183 /* ThemeManager.swift */,
 				F124B7BB26FEFAFF00799E84 /* SettingsModel.swift */,
+				F1B3FB12272244C20099D4AF /* UserDefaultsManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				F1A00AF026FB6CB30046E183 /* PursuitColors.swift in Sources */,
 				F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */,
 				3E0AB1D426D42B280005FAE5 /* ScoreCard.swift in Sources */,
+				F1B3FB13272244C20099D4AF /* UserDefaultsManager.swift in Sources */,
 				3E0AB1D926D42B400005FAE5 /* User.swift in Sources */,
 				F124B7BC26FEFAFF00799E84 /* SettingsModel.swift in Sources */,
 				F124B7C026FF0EAC00799E84 /* ThemeableUIElements.swift in Sources */,

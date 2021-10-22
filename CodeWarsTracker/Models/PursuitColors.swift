@@ -18,8 +18,8 @@ class PursuitColors: UIColor {
 
 @objc
 enum PursuitTheme:Int, CaseIterable {
-    case light
-    case dark
+//    case light
+//    case dark
     case blackNDust
     case blackNPurple
     case yellowNBlack
@@ -29,10 +29,10 @@ enum PursuitTheme:Int, CaseIterable {
     case purpleNDust
     var settings: ThemeSettings {
         switch self {
-        case .light:
-            return .lightTheme
-        case .dark:
-            return .darkTheme
+//        case .light:
+//            return .lightTheme
+//        case .dark:
+//            return .darkTheme
         case .blackNDust:
             return .blackNDustTheme
         case .blackNPurple:
@@ -52,10 +52,10 @@ enum PursuitTheme:Int, CaseIterable {
     
     var settingNames: String {
         switch self {
-        case .light:
-            return "Light"
-        case .dark:
-            return "Dark"
+//        case .light:
+//            return "Light"
+//        case .dark:
+//            return "Dark"
         case .blackNDust:
             return "Carbon black and Stardust"
         case .blackNPurple:

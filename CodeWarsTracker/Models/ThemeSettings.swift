@@ -11,42 +11,42 @@ struct ThemeSettings {
     let appBgColor: UIColor
     let highlightedBgColor: UIColor
     let textColor: UIColor
-    let statusBarStyle: UIStatusBarStyle
+    let statusBarStyle: UIBarStyle
 }
 
 extension ThemeSettings {
-    static let lightTheme = ThemeSettings(
-        appBgColor: .white,
-        highlightedBgColor: .lightGray,
-        textColor: .black,
-        statusBarStyle: .darkContent
-    )
-    static let darkTheme = ThemeSettings(
-        appBgColor: .gray,
-        highlightedBgColor: .darkGray,
-        textColor: .white,
-        statusBarStyle: .lightContent
-    )
+//    static let lightTheme = ThemeSettings(
+//        appBgColor: .white,
+//        highlightedBgColor: .lightGray,
+//        textColor: .black,
+//        statusBarStyle: .default
+//    )
+//    static let darkTheme = ThemeSettings(
+//        appBgColor: .gray,
+//        highlightedBgColor: .darkGray,
+//        textColor: .white,
+//        statusBarStyle: .default
+//    )
     
     static let blackNDustTheme = ThemeSettings (
         appBgColor: PursuitColors.carbonBlack,
         highlightedBgColor: PursuitColors.starDust,
         textColor: PursuitColors.pursuitPurle,
-        statusBarStyle: .lightContent
+        statusBarStyle: .black
     )
     
     static let blackNPurpleTheme = ThemeSettings(
         appBgColor: PursuitColors.carbonBlack,
         highlightedBgColor: PursuitColors.pursuitPurle,
         textColor: PursuitColors.starDust,
-        statusBarStyle: .lightContent
+        statusBarStyle: .black
     )
     
     static let yellowNBlackTheme = ThemeSettings(
         appBgColor: PursuitColors.electricYellow,
         highlightedBgColor: PursuitColors.carbonBlack,
         textColor: PursuitColors.starDust,
-        statusBarStyle: .darkContent
+        statusBarStyle: .default
     )
     
     
@@ -54,28 +54,28 @@ extension ThemeSettings {
         appBgColor: PursuitColors.starDust,
         highlightedBgColor: PursuitColors.carbonBlack,
         textColor: PursuitColors.pursuitPurle,
-        statusBarStyle: .darkContent
+        statusBarStyle: .default
     )
     
     static let dustNPurpleTheme = ThemeSettings(
         appBgColor: PursuitColors.starDust,
         highlightedBgColor: PursuitColors.pursuitPurle,
         textColor: PursuitColors.carbonBlack,
-        statusBarStyle: .darkContent
+        statusBarStyle: .default
     )
     
     static let purpleNBlackTheme = ThemeSettings(
         appBgColor: PursuitColors.pursuitPurle,
         highlightedBgColor: PursuitColors.carbonBlack,
         textColor: PursuitColors.starDust,
-        statusBarStyle: .darkContent
+        statusBarStyle: .default
     )
     
     static let purpleNDustTheme = ThemeSettings(
         appBgColor: PursuitColors.pursuitPurle,
         highlightedBgColor: PursuitColors.starDust,
         textColor: PursuitColors.carbonBlack,
-        statusBarStyle: .lightContent
+        statusBarStyle: .black
     )
     
 }
