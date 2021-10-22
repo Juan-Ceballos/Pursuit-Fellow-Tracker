@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class FellowCardCell: UICollectionViewCell {
+class FellowCardCell: HighlightedCollectionViewCell {
     
     static let reuseIdentifier = "fellowCardCell"
     
@@ -41,40 +41,40 @@ class FellowCardCell: UICollectionViewCell {
     }()
     
     public lazy var usernameLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemBackground
+        let label = HighlightedLabel()
+        //label.textColor = .systemBackground
         return label
     }()
     
     public lazy var honorLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemBackground
+        let label = HighlightedLabel()
+        //label.textColor = .systemBackground
         label.font = .systemFont(ofSize: 33)
         return label
     }()
     
     public lazy var clanLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemBackground
+        let label = HighlightedLabel()
+        //label.textColor = .systemBackground
         return label
     }()
     
     public lazy var nameLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemBackground
+        let label = HighlightedLabel()
+        //label.textColor = .systemBackground
         label.font = .boldSystemFont(ofSize: 22)
         return label
     }()
     
     public lazy var pointsThisWeekLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemBackground
+        let label = HighlightedLabel()
+        //label.textColor = .systemBackground
         return label
     }()
     
     public lazy var pointsThisMonthLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemBackground
+        let label = HighlightedLabel()
+        //label.textColor = .systemBackground
         return label
     }()
     

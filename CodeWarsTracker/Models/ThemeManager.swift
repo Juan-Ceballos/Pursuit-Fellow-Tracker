@@ -32,8 +32,8 @@ final class ThemeManager {
     
     //2. Singleton Pattern
     public static var shared: ThemeManager {
+        let savedTheme = UserDefaultsManager.loadTheme()
         if instance == nil {
-            let savedTheme = UserDefaultsManager.loadTheme()
             instance = ThemeManager(defaultTheme: savedTheme)
         }
         return instance!

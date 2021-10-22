@@ -11,7 +11,7 @@ class HeaderView: UICollectionReusableView {
     static let reuseIdentifier = "headerView"
     
     public lazy var textLabel: UILabel = {
-        let label = UILabel()
+        let label = UnhighlightedLabel()
         label.textAlignment = .center
         label.font = UIFont.preferredFont(forTextStyle: .headline)
         return label

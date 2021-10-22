@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: HighlightedViewController {
     
     private let settingsView = SettingsView()
     private var selectedMenu: String
@@ -41,7 +41,6 @@ class SettingsViewController: UIViewController {
     
     private func setupNavBar(){
         navigationItem.title = selectedMenu
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
 }
@@ -63,7 +62,7 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: SettingsViewController.settingsViewControllerResuseID)
+        let cell = HighlightedTableViewCell(style: .default, reuseIdentifier: SettingsViewController.settingsViewControllerResuseID)
         let item = sections[indexPath.section].items[indexPath.row]
         cell.configureCell(for: item)
         cell.accessoryType = .disclosureIndicator

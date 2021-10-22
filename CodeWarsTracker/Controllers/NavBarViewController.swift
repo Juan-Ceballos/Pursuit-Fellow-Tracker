@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-class NavBarViewController: UIViewController {
+class NavBarViewController: HighlightedViewController {
     
     private let tabBarMenu:DropDown = {
         let menu = DropDown()
@@ -24,6 +24,7 @@ class NavBarViewController: UIViewController {
         }
         addNavBarItems(image: image, titleImage: titleImage)
         addDropDownListener()
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     

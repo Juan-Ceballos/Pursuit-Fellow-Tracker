@@ -36,7 +36,7 @@ class ScoreCardView: UIView {
     public lazy var cv: UICollectionView = {
         let layout = createLayout()
         let mainCV = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        mainCV.backgroundColor = .systemBackground
+        mainCV.backgroundColor = superview?.backgroundColor
         return mainCV
     }()
     
@@ -60,12 +60,12 @@ class ScoreCardView: UIView {
     }
     
     public lazy var scoreboardContainerStackView: UIStackView = {
-        let stackview = UIStackView()
+        let stackview = HighlightedStackView()
         stackview.axis = .vertical
         stackview.spacing = 13
         stackview.distribution = .equalSpacing
         stackview.alignment = .center
-        stackview.backgroundColor = .systemBlue
+        //stackview.backgroundColor = .systemBlue
         stackview.addArrangedSubview(scoreboardLabel)
         stackview.addArrangedSubview(scoreboardDataStackView)
         stackview.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
@@ -75,12 +75,12 @@ class ScoreCardView: UIView {
     }()
     
     public lazy var scoreboardDataStackView: UIStackView = {
-        let stackView = UIStackView()
+        let stackView = HighlightedStackView()
         stackView.axis = .horizontal
         stackView.spacing = 13
         stackView.alignment = .center
         stackView.distribution = .fillEqually
-        stackView.backgroundColor = .systemBlue
+        //stackView.backgroundColor = .systemBlue
         stackView.addArrangedSubview(scoreboardWeeklyLabel)
         stackView.addArrangedSubview(scoreboardMonthlyLabel)
         stackView.addArrangedSubview(scoreboardAllTimeLabel)
@@ -88,17 +88,17 @@ class ScoreCardView: UIView {
     }()
     
     public lazy var scoreboardLabel: UILabel = {
-        let label = UILabel()
+        let label = HighlightedLabel()
         label.text = "Score Board"
         label.font = UIFont.preferredFont(forTextStyle: .headline)
-        label.textColor = .systemBackground
-        label.backgroundColor = .systemBlue
+        //label.textColor = .systemBackground
+        //label.backgroundColor = .systemBlue
         return label
     }()
     
     public lazy var scoreboardWeeklyLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemBackground
+        let label = HighlightedLabel()
+        //label.textColor = .systemBackground
         label.numberOfLines = 5
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.text = "Weekly"
@@ -106,8 +106,8 @@ class ScoreCardView: UIView {
     }()
     
     public lazy var scoreboardMonthlyLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemBackground
+        let label = HighlightedLabel()
+        //label.textColor = .systemBackground
         label.numberOfLines = 5
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.text = "Monthly"
@@ -115,8 +115,8 @@ class ScoreCardView: UIView {
     }()
     
     public lazy var scoreboardAllTimeLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemBackground
+        let label = HighlightedLabel()
+        //label.textColor = .systemBackground
         label.numberOfLines = 5
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.text = "All Time"
@@ -124,7 +124,7 @@ class ScoreCardView: UIView {
     }()
     
     public lazy var segmentedControl: UISegmentedControl = {
-        let sC = UISegmentedControl()
+        let sC = HighlightedSegmentedControl()
         sC.insertSegment(withTitle: "All", at: 0, animated: false)
         sC.insertSegment(withTitle: "7.1", at: 1, animated: false)
         sC.insertSegment(withTitle: "7.2", at: 2, animated: false)
@@ -135,7 +135,7 @@ class ScoreCardView: UIView {
     }()
     
     public lazy var searchBar: UISearchBar = {
-        let sb = UISearchBar()
+        let sb = HighlightedSearchBar()
         sb.barStyle = .default
         sb.enablesReturnKeyAutomatically = false
         return sb

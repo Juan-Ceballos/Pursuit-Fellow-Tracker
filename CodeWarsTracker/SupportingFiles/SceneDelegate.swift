@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = scene
-        window?.rootViewController = UINavigationController(rootViewController: ScoreCardViewController())
+        window?.rootViewController = HighlightedNavigationController(rootViewController: ScoreCardViewController())
         window?.makeKeyAndVisible()
     }
 

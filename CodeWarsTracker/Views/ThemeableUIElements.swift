@@ -11,13 +11,50 @@ class HighlightedViewController: UIViewController, Themeable {
         
     func applyTheme(_ theme: PursuitTheme) {
         view.backgroundColor = theme.settings.appBgColor
-        navigationController?.navigationBar.tintColor = theme.settings.highlightedBgColor
-        navigationController?.navigationBar.barStyle = theme.settings.statusBarStyle
+        //navigationController?.navigationBar.tintColor = theme.settings.highlightedBgColor
+        //navigationController?.navigationBar.barTintColor = theme.settings.highlightedBgColor
+        //navigationController?.navigationBar.backgroundColor = theme.settings.highlightedBgColor
+        //navigationItem.titleView?.tintColor = theme.settings.highlightedBgColor
+       // navigationController?.navigationBar.barStyle = theme.settings.statusBarStyle
+       // print(navigationController != nil)
     }
     
     override func viewDidLoad() {
         ThemeManager.shared.register(self)
         super.viewDidLoad()
+    }
+    
+}
+
+class HighlightedNavigationController: UINavigationController, Themeable {
+    
+    var themeStatusBar:UIStatusBarStyle = .default {
+        didSet{
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    
+    
+    func applyTheme(_ theme: PursuitTheme) {
+        navigationBar.tintColor = theme.settings.highlightedBgColor
+        navigationBar.titleTextAttributes = [.foregroundColor: theme.settings.highlightedBgColor]
+        navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.settings.highlightedBgColor]
+        themeStatusBar = theme.settings.statusBarStyle
+        //navigationBar.barStyle = theme.settings.statusBarStyle
+    }
+    
+    override func viewDidLoad() {
+        ThemeManager.shared.register(self)
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return themeStatusBar
     }
 }
 
@@ -82,7 +119,10 @@ class HighlightedCollectionViewCell: UICollectionViewCell, Themeable {
 class HighlightedTableViewCell: UITableViewCell, Themeable {
     func applyTheme(_ theme: PursuitTheme) {
         textLabel?.textColor = theme.settings.textColor
+        detailTextLabel?.textColor = theme.settings.textColor
         backgroundColor = theme.settings.highlightedBgColor
+        accessoryView?.tintColor = theme.settings.textColor
+        tintColor = theme.settings.textColor
         sizeToFit()
     }
     
@@ -105,15 +145,23 @@ class HighlightedTextField: UITextView, Themeable {
     }
 }
 
-class HighlightedTableView: UITableView, Themeable {
+class HighlightedTableView: UITableView, Themeable, UITableViewDelegate {
+    
     func applyTheme(_ theme: PursuitTheme) {
-        backgroundColor = theme.settings.highlightedBgColor
+        backgroundColor = theme.settings.appBgColor
+        sectionIndexColor = theme.settings.highlightedBgColor
         sizeToFit()
     }
     
     override func didMoveToWindow() {
         ThemeManager.shared.register(self)
         super.didMoveToWindow()
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = .red
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.white
     }
 }
 
@@ -137,8 +185,8 @@ class HighlightedPickerView: UIPickerView, Themeable {
 class HighlightedSegmentedControl: UISegmentedControl, Themeable {
     func applyTheme(_ theme: PursuitTheme) {
         backgroundColor = theme.settings.appBgColor
-        selectedSegmentTintColor = theme.settings.highlightedBgColor
-        setTitleTextAttributes([NSAttributedString.Key.foregroundColor:theme.settings.textColor], for: .normal)
+        selectedSegmentTintColor = theme.settings.textColor
+        setTitleTextAttributes([NSAttributedString.Key.foregroundColor:theme.settings.highlightedBgColor], for: .normal)
     }
     
     override func didMoveToWindow() {
@@ -149,7 +197,10 @@ class HighlightedSegmentedControl: UISegmentedControl, Themeable {
 
 class HighlightedSearchBar: UISearchBar, Themeable {
     func applyTheme(_ theme: PursuitTheme) {
-        tintColor = theme.settings.highlightedBgColor
+        barTintColor = theme.settings.appBgColor
+        searchTextField.textColor = theme.settings.highlightedBgColor
+        searchTextField.tintColor = theme.settings.highlightedBgColor
+        searchTextField.backgroundColor = theme.settings.textColor
     }
     
     override init(frame: CGRect) {
@@ -160,4 +211,37 @@ class HighlightedSearchBar: UISearchBar, Themeable {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+class HighlightedStackView: UIStackView, Themeable {
+    func applyTheme(_ theme: PursuitTheme) {
+        backgroundColor = theme.settings.highlightedBgColor
+        //subviews.forEach{$0.tintColor = theme.settings.textColor;$0.backgroundColor = theme.settings.highlightedBgColor}
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        ThemeManager.shared.register(self)
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+class UnHighlightedStackView: UIStackView, Themeable {
+    func applyTheme(_ theme: PursuitTheme) {
+        backgroundColor = theme.settings.appBgColor
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        ThemeManager.shared.register(self)
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }

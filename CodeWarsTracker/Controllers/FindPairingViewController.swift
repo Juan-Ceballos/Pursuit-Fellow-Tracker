@@ -9,7 +9,7 @@ import UIKit
 import SafariServices
 import DropDown
 
-class FindPairingViewController: UIViewController {
+class FindPairingViewController: HighlightedViewController {
     
     private var findPairingView = FindPairingView()
     
@@ -28,6 +28,7 @@ class FindPairingViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         addNavBarTitles()
         delegatesAndDataSources()
         configureTableView()
@@ -68,10 +69,10 @@ class FindPairingViewController: UIViewController {
     private func configureDataSource() {
         dataSource = UITableViewDiffableDataSource<String, Volunteer>(tableView: findPairingView.tableView, cellProvider: { tableView, indexPath, volunteerObj in
             //let cell = tableView.dequeueReusableCell(withIdentifier: FindPairingViewController.volunteerCellReuseID, for: indexPath)
-            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: FindPairingViewController.volunteerCellReuseID)
+            let cell = HighlightedTableViewCell(style: .subtitle, reuseIdentifier: FindPairingViewController.volunteerCellReuseID)
             let volunteer = self.volunteers[indexPath.row]
             cell.configureCell(for: volunteer)
-            cell.backgroundColor = .systemGroupedBackground
+            //cell.backgroundColor = .systemGroupedBackground
             return cell
         })
         var snapshot = NSDiffableDataSourceSnapshot<String, Volunteer>()

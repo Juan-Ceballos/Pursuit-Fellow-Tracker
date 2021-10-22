@@ -23,7 +23,7 @@ class ScoreCardViewController: NavBarViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        //view.backgroundColor = .systemBackground
         loadAllUsers()
         configureCollectionView()
         loadScoreCardData()
@@ -126,7 +126,7 @@ class ScoreCardViewController: NavBarViewController {
                 fatalError()
             }
             DispatchQueue.main.async {
-                cell.backgroundColor = .systemBlue
+                //cell.backgroundColor = .systemBlue
                 cell.nameLabel.text = item.name
                 cell.usernameLabel.text = "Codewars: \(item.username)"
                 cell.clanLabel.text = "Class: \(item.cohort ?? "No Clan")"

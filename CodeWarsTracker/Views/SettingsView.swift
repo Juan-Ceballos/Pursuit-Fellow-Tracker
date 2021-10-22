@@ -10,7 +10,7 @@ import SnapKit
 
 class SettingsView: UIView {
     public var tableView: UITableView = {
-        let tv = UITableView(frame: .zero, style: .grouped)
+        let tv = HighlightedTableView(frame: .zero, style: .grouped)
         return tv
     }()
     

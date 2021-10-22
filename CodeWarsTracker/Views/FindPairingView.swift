@@ -11,24 +11,24 @@ import SnapKit
 class FindPairingView: UIView {
     
     private var headerLabel: UILabel = {
-        let label = UILabel()
+        let label = HighlightedLabel()
         label.font = UIFont.boldSystemFont(ofSize: label.font.pointSize)
         return label
     }()
     
     private var subHeadLabel: UILabel = {
-        let label = UILabel()
+        let label = UnhighlightedLabel()
         return label
     }()
     
     private var listHeaderTitleLabel: UILabel = {
-        let label = UILabel()
+        let label = HighlightedLabel()
         label.font = UIFont.boldSystemFont(ofSize: label.font.pointSize)
         return label
     }()
     
     public var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        let tableView = HighlightedTableView(frame: .zero, style: .insetGrouped)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         //tableView.backgroundColor = .systemGroupedBackground
         return tableView
@@ -43,7 +43,7 @@ class FindPairingView: UIView {
     }()
     
     private var stackView: UIStackView = {
-        let sv = UIStackView()
+        let sv = UnHighlightedStackView()
         sv.axis = .vertical
         sv.spacing = 13
         sv.distribution = .fill
@@ -63,7 +63,7 @@ class FindPairingView: UIView {
     }
     
     private func commonInit(){
-        self.backgroundColor = .systemBackground
+        //self.backgroundColor = .systemBackground
         loadTextOnView()
         setupStackViewAndContrainsts()
         setupStackViewSubViewsAndContrainsts()
@@ -75,7 +75,7 @@ class FindPairingView: UIView {
         subViews.append(tableView)
         for view in subViews {
             stackView.addArrangedSubview(view)
-            view.backgroundColor = .systemGroupedBackground
+            //view.backgroundColor = .systemGroupedBackground
             view.layer.cornerRadius = 8
             view.layoutIfNeeded()
             view.sizeToFit()
@@ -97,7 +97,7 @@ class FindPairingView: UIView {
                     mkr.height.equalTo(34)
                 } else if index == 3 {
                     mkr.height.lessThanOrEqualToSuperview().multipliedBy(0.618)
-                    subview.backgroundColor = .systemBackground
+                    //subview.backgroundColor = .systemBackground
                 }
                 mkr.width.equalTo(stackView)
             }
