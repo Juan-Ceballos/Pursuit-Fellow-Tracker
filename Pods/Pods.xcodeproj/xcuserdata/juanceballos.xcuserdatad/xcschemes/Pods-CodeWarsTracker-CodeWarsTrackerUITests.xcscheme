@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "19622742EBA51E823D6DAE3F8CDBFAD4"
-               BuildableName = "SnapKit.framework"
-               BlueprintName = "SnapKit"
+               BlueprintIdentifier = "86FDD36540D9824B6BACFD1C381B37C2"
+               BuildableName = "Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework"
+               BlueprintName = "Pods-CodeWarsTracker-CodeWarsTrackerUITests"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
