@@ -9,7 +9,7 @@ import UIKit
 import SafariServices
 import DropDown
 
-class HowToUseViewController: UIViewController {
+class HowToUseViewController: HighlightedViewController {
 
     private let howToUseView = HowToUseView()
     
