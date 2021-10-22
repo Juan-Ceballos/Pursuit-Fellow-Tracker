@@ -44,7 +44,7 @@
 		F13BA23426D6BCA2007780F2 /* NavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */; };
 		F13FAD4426E92D4C00E74C41 /* KeyboardHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */; };
 		F13FAD4626E9372000E74C41 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FAD4526E9372000E74C41 /* UIView+.swift */; };
-		F14873F22723490400BBB4A5 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14873F12723490400BBB4A5 /* Secrets.swift */; };
+		F18D862E27234FD5009D4086 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18D862D27234FD5009D4086 /* Secrets.swift */; };
 		F1A00ADC26FA76990046E183 /* HowToUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00ADB26FA76990046E183 /* HowToUseView.swift */; };
 		F1A00ADE26FA78040046E183 /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00ADD26FA78040046E183 /* NSMutableAttributedString+.swift */; };
 		F1A00AE226FAB0970046E183 /* HowToUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A00AE126FAB0970046E183 /* HowToUseViewController.swift */; };
@@ -128,7 +128,7 @@
 		F13BA23326D6BCA2007780F2 /* NavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarViewController.swift; sourceTree = "<group>"; };
 		F13FAD4326E92D4C00E74C41 /* KeyboardHandlerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandlerView.swift; sourceTree = "<group>"; };
 		F13FAD4526E9372000E74C41 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
-		F14873F12723490400BBB4A5 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		F18D862D27234FD5009D4086 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		F1A00ADB26FA76990046E183 /* HowToUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseView.swift; sourceTree = "<group>"; };
 		F1A00ADD26FA78040046E183 /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
 		F1A00AE126FAB0970046E183 /* HowToUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseViewController.swift; sourceTree = "<group>"; };
@@ -253,7 +253,7 @@
 		3E6AB7ED26CC5ED000DF9A11 /* CodeWarsTracker */ = {
 			isa = PBXGroup;
 			children = (
-				F14873F0272348F800BBB4A5 /* Secrets */,
+				F18D862C27234FC7009D4086 /* Secrets */,
 				F13BA23526D6C90A007780F2 /* Extensions */,
 				F110DB4326D5DB8C007BA3A3 /* Views */,
 				3E0AB1E226D42C720005FAE5 /* NetworkingServices */,
@@ -332,10 +332,10 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		F14873F0272348F800BBB4A5 /* Secrets */ = {
+		F18D862C27234FC7009D4086 /* Secrets */ = {
 			isa = PBXGroup;
 			children = (
-				F14873F12723490400BBB4A5 /* Secrets.swift */,
+				F18D862D27234FD5009D4086 /* Secrets.swift */,
 			);
 			path = Secrets;
 			sourceTree = "<group>";
@@ -607,7 +607,7 @@
 				F124B7BC26FEFAFF00799E84 /* SettingsModel.swift in Sources */,
 				F124B7C026FF0EAC00799E84 /* ThemeableUIElements.swift in Sources */,
 				F13FAD4626E9372000E74C41 /* UIView+.swift in Sources */,
-				F14873F22723490400BBB4A5 /* Secrets.swift in Sources */,
+				F18D862E27234FD5009D4086 /* Secrets.swift in Sources */,
 				3E6AB7F326CC5ED000DF9A11 /* ScoreCardViewController.swift in Sources */,
 				F110DB4526D5DBC8007BA3A3 /* ScoreCardView.swift in Sources */,
 				F12817B226EAD6E30068A55D /* FindPairingViewController.swift in Sources */,
