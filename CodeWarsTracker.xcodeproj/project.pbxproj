@@ -24,6 +24,10 @@
 		3E6AB7FB26CC5ED400DF9A11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6AB7F926CC5ED400DF9A11 /* LaunchScreen.storyboard */; };
 		3E6AB80626CC5ED500DF9A11 /* CodeWarsTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AB80526CC5ED500DF9A11 /* CodeWarsTrackerTests.swift */; };
 		3E6AB81126CC5ED500DF9A11 /* CodeWarsTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AB81026CC5ED500DF9A11 /* CodeWarsTrackerUITests.swift */; };
+<<<<<<< HEAD:CodeWarsTracker.xcodeproj/project.pbxproj
+=======
+		3E79EECE272223DE00195638 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E79EECD272223DE00195638 /* Secrets.swift */; };
+>>>>>>> parent of 05559ca (name change on everything not remote):PursuitFellowTracker.xcodeproj/project.pbxproj
 		B3E7524322C97D4C7BB44379 /* Pods_CodeWarsTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1A94353D1F8E416F54FC22 /* Pods_CodeWarsTrackerTests.framework */; };
 		BA229D6F33FD7572A282A465 /* Pods_CodeWarsTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1433D67A9032F8B08B6E30D2 /* Pods_CodeWarsTracker.framework */; };
 		F110DB4526D5DBC8007BA3A3 /* ScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */; };
@@ -59,7 +63,10 @@
 		F1AF46A926D87F7F001F7327 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46A826D87F7F001F7327 /* CreateProfileViewController.swift */; };
 		F1AF46AB26D87F9A001F7327 /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */; };
 		F1AF46AD26D8AF4B001F7327 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF46AC26D8AF4B001F7327 /* UITextField+.swift */; };
+<<<<<<< HEAD:CodeWarsTracker.xcodeproj/project.pbxproj
 		F1B3FB13272244C20099D4AF /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B3FB12272244C20099D4AF /* UserDefaultsManager.swift */; };
+=======
+>>>>>>> parent of 05559ca (name change on everything not remote):PursuitFellowTracker.xcodeproj/project.pbxproj
 		F4C8DF27C5529637BBD03696 /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1690613AA1A60B294BFD5E2C /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +115,10 @@
 		3E6AB80C26CC5ED500DF9A11 /* CodeWarsTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeWarsTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6AB81026CC5ED500DF9A11 /* CodeWarsTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeWarsTrackerUITests.swift; sourceTree = "<group>"; };
 		3E6AB81226CC5ED500DF9A11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+<<<<<<< HEAD:CodeWarsTracker.xcodeproj/project.pbxproj
+=======
+		3E79EECD272223DE00195638 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+>>>>>>> parent of 05559ca (name change on everything not remote):PursuitFellowTracker.xcodeproj/project.pbxproj
 		9D1A94353D1F8E416F54FC22 /* Pods_CodeWarsTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeWarsTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D354AC7882F44AB5E962EEF9 /* Pods-CodeWarsTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTrackerTests.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTrackerTests/Pods-CodeWarsTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1764549936F4EACD3D0E770 /* Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTracker-CodeWarsTrackerUITests/Pods-CodeWarsTracker-CodeWarsTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -282,6 +293,17 @@
 				3E6AB81226CC5ED500DF9A11 /* Info.plist */,
 			);
 			path = CodeWarsTrackerUITests;
+<<<<<<< HEAD:CodeWarsTracker.xcodeproj/project.pbxproj
+=======
+			sourceTree = "<group>";
+		};
+		3E79EECC272223D000195638 /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				3E79EECD272223DE00195638 /* Secrets.swift */,
+			);
+			path = Secrets;
+>>>>>>> parent of 05559ca (name change on everything not remote):PursuitFellowTracker.xcodeproj/project.pbxproj
 			sourceTree = "<group>";
 		};
 		496BAFB44E03C7C35990D4E3 /* Frameworks */ = {
@@ -812,7 +834,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+<<<<<<< HEAD:CodeWarsTracker.xcodeproj/project.pbxproj
 				PRODUCT_BUNDLE_IDENTIFIER = org.pursuit.CodeWars;
+=======
+				PRODUCT_BUNDLE_IDENTIFIER = org.pursuit.CodeWarsTracker;
+>>>>>>> parent of 05559ca (name change on everything not remote):PursuitFellowTracker.xcodeproj/project.pbxproj
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -832,7 +858,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+<<<<<<< HEAD:CodeWarsTracker.xcodeproj/project.pbxproj
 				PRODUCT_BUNDLE_IDENTIFIER = org.pursuit.CodeWars;
+=======
+				PRODUCT_BUNDLE_IDENTIFIER = org.pursuit.CodeWarsTracker;
+>>>>>>> parent of 05559ca (name change on everything not remote):PursuitFellowTracker.xcodeproj/project.pbxproj
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
