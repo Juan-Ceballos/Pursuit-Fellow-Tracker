@@ -22,7 +22,7 @@ class CreateProfileView: KeyboardHandlerView {
 //    }()
 
     public var errorLabel: UILabel = {
-        let label = UILabel()
+        let label = UnhighlightedLabel()
         label.text = "Create your Codewars account"
         label.numberOfLines = 3
         label.textAlignment = .center
@@ -121,17 +121,17 @@ class CreateProfileView: KeyboardHandlerView {
     }()
     
     public var loginCreateButton: UIButton = {
-        let button = UIButton()
+        let button = HighlightedButton()
         button.setTitle("SIGN UP", for: .normal)
-        button.tintColor = .systemBackground
+        //button.tintColor = .systemBackground
         button.titleLabel?.font = .systemFont(ofSize: 21, weight: .bold)
-        button.backgroundColor = .systemBlue
+        //button.backgroundColor = .systemBlue
         return button
     }()
     
     public var selecUserSegmentedControl: UISegmentedControl = {
         let segConItems:[String] = Section.allCases[0...1].map{$0.sectionTitle}
-        let segCon = UISegmentedControl(items: segConItems)
+        let segCon = HighlightedSegmentedControl(items: segConItems)
         segCon.selectedSegmentIndex = 0
         return segCon
     }()
@@ -157,7 +157,7 @@ class CreateProfileView: KeyboardHandlerView {
         stackView.alignment = .center
         stackView.spacing = 21
         stackView.axis = .vertical
-        stackView.backgroundColor = .systemGroupedBackground
+        //stackView.backgroundColor = .systemGroupedBackground
         stackView.isLayoutMarginsRelativeArrangement = true
         let subViews = [errorLabel,
                         //userImageView,

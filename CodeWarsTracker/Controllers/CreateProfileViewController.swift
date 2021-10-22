@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-class CreateProfileViewController: UIViewController {
+class CreateProfileViewController: HighlightedViewController {
     
     private let createdProfileView = CreateProfileView(alignment: .top)
     
