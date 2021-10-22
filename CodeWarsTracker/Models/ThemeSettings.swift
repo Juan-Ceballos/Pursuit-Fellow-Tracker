@@ -12,6 +12,7 @@ struct ThemeSettings {
     let highlightedBgColor: UIColor
     let textColor: UIColor
     let statusBarStyle: UIStatusBarStyle
+    let pursuitLogo: UIImage?
 }
 
 extension ThemeSettings {
@@ -32,21 +33,24 @@ extension ThemeSettings {
         appBgColor: PursuitColors.carbonBlack,
         highlightedBgColor: PursuitColors.starDust,
         textColor: PursuitColors.pursuitPurle,
-        statusBarStyle: .lightContent
+        statusBarStyle: .lightContent,
+        pursuitLogo: UIImage(named: "pursuit_logo_white")
     )
     
     static let blackNPurpleTheme = ThemeSettings(
         appBgColor: PursuitColors.carbonBlack,
         highlightedBgColor: PursuitColors.pursuitPurle,
         textColor: PursuitColors.starDust,
-        statusBarStyle: .lightContent
+        statusBarStyle: .lightContent,
+        pursuitLogo: UIImage(named: "pursuit_logo_white")
     )
     
     static let yellowNBlackTheme = ThemeSettings(
         appBgColor: PursuitColors.electricYellow,
         highlightedBgColor: PursuitColors.carbonBlack,
         textColor: PursuitColors.starDust,
-        statusBarStyle: .darkContent
+        statusBarStyle: .darkContent,
+        pursuitLogo: UIImage(named: "pursuit_logo")
     )
     
     
@@ -54,28 +58,32 @@ extension ThemeSettings {
         appBgColor: PursuitColors.starDust,
         highlightedBgColor: PursuitColors.carbonBlack,
         textColor: PursuitColors.pursuitPurle,
-        statusBarStyle: .darkContent
+        statusBarStyle: .darkContent,
+        pursuitLogo: UIImage(named: "pursuit_logo")
     )
     
     static let dustNPurpleTheme = ThemeSettings(
         appBgColor: PursuitColors.starDust,
         highlightedBgColor: PursuitColors.pursuitPurle,
         textColor: PursuitColors.carbonBlack,
-        statusBarStyle: .darkContent
+        statusBarStyle: .darkContent,
+        pursuitLogo: UIImage(named: "pursuit_logo")
     )
     
     static let purpleNBlackTheme = ThemeSettings(
         appBgColor: PursuitColors.pursuitPurle,
         highlightedBgColor: PursuitColors.carbonBlack,
         textColor: PursuitColors.starDust,
-        statusBarStyle: .darkContent
+        statusBarStyle: .darkContent,
+        pursuitLogo: UIImage(named: "pursuit_logo")
     )
     
     static let purpleNDustTheme = ThemeSettings(
         appBgColor: PursuitColors.pursuitPurle,
         highlightedBgColor: PursuitColors.starDust,
         textColor: PursuitColors.carbonBlack,
-        statusBarStyle: .lightContent
+        statusBarStyle: .lightContent,
+        pursuitLogo: UIImage(named: "pursuit_logo_white")
     )
     
 }

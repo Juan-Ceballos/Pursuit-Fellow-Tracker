@@ -19,12 +19,16 @@ class NavBarViewController: HighlightedViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let image = UIImage(systemName: "line.horizontal.3"), let titleImage = UIImage(named: "pursuit_logo") else {
+        addDropDownListener()
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func applyTheme(_ theme: PursuitTheme) {
+        view.backgroundColor = theme.settings.appBgColor
+        guard let image = UIImage(systemName: "line.horizontal.3"), let titleImage = theme.settings.pursuitLogo else {
             return
         }
         addNavBarItems(image: image, titleImage: titleImage)
-        addDropDownListener()
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     

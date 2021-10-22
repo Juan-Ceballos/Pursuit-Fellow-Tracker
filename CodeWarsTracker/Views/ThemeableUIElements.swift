@@ -8,9 +8,12 @@
 import UIKit
 
 class HighlightedViewController: UIViewController, Themeable {
+    
+    //var themeSelected:PursuitTheme = .blackNDust
         
     func applyTheme(_ theme: PursuitTheme) {
         view.backgroundColor = theme.settings.appBgColor
+        //themeSelected = theme
         //navigationController?.navigationBar.tintColor = theme.settings.highlightedBgColor
         //navigationController?.navigationBar.barTintColor = theme.settings.highlightedBgColor
         //navigationController?.navigationBar.backgroundColor = theme.settings.highlightedBgColor
