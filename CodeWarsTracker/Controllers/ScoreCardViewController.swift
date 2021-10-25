@@ -61,65 +61,6 @@ class ScoreCardViewController: NavBarViewController {
         }
     }
     
-    private func performSearch(searchQuery: String?) {
-        var filteredFellows = [User]()
-        var filteredStaff = [User]()
-        var selectedUsers = [User]()
-        
-        switch self.scoreCardView.segmentedControl.selectedSegmentIndex {
-        case 0:
-            selectedUsers = self.allUsers[0].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-        case 1:
-            selectedUsers = self.allUsers[1].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-        case 2:
-            selectedUsers = self.allUsers[2].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-        case 3:
-            selectedUsers = self.allUsers[3].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-        case 4:
-            selectedUsers = self.allUsers[4].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-        default:
-            selectedUsers = self.allUsers[0].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-        }
-        
-        for user in selectedUsers {
-            if user.role == "staff" {
-                filteredStaff.append(user)
-            } else if user.role == "fellow" {
-                filteredFellows.append(user)
-            }
-        }
-        
-        if let searchQuery = searchQuery, !searchQuery.isEmpty {
-            filteredFellows = filteredFellows.filter { $0.name.contains(searchQuery) }
-            filteredStaff = filteredStaff.filter { $0.name.contains(searchQuery) }
-        } else {
-            configureDataSource()
-        }
-        
-        let fellowsByWeekPoints = selectedUsers.sorted {$0.pointThisWeek ?? 0 > $1.pointThisWeek ?? 0}
-        let fellowsRemoveZeros = fellowsByWeekPoints.filter {$0.pointThisWeek != 0}
-        var lead = [User]()
-        var count = 0
-        while count < fellowsRemoveZeros.count && count < 3 {
-            var tempFellow = fellowsRemoveZeros[count]
-            tempFellow.isTopFellow = true
-            lead.append(tempFellow)
-            count += 1
-        }
-        var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
-        snapshot.appendSections([.leaderBoard, .fellow, .staff])
-        snapshot.appendItems(lead, toSection: .leaderBoard)
-        snapshot.appendItems(filteredFellows, toSection: .fellow)
-        snapshot.appendItems(filteredStaff, toSection: .staff)
-        self.dataSource.apply(snapshot, animatingDifferences: true)
-    }
-    
-    private func configureCollectionView() {
-        scoreCardView.cv.register(FellowCardCell.self, forCellWithReuseIdentifier: FellowCardCell.reuseIdentifier)
-        scoreCardView.cv.register(HeaderView.self, forSupplementaryViewOfKind: Constants.headerElementKind, withReuseIdentifier: HeaderView.reuseIdentifier)
-        scoreCardView.cv.refreshControl = refreshControl
-    }
-    
     private func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, User>(collectionView: scoreCardView.cv, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FellowCardCell.reuseIdentifier, for: indexPath) as? FellowCardCell else {
@@ -179,20 +120,8 @@ class ScoreCardViewController: NavBarViewController {
             var staff = [User]()
             var usersSorted = [User]()
             
-            switch self.scoreCardView.segmentedControl.selectedSegmentIndex {
-            case 0:
-                usersSorted = self.allUsers[0].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-            case 1:
-                usersSorted = self.allUsers[1].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-            case 2:
-                usersSorted = self.allUsers[2].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-            case 3:
-                usersSorted = self.allUsers[3].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-            case 4:
-                usersSorted = self.allUsers[4].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-            default:
-                usersSorted = self.allUsers[0].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-            }
+            let selectedIndex = self.scoreCardView.segmentedControl.selectedSegmentIndex
+            usersSorted = self.allUsers[selectedIndex].sorted {$0.honor ?? 0 > $1.honor ?? 0}
             
             for user in usersSorted {
                 if user.role == "staff" {
@@ -204,7 +133,6 @@ class ScoreCardViewController: NavBarViewController {
             
             let fellowsByWeekPoints = fellows.sorted {$0.pointThisWeek ?? 0 > $1.pointThisWeek ?? 0}
             let fellowsRemoveZeros = fellowsByWeekPoints.filter {$0.pointThisWeek != 0}
-            print(fellowsRemoveZeros.count)
             var lead = [User]()
             var count = 0
             while count < fellowsRemoveZeros.count && count < 3 {
@@ -221,6 +149,53 @@ class ScoreCardViewController: NavBarViewController {
             self.dataSource.apply(snapshot, animatingDifferences: false)
         }
         
+    }
+    
+    private func performSearch(searchQuery: String?) {
+        var filteredFellows = [User]()
+        var filteredStaff = [User]()
+        var selectedUsers = [User]()
+        
+        let selectedIndex = self.scoreCardView.segmentedControl.selectedSegmentIndex
+        selectedUsers = self.allUsers[selectedIndex].sorted {$0.honor ?? 0 > $1.honor ?? 0}
+        
+        for user in selectedUsers {
+            if user.role == "staff" {
+                filteredStaff.append(user)
+            } else if user.role == "fellow" {
+                filteredFellows.append(user)
+            }
+        }
+        
+        if let searchQuery = searchQuery, !searchQuery.isEmpty {
+            filteredFellows = filteredFellows.filter { $0.name.contains(searchQuery) }
+            filteredStaff = filteredStaff.filter { $0.name.contains(searchQuery) }
+        } else {
+            configureDataSource()
+        }
+        
+        let fellowsByWeekPoints = selectedUsers.sorted {$0.pointThisWeek ?? 0 > $1.pointThisWeek ?? 0}
+        let fellowsRemoveZeros = fellowsByWeekPoints.filter {$0.pointThisWeek != 0}
+        var lead = [User]()
+        var count = 0
+        while count < fellowsRemoveZeros.count && count < 3 {
+            var tempFellow = fellowsRemoveZeros[count]
+            tempFellow.isTopFellow = true
+            lead.append(tempFellow)
+            count += 1
+        }
+        var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
+        snapshot.appendSections([.leaderBoard, .fellow, .staff])
+        snapshot.appendItems(lead, toSection: .leaderBoard)
+        snapshot.appendItems(filteredFellows, toSection: .fellow)
+        snapshot.appendItems(filteredStaff, toSection: .staff)
+        self.dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
+    private func configureCollectionView() {
+        scoreCardView.cv.register(FellowCardCell.self, forCellWithReuseIdentifier: FellowCardCell.reuseIdentifier)
+        scoreCardView.cv.register(HeaderView.self, forSupplementaryViewOfKind: Constants.headerElementKind, withReuseIdentifier: HeaderView.reuseIdentifier)
+        scoreCardView.cv.refreshControl = refreshControl
     }
     
     private func loadScoreCardData(){

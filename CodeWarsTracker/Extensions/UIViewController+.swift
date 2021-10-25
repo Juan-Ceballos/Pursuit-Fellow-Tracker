@@ -18,8 +18,6 @@ extension UIViewController {
     public convenience init(view: UIView) {
         self.init(nibName: nil, bundle: nil)
         self.view = view
-        //view.backgroundColor = .systemBackground
-        
     }
     
 }

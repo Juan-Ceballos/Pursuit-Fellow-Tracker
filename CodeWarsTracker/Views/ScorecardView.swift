@@ -23,6 +23,15 @@ public enum Section: String, CaseIterable {
             return "LeaderBoard"
         }
     }
+    
+    var columnCount: Int {
+        switch self {
+        case .fellow, .staff:
+            return 2
+        case .leaderBoard:
+            return 3
+        }
+    }
 }
 
 public enum Constants {
@@ -45,6 +54,7 @@ class ScoreCardView: UIView {
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerFooterSize, elementKind: Constants.headerElementKind, alignment: .topLeading)
         let itemInsets: CGFloat = 8
         let groupInsets: CGFloat = 8
+        
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -179,9 +189,6 @@ class ScoreCardView: UIView {
     
     private func scoreboardContainerStackViewSubView1Contrainsts(){
         for subview in scoreboardContainerStackView.arrangedSubviews{
-//            subview.snp.makeConstraints { mkr in
-//                mkr.width.equalToSuperview().offset(-8)
-//            }
             subview.sizeToFit()
             subview.layoutIfNeeded()
         }
@@ -200,7 +207,6 @@ class ScoreCardView: UIView {
     private func setupCollectionViewConstraints() {
         addSubview(cv)
         cv.snp.makeConstraints { (make) in
-            //make.top.equalTo(scoreboardContainerStackView.snp.bottom).offset(11)
             make.top.equalTo(segmentedControl.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
