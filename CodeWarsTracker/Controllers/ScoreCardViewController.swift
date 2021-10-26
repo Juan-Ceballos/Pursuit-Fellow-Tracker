@@ -27,7 +27,7 @@ class ScoreCardViewController: NavBarViewController {
         loadAllUsers()
         configureCollectionView()
         loadScoreCardData()
-        scoreCardView.searchBar.delegate = self
+        //scoreCardView.searchBar.delegate = self
         scoreCardView.cv.delegate = self
         refreshControl.addTarget(self, action: #selector(refreshUserData), for: .valueChanged)
         scoreCardView.segmentedControl.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
@@ -74,20 +74,20 @@ class ScoreCardViewController: NavBarViewController {
                 cell.honorLabel.text = String(item.honor ?? 0)
                 cell.pointsThisWeekLabel.text = "This Week: \(String(item.pointThisWeek ?? 0))"
                 cell.pointsThisMonthLabel.text = "This Month: \(String(item.pointThisMonth ?? 0))"
-                switch indexPath.section {
-                case 0:
+//                switch indexPath.section {
+//                case 0:
                     cell.bannerView.isHidden = true
-                    cell.leaderBoardBadgeLabel.isHidden = false
-                    cell.leaderBoardBadgeLabel.text = "\(indexPath.row + 1)"
-                    cell.leaderBoardBadgeLabel.backgroundColor = .systemOrange
-                case 1:
-                    cell.bannerView.isHidden = true
+//                    cell.leaderBoardBadgeLabel.isHidden = false
+//                    cell.leaderBoardBadgeLabel.text = "\(indexPath.row + 1)"
+//                    cell.leaderBoardBadgeLabel.backgroundColor = .systemOrange
+//                case 1:
+//                    cell.bannerView.isHidden = true
                     cell.leaderBoardBadgeLabel.isHidden = true
-                case 2:
-                    cell.bannerView.isHidden = false
-                default:
-                    print()
-                }
+//                case 2:
+//                    cell.bannerView.isHidden = false
+//                default:
+//                    print()
+//                }
             }
             return cell
         })
@@ -97,16 +97,18 @@ class ScoreCardViewController: NavBarViewController {
             guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView else {
                 fatalError()
             }
-            
+            headerView.searchBar.delegate = self
             DispatchQueue.main.async {
                 switch indexPath.section {
                 case 0:
                     headerView.textLabel.text = "This Week's Top Scores"
+                    headerView.searchBar.isHidden = true
                 case 1:
                     headerView.textLabel.text = "Fellows"
-
+                    headerView.searchBar.isHidden = false
                 case 2:
                     headerView.textLabel.text = "Staff"
+                    headerView.searchBar.isHidden = false
                 default:
                     fatalError("Invalid Section, for headerview supplementary view provider")
                 }

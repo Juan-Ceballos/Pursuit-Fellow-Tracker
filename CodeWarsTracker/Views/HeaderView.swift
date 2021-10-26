@@ -17,6 +17,13 @@ class HeaderView: UICollectionReusableView {
         return label
     }()
     
+    public lazy var searchBar: UISearchBar = {
+        let sb = UISearchBar()
+        sb.searchBarStyle = .minimal
+        sb.enablesReturnKeyAutomatically = false
+        return sb
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
@@ -29,12 +36,23 @@ class HeaderView: UICollectionReusableView {
     
     private func commonInit()   {
         setupTextLabelConstraints()
+        setupSearchBarConstraints()
     }
     
     private func setupTextLabelConstraints() {
         addSubview(textLabel)
         textLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(8)
+            make.left.equalToSuperview().offset(17)
+            make.centerY.equalToSuperview()
+        }
+    }
+    
+    private func setupSearchBarConstraints() {
+        addSubview(searchBar)
+        searchBar.snp.makeConstraints { (make) in
+            make.trailing.equalToSuperview().offset(-8)
+            make.width.equalToSuperview().multipliedBy(0.4)
+            make.height.equalToSuperview().multipliedBy(0.7)
             make.centerY.equalToSuperview()
         }
     }

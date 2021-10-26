@@ -50,22 +50,30 @@ class ScoreCardView: UIView {
     }()
     
     private func createLayout() -> UICollectionViewLayout {
-        let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.125))
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerFooterSize, elementKind: Constants.headerElementKind, alignment: .topLeading)
-        let itemInsets: CGFloat = 8
-        let groupInsets: CGFloat = 8
-        
-        
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: itemInsets, leading: itemInsets, bottom: itemInsets, trailing: itemInsets)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-        let section = NSCollectionLayoutSection(group: group)
-        section.boundarySupplementaryItems = [sectionHeader]
-        let layout = UICollectionViewCompositionalLayout(section: section)
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+            let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.125))
+
+            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerFooterSize, elementKind: Constants.headerElementKind, alignment: .topLeading)
+            
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension:
+            .fractionalHeight(1))
+
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            item.contentInsets.bottom = 15
+
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.45),
+            heightDimension: .fractionalWidth(0.7))
+
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            group.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 2)
+
+            let section = NSCollectionLayoutSection(group: group)
+            section.boundarySupplementaryItems = [sectionHeader]
+            section.orthogonalScrollingBehavior = .continuous
+
+            return section
+            
+        }
         return layout
     }
     
@@ -144,13 +152,6 @@ class ScoreCardView: UIView {
         return sC
     }()
     
-    public lazy var searchBar: UISearchBar = {
-        let sb = UISearchBar()
-        sb.barStyle = .default
-        sb.enablesReturnKeyAutomatically = false
-        return sb
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
@@ -163,7 +164,6 @@ class ScoreCardView: UIView {
     
     private func commonInit(){
         scoreboardContainerStackViewContrainsts()
-        setupSearchBarConstraints()
         scoreboardContainerStackViewSubView1Contrainsts()
         setupSegmentedControlConstraints()
         setupCollectionViewConstraints()
@@ -178,15 +178,6 @@ class ScoreCardView: UIView {
         }
     }
     
-    private func setupSearchBarConstraints() {
-        addSubview(searchBar)
-        searchBar.snp.makeConstraints { (make) in
-            make.top.equalTo(scoreboardContainerStackView.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(8)
-            make.trailing.equalToSuperview().offset(-8)
-        }
-    }
-    
     private func scoreboardContainerStackViewSubView1Contrainsts(){
         for subview in scoreboardContainerStackView.arrangedSubviews{
             subview.sizeToFit()
@@ -197,7 +188,7 @@ class ScoreCardView: UIView {
     private func setupSegmentedControlConstraints() {
         addSubview(segmentedControl)
         segmentedControl.snp.makeConstraints { (make) in
-            make.top.equalTo(searchBar.snp.bottom).offset(8)
+            make.top.equalTo(scoreboardContainerStackView.snp.bottom).offset(8)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.05)
