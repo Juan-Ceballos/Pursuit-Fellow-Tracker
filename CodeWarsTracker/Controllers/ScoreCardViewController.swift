@@ -29,6 +29,20 @@ class ScoreCardViewController: NavBarViewController {
         scoreCardView.searchBar.delegate = self
         refreshControl.addTarget(self, action: #selector(refreshUserData), for: .valueChanged)
         scoreCardView.segmentedControl.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardFrame = notification.userInfo?["UIKeyboardFrameBeginUserInfoKey"] as? CGRect else  {
+            return
+        }
+        print(keyboardFrame)
+        scoreCardView.cv.scrollRectToVisible(keyboardFrame, animated: true)
+    }
+    
+    @objc func keyboardWillHide(notifcation: NSNotification) {
+        
     }
     
     @objc func segmentValueChanged(_ sender: UISegmentedControl!) {

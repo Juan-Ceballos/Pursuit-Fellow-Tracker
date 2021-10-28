@@ -212,7 +212,7 @@ class ScoreCardView: UIView {
             make.top.equalTo(segmentedControl.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+            make.bottom.equalToSuperview()
         }
     }
     
