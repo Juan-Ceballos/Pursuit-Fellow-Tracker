@@ -23,6 +23,15 @@ public enum Section: String, CaseIterable {
             return "LeaderBoard"
         }
     }
+    
+    var columnCount: Int {
+        switch self {
+        case .fellow, .staff:
+            return 2
+        case .leaderBoard:
+            return 3
+        }
+    }
 }
 
 public enum Constants {
@@ -41,21 +50,31 @@ class ScoreCardView: UIView {
     }()
     
     private func createLayout() -> UICollectionViewLayout {
-        let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.125))
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerFooterSize, elementKind: Constants.headerElementKind, alignment: .topLeading)
-        let itemInsets: CGFloat = 8
-        let groupInsets: CGFloat = 8
-        
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: itemInsets, leading: itemInsets, bottom: itemInsets, trailing: itemInsets)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-        let section = NSCollectionLayoutSection(group: group)
-        section.boundarySupplementaryItems = [sectionHeader]
-        let layout = UICollectionViewCompositionalLayout(section: section)
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+            
+            let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.125))
+
+            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerFooterSize, elementKind: Constants.headerElementKind, alignment: .topLeading)
+            
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension:
+            .fractionalHeight(1))
+
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            item.contentInsets.bottom = 15
+
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.45),
+            heightDimension: .fractionalWidth(0.7))
+
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            group.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 2)
+
+            let section = NSCollectionLayoutSection(group: group)
+            section.boundarySupplementaryItems = [sectionHeader]
+            section.orthogonalScrollingBehavior = .continuous
+
+            return section
+            
+        }
         return layout
     }
     
@@ -65,7 +84,6 @@ class ScoreCardView: UIView {
         stackview.spacing = 13
         stackview.distribution = .equalSpacing
         stackview.alignment = .center
-        //stackview.backgroundColor = .systemBlue
         stackview.addArrangedSubview(scoreboardLabel)
         stackview.addArrangedSubview(scoreboardDataStackView)
         stackview.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
@@ -80,7 +98,6 @@ class ScoreCardView: UIView {
         stackView.spacing = 13
         stackView.alignment = .center
         stackView.distribution = .fillEqually
-        //stackView.backgroundColor = .systemBlue
         stackView.addArrangedSubview(scoreboardWeeklyLabel)
         stackView.addArrangedSubview(scoreboardMonthlyLabel)
         stackView.addArrangedSubview(scoreboardAllTimeLabel)
@@ -91,14 +108,11 @@ class ScoreCardView: UIView {
         let label = HighlightedLabel()
         label.text = "Score Board"
         label.font = UIFont.preferredFont(forTextStyle: .headline)
-        //label.textColor = .systemBackground
-        //label.backgroundColor = .systemBlue
         return label
     }()
     
     public lazy var scoreboardWeeklyLabel: UILabel = {
         let label = HighlightedLabel()
-        //label.textColor = .systemBackground
         label.numberOfLines = 5
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.text = "Weekly"
@@ -107,7 +121,6 @@ class ScoreCardView: UIView {
     
     public lazy var scoreboardMonthlyLabel: UILabel = {
         let label = HighlightedLabel()
-        //label.textColor = .systemBackground
         label.numberOfLines = 5
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.text = "Monthly"
@@ -116,7 +129,6 @@ class ScoreCardView: UIView {
     
     public lazy var scoreboardAllTimeLabel: UILabel = {
         let label = HighlightedLabel()
-        //label.textColor = .systemBackground
         label.numberOfLines = 5
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.text = "All Time"
@@ -136,7 +148,7 @@ class ScoreCardView: UIView {
     
     public lazy var searchBar: UISearchBar = {
         let sb = HighlightedSearchBar()
-        sb.barStyle = .default
+        sb.searchBarStyle = .minimal
         sb.enablesReturnKeyAutomatically = false
         return sb
     }()
@@ -153,8 +165,8 @@ class ScoreCardView: UIView {
     
     private func commonInit(){
         scoreboardContainerStackViewContrainsts()
-        setupSearchBarConstraints()
         scoreboardContainerStackViewSubView1Contrainsts()
+        setupSearchBarConstraints()
         setupSegmentedControlConstraints()
         setupCollectionViewConstraints()
     }
@@ -168,31 +180,28 @@ class ScoreCardView: UIView {
         }
     }
     
-    private func setupSearchBarConstraints() {
-        addSubview(searchBar)
-        searchBar.snp.makeConstraints { (make) in
-            make.top.equalTo(scoreboardContainerStackView.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(8)
-            make.trailing.equalToSuperview().offset(-8)
+    private func scoreboardContainerStackViewSubView1Contrainsts(){
+        for subview in scoreboardContainerStackView.arrangedSubviews{
+            subview.sizeToFit()
+            subview.layoutIfNeeded()
         }
     }
     
-    private func scoreboardContainerStackViewSubView1Contrainsts(){
-        for subview in scoreboardContainerStackView.arrangedSubviews{
-//            subview.snp.makeConstraints { mkr in
-//                mkr.width.equalToSuperview().offset(-8)
-//            }
-            subview.sizeToFit()
-            subview.layoutIfNeeded()
+    private func setupSearchBarConstraints() {
+        addSubview(searchBar)
+        searchBar.snp.makeConstraints { (make) in
+            make.leading.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.4)
+            make.top.equalTo(scoreboardContainerStackView.snp.bottom)
         }
     }
     
     private func setupSegmentedControlConstraints() {
         addSubview(segmentedControl)
         segmentedControl.snp.makeConstraints { (make) in
-            make.top.equalTo(searchBar.snp.bottom).offset(8)
-            make.left.equalToSuperview()
+            make.top.equalTo(scoreboardContainerStackView.snp.bottom).offset(8)
             make.right.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.55)
             make.height.equalToSuperview().multipliedBy(0.05)
         }
     }
@@ -200,7 +209,6 @@ class ScoreCardView: UIView {
     private func setupCollectionViewConstraints() {
         addSubview(cv)
         cv.snp.makeConstraints { (make) in
-            //make.top.equalTo(scoreboardContainerStackView.snp.bottom).offset(11)
             make.top.equalTo(segmentedControl.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()

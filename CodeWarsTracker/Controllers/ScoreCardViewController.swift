@@ -20,15 +20,13 @@ class ScoreCardViewController: NavBarViewController {
     private var allUsers = [[User]]()
     private var allCurrentUsers = [User]()
     private let refreshControl = HighlightedRefreshControl()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.backgroundColor = .systemBackground
         loadAllUsers()
         configureCollectionView()
         loadScoreCardData()
-        scoreCardView.searchBar.delegate = self
         scoreCardView.cv.delegate = self
+        scoreCardView.searchBar.delegate = self
         refreshControl.addTarget(self, action: #selector(refreshUserData), for: .valueChanged)
         scoreCardView.segmentedControl.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
     }
@@ -61,25 +59,102 @@ class ScoreCardViewController: NavBarViewController {
         }
     }
     
+    private func configureDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, User>(collectionView: scoreCardView.cv, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FellowCardCell.reuseIdentifier, for: indexPath) as? FellowCardCell else {
+                fatalError()
+            }
+            DispatchQueue.main.async {
+                cell.nameLabel.text = item.name
+                cell.usernameLabel.text = "Codewars: \(item.username)"
+                cell.clanLabel.text = "Class: \(item.cohort ?? "No Clan")"
+                cell.honorLabel.text = String(item.honor ?? 0)
+                cell.pointsThisWeekLabel.text = "This Week: \(String(item.pointThisWeek ?? 0))"
+                cell.pointsThisMonthLabel.text = "This Month: \(String(item.pointThisMonth ?? 0))"
+//                switch indexPath.section {
+//                case 0:
+                    cell.bannerView.isHidden = true
+//                    cell.leaderBoardBadgeLabel.isHidden = false
+//                    cell.leaderBoardBadgeLabel.text = "\(indexPath.row + 1)"
+//                    cell.leaderBoardBadgeLabel.backgroundColor = .systemOrange
+//                case 1:
+//                    cell.bannerView.isHidden = true
+                    cell.leaderBoardBadgeLabel.isHidden = true
+//                case 2:
+//                    cell.bannerView.isHidden = false
+//                default:
+//                    print()
+//                }
+            }
+            return cell
+        })
+        
+        dataSource.supplementaryViewProvider = {
+            (collectionView, kind, indexPath) in
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView else {
+                fatalError()
+            }
+            
+            DispatchQueue.main.async {
+                switch indexPath.section {
+                case 0:
+                    headerView.textLabel.text = "This Week's Top Scores"
+                case 1:
+                    headerView.textLabel.text = "Fellows"
+                case 2:
+                    headerView.textLabel.text = "Staff"
+                default:
+                    fatalError("Invalid Section, for headerview supplementary view provider")
+                }
+            }
+            return headerView
+        }
+        
+        DispatchQueue.main.async {
+            var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
+            var fellows = [User]()
+            var staff = [User]()
+            var usersSorted = [User]()
+            
+            let selectedIndex = self.scoreCardView.segmentedControl.selectedSegmentIndex
+            usersSorted = self.allUsers[selectedIndex].sorted {$0.honor ?? 0 > $1.honor ?? 0}
+            
+            for user in usersSorted {
+                if user.role == "staff" {
+                    staff.append(user)
+                } else if user.role == "fellow" {
+                    fellows.append(user)
+                }
+            }
+            
+            let fellowsByWeekPoints = fellows.sorted {$0.pointThisWeek ?? 0 > $1.pointThisWeek ?? 0}
+            let fellowsRemoveZeros = fellowsByWeekPoints.filter {$0.pointThisWeek != 0}
+            print(fellowsRemoveZeros.count)
+            var lead = [User]()
+            var count = 0
+            while count < fellowsRemoveZeros.count && count < 3 {
+                var tempFellow = fellowsRemoveZeros[count]
+                tempFellow.isTopFellow = true
+                lead.append(tempFellow)
+                count += 1
+            }
+            
+            snapshot.appendSections([.leaderBoard, .fellow, .staff])
+            snapshot.appendItems(lead, toSection: .leaderBoard)
+            snapshot.appendItems(fellows, toSection: .fellow)
+            snapshot.appendItems(staff, toSection: .staff)
+            self.dataSource.apply(snapshot, animatingDifferences: false)
+        }
+    }
+
+    
     private func performSearch(searchQuery: String?) {
         var filteredFellows = [User]()
         var filteredStaff = [User]()
         var selectedUsers = [User]()
         
-        switch self.scoreCardView.segmentedControl.selectedSegmentIndex {
-        case 0:
-            selectedUsers = self.allUsers[0].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-        case 1:
-            selectedUsers = self.allUsers[1].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-        case 2:
-            selectedUsers = self.allUsers[2].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-        case 3:
-            selectedUsers = self.allUsers[3].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-        case 4:
-            selectedUsers = self.allUsers[4].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-        default:
-            selectedUsers = self.allUsers[0].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-        }
+        let selectedIndex = self.scoreCardView.segmentedControl.selectedSegmentIndex
+        selectedUsers = self.allUsers[selectedIndex].sorted {$0.honor ?? 0 > $1.honor ?? 0}
         
         for user in selectedUsers {
             if user.role == "staff" {
@@ -119,110 +194,7 @@ class ScoreCardViewController: NavBarViewController {
         scoreCardView.cv.register(HeaderView.self, forSupplementaryViewOfKind: Constants.headerElementKind, withReuseIdentifier: HeaderView.reuseIdentifier)
         scoreCardView.cv.refreshControl = refreshControl
     }
-    
-    private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, User>(collectionView: scoreCardView.cv, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FellowCardCell.reuseIdentifier, for: indexPath) as? FellowCardCell else {
-                fatalError()
-            }
-            DispatchQueue.main.async {
-                //cell.backgroundColor = .systemBlue
-                cell.nameLabel.text = item.name
-                cell.usernameLabel.text = "Codewars: \(item.username)"
-                cell.clanLabel.text = "Class: \(item.cohort ?? "No Clan")"
-                cell.honorLabel.text = String(item.honor ?? 0)
-                cell.pointsThisWeekLabel.text = "This Week: \(String(item.pointThisWeek ?? 0))"
-                cell.pointsThisMonthLabel.text = "This Month: \(String(item.pointThisMonth ?? 0))"
-                switch indexPath.section {
-                case 0:
-                    cell.bannerView.isHidden = true
-                    cell.leaderBoardBadgeLabel.isHidden = false
-                    cell.leaderBoardBadgeLabel.text = "\(indexPath.row + 1)"
-                    cell.leaderBoardBadgeLabel.backgroundColor = .systemOrange
-                case 1:
-                    cell.bannerView.isHidden = true
-                    cell.leaderBoardBadgeLabel.isHidden = true
-                case 2:
-                    cell.bannerView.isHidden = false
-                default:
-                    print()
-                }
-            }
-            return cell
-        })
         
-        dataSource.supplementaryViewProvider = {
-            (collectionView, kind, indexPath) in
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView else {
-                fatalError()
-            }
-            
-            DispatchQueue.main.async {
-                switch indexPath.section {
-                case 0:
-                    headerView.textLabel.text = "This Week's Top Scores"
-                case 1:
-                    headerView.textLabel.text = "Fellows"
-
-                case 2:
-                    headerView.textLabel.text = "Staff"
-                default:
-                    fatalError("Invalid Section, for headerview supplementary view provider")
-                }
-            }
-            return headerView
-        }
-        
-        DispatchQueue.main.async {
-            var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
-            var fellows = [User]()
-            var staff = [User]()
-            var usersSorted = [User]()
-            
-            switch self.scoreCardView.segmentedControl.selectedSegmentIndex {
-            case 0:
-                usersSorted = self.allUsers[0].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-            case 1:
-                usersSorted = self.allUsers[1].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-            case 2:
-                usersSorted = self.allUsers[2].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-            case 3:
-                usersSorted = self.allUsers[3].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-            case 4:
-                usersSorted = self.allUsers[4].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-            default:
-                usersSorted = self.allUsers[0].sorted {$0.honor ?? 0 > $1.honor ?? 0}
-            }
-            
-            for user in usersSorted {
-                if user.role == "staff" {
-                    staff.append(user)
-                } else if user.role == "fellow" {
-                    fellows.append(user)
-                }
-            }
-            
-            let fellowsByWeekPoints = fellows.sorted {$0.pointThisWeek ?? 0 > $1.pointThisWeek ?? 0}
-            let fellowsRemoveZeros = fellowsByWeekPoints.filter {$0.pointThisWeek != 0}
-            print(fellowsRemoveZeros.count)
-            var lead = [User]()
-            var count = 0
-            while count < fellowsRemoveZeros.count && count < 3 {
-                var tempFellow = fellowsRemoveZeros[count]
-                tempFellow.isTopFellow = true
-                lead.append(tempFellow)
-                count += 1
-            }
-            
-            snapshot.appendSections([.leaderBoard, .fellow, .staff])
-            snapshot.appendItems(lead, toSection: .leaderBoard)
-            snapshot.appendItems(fellows, toSection: .fellow)
-            snapshot.appendItems(staff, toSection: .staff)
-            self.dataSource.apply(snapshot, animatingDifferences: false)
-        }
-        
-    }
-    
     private func loadScoreCardData(){
         CWTAPIClient.getScoreboardData { [weak self] (result) in
             switch result {
