@@ -180,10 +180,10 @@ class ScoreCardViewController: NavBarViewController {
         }
         
         if let searchQuery = searchQuery, !searchQuery.isEmpty {
-            filteredFellows = filteredFellows.filter { $0.name.contains(searchQuery) }
-            filteredStaff = filteredStaff.filter { $0.name.contains(searchQuery) }
+            filteredFellows = filteredFellows.filter { $0.name.lowercased().contains(searchQuery.lowercased()) }
+            filteredStaff = filteredStaff.filter { $0.name.lowercased().contains(searchQuery.lowercased()) }
         } else {
-            configureDataSource()
+            //configureDataSource()
         }
         
         let fellowsByWeekPoints = selectedUsers.sorted {$0.pointThisWeek ?? 0 > $1.pointThisWeek ?? 0}
@@ -197,11 +197,13 @@ class ScoreCardViewController: NavBarViewController {
             count += 1
         }
         var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
+        //snapshot.deleteAllItems()
+        //self.dataSource.apply(snapshot, animatingDifferences: false)
         snapshot.appendSections([.leaderBoard, .fellow, .staff])
         snapshot.appendItems(lead, toSection: .leaderBoard)
         snapshot.appendItems(filteredFellows, toSection: .fellow)
         snapshot.appendItems(filteredStaff, toSection: .staff)
-        self.dataSource.apply(snapshot, animatingDifferences: true)
+        self.dataSource.apply(snapshot, animatingDifferences: false)
     }
     
     private func configureCollectionView() {
