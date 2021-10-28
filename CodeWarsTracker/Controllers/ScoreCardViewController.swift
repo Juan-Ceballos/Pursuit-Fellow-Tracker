@@ -37,8 +37,9 @@ class ScoreCardViewController: NavBarViewController {
         guard let keyboardFrame = notification.userInfo?["UIKeyboardFrameBeginUserInfoKey"] as? CGRect else  {
             return
         }
-        print(keyboardFrame)
-        scoreCardView.cv.scrollRectToVisible(keyboardFrame, animated: true)
+        
+        let scrollToFrame = CGRect(x: 0, y: keyboardFrame.minY / 2, width: keyboardFrame.width, height: keyboardFrame.width)
+        scoreCardView.cv.scrollRectToVisible(scrollToFrame, animated: true)
     }
     
     @objc func keyboardWillHide(notifcation: NSNotification) {
