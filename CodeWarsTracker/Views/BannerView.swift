@@ -12,10 +12,6 @@ class BannerView: UICollectionReusableView {
     
     public lazy var staffLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
-        label.text = "Staff"
-        label.backgroundColor = .systemYellow
         return label
     }()
     
@@ -37,11 +33,10 @@ class BannerView: UICollectionReusableView {
         addSubview(staffLabel)
         staffLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            staffLabel.bottomAnchor.constraint(equalTo: self.centerYAnchor),
-            staffLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            staffLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            staffLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
-        
+            staffLabel.topAnchor.constraint(equalTo: topAnchor),
+            staffLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            staffLabel.heightAnchor.constraint(equalTo: heightAnchor),
+            staffLabel.widthAnchor.constraint(equalTo: widthAnchor)
         ])
     }
     

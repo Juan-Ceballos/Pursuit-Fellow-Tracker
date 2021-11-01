@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3E0A04C426D758DB00061809 /* FellowCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A04C326D758DB00061809 /* FellowCardCell.swift */; };
-		3E0A04C926D758F500061809 /* StaffCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A04C826D758F500061809 /* StaffCardCell.swift */; };
 		3E0A04D726D8032F00061809 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A04D626D8032F00061809 /* HeaderView.swift */; };
 		3E0A04E426D9715B00061809 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A04E326D9715B00061809 /* BannerView.swift */; };
 		3E0AB1D426D42B280005FAE5 /* ScoreCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0AB1D326D42B280005FAE5 /* ScoreCard.swift */; };
@@ -85,7 +84,6 @@
 		153DABD380619AAA2DD4864F /* Pods-CodeWarsTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTracker.release.xcconfig"; path = "Target Support Files/Pods-CodeWarsTracker/Pods-CodeWarsTracker.release.xcconfig"; sourceTree = "<group>"; };
 		23638DD34A40959A9F790DAA /* Pods_CodeWarsTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeWarsTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E0A04C326D758DB00061809 /* FellowCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FellowCardCell.swift; sourceTree = "<group>"; };
-		3E0A04C826D758F500061809 /* StaffCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffCardCell.swift; sourceTree = "<group>"; };
 		3E0A04D626D8032F00061809 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		3E0A04E326D9715B00061809 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		3E0AB1D326D42B280005FAE5 /* ScoreCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCard.swift; sourceTree = "<group>"; };
@@ -299,7 +297,6 @@
 			children = (
 				F110DB4426D5DBC8007BA3A3 /* ScoreCardView.swift */,
 				3E0A04C326D758DB00061809 /* FellowCardCell.swift */,
-				3E0A04C826D758F500061809 /* StaffCardCell.swift */,
 				3E0A04D626D8032F00061809 /* HeaderView.swift */,
 				3E0A04E326D9715B00061809 /* BannerView.swift */,
 				F1AF46AA26D87F9A001F7327 /* CreateProfileView.swift */,
@@ -629,7 +626,6 @@
 				3E0AB20026D477A20005FAE5 /* IdUser.swift in Sources */,
 				F1A00AEA26FB1D700046E183 /* PanZoomView.swift in Sources */,
 				F1AF46AD26D8AF4B001F7327 /* UITextField+.swift in Sources */,
-				3E0A04C926D758F500061809 /* StaffCardCell.swift in Sources */,
 				F1A00AF626FBB5360046E183 /* ThemeManager.swift in Sources */,
 				3E0A04D726D8032F00061809 /* HeaderView.swift in Sources */,
 				F1A00AF226FB7A780046E183 /* UIColor+.swift in Sources */,

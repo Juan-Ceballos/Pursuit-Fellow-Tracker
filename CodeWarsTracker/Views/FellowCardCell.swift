@@ -16,55 +16,25 @@ class FellowCardCell: HighlightedCollectionViewCell {
         self.layer.cornerRadius = 8
     }
     
-    public lazy var bannerView: UIView = {
-        let bView = UIView()
-        bView.backgroundColor = .systemYellow
-        bView.addSubview(staffTextLabel)
-        staffTextLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.centerX.equalToSuperview()
-        }
-        return bView
-    }()
-    
-    public lazy var leaderBoardBadgeLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.isHidden = true //
-        return label
-    }()
-    
-    public lazy var staffTextLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Staff"
-        label.textAlignment = .center
-        label.isHidden = true //
-        return label
-    }()
-    
     public lazy var usernameLabel: UILabel = {
         let label = HighlightedLabel()
-        //label.textColor = .systemBackground
         label.numberOfLines = 2
         return label
     }()
     
     public lazy var honorLabel: UILabel = {
         let label = HighlightedLabel()
-        //label.textColor = .systemBackground
         label.font = .systemFont(ofSize: 33)
         return label
     }()
     
     public lazy var clanLabel: UILabel = {
         let label = HighlightedLabel()
-        //label.textColor = .systemBackground
         return label
     }()
     
     public lazy var nameLabel: UILabel = {
         let label = HighlightedLabel()
-        //label.textColor = .systemBackground
         label.font = .boldSystemFont(ofSize: 22)
         label.numberOfLines = 2
         label.lineBreakMode = .byWordWrapping
@@ -73,13 +43,11 @@ class FellowCardCell: HighlightedCollectionViewCell {
     
     public lazy var pointsThisWeekLabel: UILabel = {
         let label = HighlightedLabel()
-        //label.textColor = .systemBackground
         return label
     }()
     
     public lazy var pointsThisMonthLabel: UILabel = {
         let label = HighlightedLabel()
-        //label.textColor = .systemBackground
         return label
     }()
     
@@ -94,8 +62,6 @@ class FellowCardCell: HighlightedCollectionViewCell {
     }
     
     private func commonInit()   {
-//        setupBannerViewConstraints()
-//        setupLeaderBoardBadgeLabelConstraints()
         setupNameLabelConstraints()
         setupUsernameLabelConstraints()
         setupClanLabelConstraints()
@@ -103,24 +69,6 @@ class FellowCardCell: HighlightedCollectionViewCell {
         setupPointsThisMonthLabel()
         setupHonorLabelConstraints()
     }
-    
-//    private func setupBannerViewConstraints() {
-//        addSubview(bannerView)
-//        bannerView.snp.makeConstraints { (make) in
-//            make.top.equalToSuperview().offset(11)
-//            make.leading.equalToSuperview().offset(11)
-//            make.width.equalTo(self.snp.width).multipliedBy(0.15)
-//            make.height.equalTo(self.snp.height).multipliedBy(0.15)
-//        }
-//    }
-//
-//    private func setupLeaderBoardBadgeLabelConstraints() {
-//        addSubview(leaderBoardBadgeLabel)
-//        leaderBoardBadgeLabel.snp.makeConstraints { (make) in
-//            make.top.equalToSuperview().offset(11)
-//            make.leading.equalTo(bannerView.snp.trailing).offset(11)
-//        }
-//    }
     
     private func setupNameLabelConstraints() {
         addSubview(nameLabel)

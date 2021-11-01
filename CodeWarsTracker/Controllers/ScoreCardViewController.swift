@@ -30,7 +30,6 @@ class ScoreCardViewController: NavBarViewController {
         refreshControl.addTarget(self, action: #selector(refreshUserData), for: .valueChanged)
         scoreCardView.segmentedControl.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -40,10 +39,6 @@ class ScoreCardViewController: NavBarViewController {
         
         let scrollToFrame = CGRect(x: 0, y: keyboardFrame.minY / 2, width: keyboardFrame.width, height: keyboardFrame.width)
         scoreCardView.cv.scrollRectToVisible(scrollToFrame, animated: true)
-    }
-    
-    @objc func keyboardWillHide(notifcation: NSNotification) {
-        
     }
     
     @objc func segmentValueChanged(_ sender: UISegmentedControl!) {
@@ -86,43 +81,63 @@ class ScoreCardViewController: NavBarViewController {
                 cell.honorLabel.text = String(item.honor ?? 0)
                 cell.pointsThisWeekLabel.text = "This Week: \(String(item.pointThisWeek ?? 0))"
                 cell.pointsThisMonthLabel.text = "This Month: \(String(item.pointThisMonth ?? 0))"
-//                switch indexPath.section {
-//                case 0:
-                    cell.bannerView.isHidden = true
-//                    cell.leaderBoardBadgeLabel.isHidden = false
-//                    cell.leaderBoardBadgeLabel.text = "\(indexPath.row + 1)"
-//                    cell.leaderBoardBadgeLabel.backgroundColor = .systemOrange
-//                case 1:
-//                    cell.bannerView.isHidden = true
-                    cell.leaderBoardBadgeLabel.isHidden = true
-//                case 2:
-//                    cell.bannerView.isHidden = false
-//                default:
-//                    print()
-//                }
             }
             return cell
         })
         
         dataSource.supplementaryViewProvider = {
             (collectionView, kind, indexPath) in
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView else {
+            switch kind {
+            case Constants.headerElementKind:
+                guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView else {
+                    fatalError()
+                }
+                
+                DispatchQueue.main.async {
+                    switch indexPath.section {
+                    case 0:
+                        headerView.textLabel.text = "This Week's Top Scores"
+                    case 1:
+                        headerView.textLabel.text = "Fellows"
+                    case 2:
+                        headerView.textLabel.text = "Staff"
+                    default:
+                        fatalError("Invalid Section, for headerview supplementary view provider")
+                    }
+                }
+                return headerView
+                
+            case Constants.badgeElementKind:
+                guard let bannerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BannerView.reuseIdentifier, for: indexPath) as? BannerView else {
+                    fatalError()
+                }
+                
+                DispatchQueue.main.async {
+                    switch indexPath.section {
+                    case 0:
+                        bannerView.staffLabel.text = "#\(indexPath.row + 1) This Week"
+                        bannerView.staffLabel.backgroundColor = .systemIndigo
+                        bannerView.staffLabel.alpha = 1
+                        bannerView.staffLabel.textAlignment = .left
+                        bannerView.staffLabel.font = UIFont.preferredFont(forTextStyle: .callout)
+                        bannerView.staffLabel.adjustsFontSizeToFitWidth = true
+                    case 1:
+                        bannerView.staffLabel.alpha = 0
+                    case 2:
+                        bannerView.staffLabel.text = "Staff"
+                        bannerView.staffLabel.backgroundColor = .systemYellow
+                        bannerView.staffLabel.alpha = 1
+                        bannerView.staffLabel.textAlignment = .center
+                        bannerView.staffLabel.font = UIFont.preferredFont(forTextStyle: .callout)
+                        bannerView.staffLabel.adjustsFontSizeToFitWidth = false
+                    default:
+                        fatalError("Invalid Section, for headerview supplementary view provider")
+                    }
+                }
+                return bannerView
+            default:
                 fatalError()
             }
-            
-            DispatchQueue.main.async {
-                switch indexPath.section {
-                case 0:
-                    headerView.textLabel.text = "This Week's Top Scores"
-                case 1:
-                    headerView.textLabel.text = "Fellows"
-                case 2:
-                    headerView.textLabel.text = "Staff"
-                default:
-                    fatalError("Invalid Section, for headerview supplementary view provider")
-                }
-            }
-            return headerView
         }
         
         DispatchQueue.main.async {
@@ -182,8 +197,6 @@ class ScoreCardViewController: NavBarViewController {
         if let searchQuery = searchQuery, !searchQuery.isEmpty {
             filteredFellows = filteredFellows.filter { $0.name.lowercased().contains(searchQuery.lowercased()) }
             filteredStaff = filteredStaff.filter { $0.name.lowercased().contains(searchQuery.lowercased()) }
-        } else {
-            //configureDataSource()
         }
         
         let fellowsByWeekPoints = selectedUsers.sorted {$0.pointThisWeek ?? 0 > $1.pointThisWeek ?? 0}
@@ -197,8 +210,6 @@ class ScoreCardViewController: NavBarViewController {
             count += 1
         }
         var snapshot = NSDiffableDataSourceSnapshot<Section, User>()
-        //snapshot.deleteAllItems()
-        //self.dataSource.apply(snapshot, animatingDifferences: false)
         snapshot.appendSections([.leaderBoard, .fellow, .staff])
         snapshot.appendItems(lead, toSection: .leaderBoard)
         snapshot.appendItems(filteredFellows, toSection: .fellow)
@@ -209,6 +220,7 @@ class ScoreCardViewController: NavBarViewController {
     private func configureCollectionView() {
         scoreCardView.cv.register(FellowCardCell.self, forCellWithReuseIdentifier: FellowCardCell.reuseIdentifier)
         scoreCardView.cv.register(HeaderView.self, forSupplementaryViewOfKind: Constants.headerElementKind, withReuseIdentifier: HeaderView.reuseIdentifier)
+        scoreCardView.cv.register(BannerView.self, forSupplementaryViewOfKind: Constants.badgeElementKind, withReuseIdentifier: BannerView.reuseIdentifier)
         scoreCardView.cv.refreshControl = refreshControl
     }
         

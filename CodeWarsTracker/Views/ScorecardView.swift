@@ -23,15 +23,6 @@ public enum Section: String, CaseIterable {
             return "LeaderBoard"
         }
     }
-    
-    var columnCount: Int {
-        switch self {
-        case .fellow, .staff:
-            return 2
-        case .leaderBoard:
-            return 3
-        }
-    }
 }
 
 public enum Constants {
@@ -56,10 +47,14 @@ class ScoreCardView: UIView {
 
             let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerFooterSize, elementKind: Constants.headerElementKind, alignment: .topLeading)
             
+            let bannerHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .absolute(20))
+            let containerAnchor = NSCollectionLayoutAnchor(edges: [.bottom, .trailing], absoluteOffset: CGPoint(x: -5, y: 20))
+            let itemBanner = NSCollectionLayoutSupplementaryItem(layoutSize: bannerHeaderSize, elementKind: Constants.badgeElementKind, containerAnchor: containerAnchor)
+            
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension:
             .fractionalHeight(1))
 
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            let item = NSCollectionLayoutItem(layoutSize: itemSize, supplementaryItems: [itemBanner])
             item.contentInsets.bottom = 15
 
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.45),
