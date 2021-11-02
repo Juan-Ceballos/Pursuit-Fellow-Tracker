@@ -12,6 +12,14 @@ codewars
 
 ![gif](CodeWarsTracker/Assets.xcassets/MyGifAnimation.xcassets/BrowseFellows.dataset/BrowseFellows.gif)
 
+       ![1]CodeWarsTracker/Assets.xcassets/CreateAccount.imageset/CreateAccount.png
+       
+       CodeWarsTracker/Assets.xcassets/DetailFellow.imageset/DetailFellow.png
+       CodeWarsTracker/Assets.xcassets/FindAPairing.imageset/FindAPairing.png
+       CodeWarsTracker/Assets.xcassets/HowToPair.imageset/HowToPair.png
+       CodeWarsTracker/Assets.xcassets/HowToUse.imageset/HowToUse.png
+       CodeWarsTracker/Assets.xcassets/MenuClosed.imageset/MenuClosed.png
+       CodeWarsTracker/Assets.xcassets/MenuOpened.imageset/MenuOpened.png
 ### Search for Fellows and Staff
 
 ### Change App Theme
