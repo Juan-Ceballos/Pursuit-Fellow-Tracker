@@ -7,12 +7,12 @@ codewars
        
 
 ## Features
-
-### Scroll User Fellows and Staff
-
-![gif](CodeWarsTracker/Assets.xcassets/MyGifAnimation.xcassets/BrowseFellows.dataset/BrowseFellows.gif)
-![gif](CodeWarsTracker/Assets.xcassets/MyGifAnimation.xcassets/ChangeTheme.dataset/ChangeTheme.gif)
+Scroll Users           | Search User             | Change Color Theme
+---------------------- | ----------------------- | -----------------------
+![gif](CodeWarsTracker/Assets.xcassets/MyGifAnimation.xcassets/BrowseFellows.dataset/BrowseFellows.gif) |
+![gif](CodeWarsTracker/Assets.xcassets/MyGifAnimation.xcassets/ChangeTheme.dataset/ChangeTheme.gif) |
 ![gif](CodeWarsTracker/Assets.xcassets/MyGifAnimation.xcassets/SearchFellow.dataset/SearchFellow.gif)
+
 ![CreateAccount](CodeWarsTracker/Assets.xcassets/CreateAccount.imageset/CreateAccount.png)      
 ![DetailFellow](CodeWarsTracker/Assets.xcassets/DetailFellow.imageset/DetailFellow.png)
 ![FindAPairing](CodeWarsTracker/Assets.xcassets/FindAPairing.imageset/FindAPairing.png)
