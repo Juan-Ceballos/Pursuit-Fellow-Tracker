@@ -26,7 +26,7 @@ Scroll Users           | Search User             | Change Color Theme
 ![CreateAccount](CodeWarsTracker/Assets.xcassets/CreateAccount.imageset/CreateAccount.png)      
 
 ### Menu for Further App Assistance
-![MenuOpened](CodeWarsTracker/Assets.xcassets/MenuOpened.imageset/MenuOpened.png) ![MenuClosed](CodeWarsTracker/Assets.xcassets/MenuClosed.imageset/MenuClosed.png)
+![MenuClosed](CodeWarsTracker/Assets.xcassets/MenuClosed.imageset/MenuClosed.png) ![MenuOpened](CodeWarsTracker/Assets.xcassets/MenuOpened.imageset/MenuOpened.png)
 ![FindAPairing](CodeWarsTracker/Assets.xcassets/FindAPairing.imageset/FindAPairing.png)
 ![HowToPair](CodeWarsTracker/Assets.xcassets/HowToPair.imageset/HowToPair.png)
 ![HowToUse](CodeWarsTracker/Assets.xcassets/HowToUse.imageset/HowToUse.png)
