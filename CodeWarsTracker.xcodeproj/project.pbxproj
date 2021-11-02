@@ -23,6 +23,7 @@
 		3E6AB7FB26CC5ED400DF9A11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E6AB7F926CC5ED400DF9A11 /* LaunchScreen.storyboard */; };
 		3E6AB80626CC5ED500DF9A11 /* CodeWarsTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AB80526CC5ED500DF9A11 /* CodeWarsTrackerTests.swift */; };
 		3E6AB81126CC5ED500DF9A11 /* CodeWarsTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AB81026CC5ED500DF9A11 /* CodeWarsTrackerUITests.swift */; };
+		3EF36E122731D86D001ADFA0 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EF36E112731D86D001ADFA0 /* Contents.json */; };
 		5AA5EA4079A98C0C6B8D78E7 /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 826B97D11E0033B29E59B4C0 /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework */; };
 		B775983A13030DA69261F975 /* Pods_CodeWarsTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23638DD34A40959A9F790DAA /* Pods_CodeWarsTrackerTests.framework */; };
 		E7AC46D31C8CCB1FD50959EF /* Pods_CodeWarsTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D79EB3B7A37AF78B72AB46D1 /* Pods_CodeWarsTracker.framework */; };
@@ -105,6 +106,7 @@
 		3E6AB80C26CC5ED500DF9A11 /* CodeWarsTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeWarsTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6AB81026CC5ED500DF9A11 /* CodeWarsTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeWarsTrackerUITests.swift; sourceTree = "<group>"; };
 		3E6AB81226CC5ED500DF9A11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3EF36E112731D86D001ADFA0 /* Contents.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		826B97D11E0033B29E59B4C0 /* Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeWarsTracker_CodeWarsTrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D354AC7882F44AB5E962EEF9 /* Pods-CodeWarsTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeWarsTrackerTests.debug.xcconfig"; path = "Target Support Files/Pods-CodeWarsTrackerTests/Pods-CodeWarsTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D79EB3B7A37AF78B72AB46D1 /* Pods_CodeWarsTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeWarsTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +214,7 @@
 				3E6AB7EE26CC5ED000DF9A11 /* AppDelegate.swift */,
 				3E6AB7F026CC5ED000DF9A11 /* SceneDelegate.swift */,
 				3E6AB7F926CC5ED400DF9A11 /* LaunchScreen.storyboard */,
+				3EF36E112731D86D001ADFA0 /* Contents.json */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 			files = (
 				3E6AB7FB26CC5ED400DF9A11 /* LaunchScreen.storyboard in Resources */,
 				3E6AB7F826CC5ED400DF9A11 /* Assets.xcassets in Resources */,
+				3EF36E122731D86D001ADFA0 /* Contents.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

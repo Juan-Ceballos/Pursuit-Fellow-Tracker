@@ -1,0 +1,16 @@
+{
+    "images": [{
+        "idiom": "universal",
+        "scale": "1x",
+        "filename": "MyGifAnimation.gif"
+    }, {
+        "idiom": "universal",
+        "scale": "2x",
+        "filename": "MyGifAnimation@2x.gif"
+    }],
+    "info": {
+        "version": 1,
+        "author": "xcode"
+    }
+}
+
