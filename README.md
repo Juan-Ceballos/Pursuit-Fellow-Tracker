@@ -14,7 +14,7 @@ Scroll Users           | Search User             | Change Color Theme
 ---------------------- | ----------------------- | -----------------------
 ![gif](CodeWarsTracker/Assets.xcassets/MyGifAnimation.xcassets/BrowseFellows.dataset/BrowseFellows.gif) | ![gif](CodeWarsTracker/Assets.xcassets/MyGifAnimation.xcassets/SearchFellow.dataset/SearchFellow.gif) | ![gif](CodeWarsTracker/Assets.xcassets/MyGifAnimation.xcassets/ChangeTheme.dataset/ChangeTheme.gif)
 
-### User Details ### Create Account
+### User Details     Create Account
 
 ![DetailFellow](CodeWarsTracker/Assets.xcassets/DetailFellow.imageset/DetailFellow.png) ![CreateAccount](CodeWarsTracker/Assets.xcassets/CreateAccount.imageset/CreateAccount.png)      
 
