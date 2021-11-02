@@ -34,9 +34,10 @@ class HeaderView: UICollectionReusableView {
     private func setupTextLabelConstraints() {
         addSubview(textLabel)
         textLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(8)
+            make.left.equalToSuperview().offset(17)
             make.centerY.equalToSuperview()
         }
     }
     
 }
+
