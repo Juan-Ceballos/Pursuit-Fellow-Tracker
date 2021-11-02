@@ -12,7 +12,7 @@ codewars
 
 ![gif](CodeWarsTracker/Assets.xcassets/MyGifAnimation.xcassets/BrowseFellows.dataset/BrowseFellows.gif)
 
-![CreateAccount](CodeWarsTracker/Assets.xcassets/CreateAccount.imageset/CreateAccount.png)
+![1](CodeWarsTracker/Assets.xcassets/CreateAccount.imageset/CreateAccount.png)
        
        CodeWarsTracker/Assets.xcassets/DetailFellow.imageset/DetailFellow.png
        CodeWarsTracker/Assets.xcassets/FindAPairing.imageset/FindAPairing.png
