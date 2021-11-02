@@ -10,6 +10,8 @@ codewars
 
 ### Scroll User Fellows and Staff
 
+![gif](CodeWarsTracker/Assets.xcassets/MyGifAnimation.xcassets/BrowseFellows.dataset/BrowseFellows.gif)
+
 ### Search for Fellows and Staff
 
 ### Change App Theme
