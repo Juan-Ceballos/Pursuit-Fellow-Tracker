@@ -25,23 +25,26 @@ Scroll Users           | Search User             | Change Color Theme
 
 ## Code Block
 
-### Block
-
-```swift
-
-```
-
-### Block 2
+### Asynchronous Test
 
 ```Swift
-
+func testFetchUserById() {
+    let exp = XCTestExpectation(description: "fetched a user by id")
+    CWTAPIClient.fetchUserById(id: "5") { (result) in
+        switch result {
+        case .failure(let appError):
+            print(appError)
+            XCTFail("\(appError)")
+        case .success(let userById):
+            exp.fulfill()
+            XCTAssertEqual(userById.id, 5)
+        }
+    } 
+    wait(for: [exp], timeout: 5.0)
+}
 ```
 
 ## Installation
-
-### Prerequisites
-
-* steps
 
 ### Clone
 
@@ -49,16 +52,25 @@ Scroll Users           | Search User             | Change Color Theme
 
 ### Setup
 
-* Add a Swift file named Config to project directory.
+* Add a Swift file named Secrets to project directory.
 
+* in file add following code
+
+```swift
+
+```
 
 ## Built With
 
 * XCode
-
 * Swift
-
 * SnapKit
+* Safari Services
+* DropDown
+* XCTest
+* UIKit
+* Foundation
+* MVC Architecture, Programmatic UI
 
 ## Collaborators
 
