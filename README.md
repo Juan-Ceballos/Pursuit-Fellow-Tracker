@@ -8,12 +8,15 @@ codewars
 
 ## Features
 
-### Feature 1
+### Scroll User Fellows and Staff
 
+### Search for Fellows and Staff
 
-### Feature 2
+### Change App Theme
 
-### Feature 3
+### User Details
+
+### Menu for Further App Assistance
 
 ## Code Block
 
