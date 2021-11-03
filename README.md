@@ -52,13 +52,9 @@ func testFetchUserById() {
 
 ### Setup
 
-* Add a Swift file named Secrets to project directory.
+* Add a Swift file named Secrets to project directory
 
-* in file add following code
-
-```swift
-
-```
+* Contact regarding contributing, or Testflight email
 
 ## Built With
 
