@@ -15,7 +15,7 @@ struct ScoreBoard:Codable {
     let staffThisMonth: Int
     let fellowsAllTime: Int
     let staffAllTime: Int
-    //
+    // again
     private enum CodingKeys: String, CodingKey {
         case id
         case fellowsThisWeek = "fellows_this_week"
