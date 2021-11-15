@@ -47,7 +47,6 @@ class CodeWarsTrackerTests: XCTestCase {
         }
         
         wait(for: [exp], timeout: 15.0)
-        
     }
     
     func testFetchUserById() {
