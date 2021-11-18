@@ -1,4 +1,4 @@
-# CodeWarsTracker-iOS
+# Pursuit Fellow Tracker
 
 ## Overview
 
