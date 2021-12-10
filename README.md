@@ -5,7 +5,7 @@
 An app for Pursuit Fellows and Staff to track and share their progress completing challenges on CodeWars,
 As well as any ongoing GitHub projects.
 
-### App Store
+## App Store
 
 [Pursuit-Fellow-Tracker](https://apps.apple.com/us/app/pursuit-fellow-tracker/id1587496518)
 
