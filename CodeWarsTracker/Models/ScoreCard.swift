@@ -7,6 +7,7 @@
 
 import Foundation
 
+// scorecard model to parse data
 struct ScoreBoard:Codable {
     let id: Int
     let fellowsThisWeek: Int

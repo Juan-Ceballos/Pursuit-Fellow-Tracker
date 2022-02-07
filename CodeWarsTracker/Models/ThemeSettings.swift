@@ -7,6 +7,7 @@
 
 import UIKit
 
+// setting up theme models with it's properties
 struct ThemeSettings {
     let appBgColor: UIColor
     let highlightedBgColor: UIColor

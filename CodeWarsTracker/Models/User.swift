@@ -11,6 +11,8 @@ struct UserWrapper: Codable {
     let users: [User]
 }
 
+// user model, necessary properties to help with displaying data
+// and help distinguish users to organize ui
 struct User: Codable, Hashable {
     let id: Int?
     let username: String

@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIViewController {
+    // show alert extension on view controllers to show error messages
     public func showAlert(title: String? = nil, message: String? = nil, completion:((UIAlertAction) ->())? = nil) {
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
     let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: completion)

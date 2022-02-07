@@ -7,6 +7,7 @@
 
 import Foundation
 
+// NetworkHelper class, singleton to wrap url session data fetch
 class NetworkHelper {
     static let shared = NetworkHelper()
     private var session: URLSession

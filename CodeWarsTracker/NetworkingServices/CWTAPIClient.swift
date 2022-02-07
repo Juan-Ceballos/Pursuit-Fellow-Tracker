@@ -10,6 +10,7 @@ import Foundation
 class CWTAPIClient {
     public static func fetchAllUsers(completion: @escaping (Result<[[User]], AppError>) -> ()) {
         
+        // will fetch json data using base url for fetching array of all users
         let urlString = RequestURLString.base
         
         guard let url = URL(string: urlString) else {
@@ -25,6 +26,8 @@ class CWTAPIClient {
                 print(appError)
             case .success(let data):
                 do {
+                    // do the work here to split up all the users into the different
+                    // cohort categories and parse into array of different User Model arrays
                     var usersByCohort = [[User]]()
                     let userWrapper = try JSONDecoder().decode([User].self, from: data)
                     let userWrapperSO = userWrapper.filter {$0.cohort == "Pursuit-7.1"}
@@ -47,6 +50,7 @@ class CWTAPIClient {
         
     }
     
+    // specifically for by user id endpoint, will be used for grabbing specific user for detail view
     public static func fetchUserById(id: String, completion: @escaping (Result<IdUser, AppError>) -> ()) {
         let urlString = RequestURLString.query + id
         
@@ -73,6 +77,7 @@ class CWTAPIClient {
         }
     }
     
+    // use scoreboard endpoint to fetch up to date scoreboard data
     public static func getScoreboardData(completion: @escaping (Result<ScoreBoard, AppError>) -> ()){
         let urlString = RequestURLString.scoreboard
         
@@ -98,6 +103,7 @@ class CWTAPIClient {
         }
     }
     
+    // will post new user to json api when user signs up
     static func postUser(user: User, completion: @escaping (Result<Bool, AppError>)->()){
         let endPointURLString = RequestURLString.query
         

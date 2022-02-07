@@ -7,6 +7,8 @@
 
 import UIKit
 
+// color models using UIColor based on hex values to setup
+// have colors preset to easily call later
 class PursuitColors: UIColor {
     
     static var pursuitPurle:UIColor {return UIColor(hex: 0x4242EA) }

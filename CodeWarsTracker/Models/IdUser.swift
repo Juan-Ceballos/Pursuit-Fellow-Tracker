@@ -7,6 +7,7 @@
 
 import Foundation
 
+// model to hold detail user once we have their id for problem sets
 struct IdUserWrapper: Decodable {
     let fellowData: IdUser
 }

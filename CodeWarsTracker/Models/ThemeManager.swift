@@ -13,6 +13,7 @@ protocol Themeable {
     func applyTheme(_ theme: PursuitTheme)
 }
 
+// shared theme manager
 final class ThemeManager {
     
     //1.Observer Pattern - store observers, UIElements

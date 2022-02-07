@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 public enum Section: String, CaseIterable {
+    // different sections for compositional collection view
     case fellow
     case staff
     case leaderBoard

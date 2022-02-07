@@ -7,6 +7,7 @@
 
 import UIKit
 
+// NSMutableAttributedString extensions to layout ui
 extension NSMutableAttributedString {
     var fontSize:CGFloat { return UIFont.preferredFont(forTextStyle: .body).pointSize }
     var boldFont:UIFont { return UIFont.boldSystemFont(ofSize: fontSize) }
