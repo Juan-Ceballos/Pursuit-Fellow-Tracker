@@ -7,6 +7,7 @@
 
 import Foundation
 
+// user defaults to persist the theme between different app life cycles
 final class UserDefaultsManager {
     
     private static var defaults = UserDefaults.standard

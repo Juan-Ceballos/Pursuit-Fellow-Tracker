@@ -10,6 +10,7 @@ import XCTest
 
 class CodeWarsTrackerTests: XCTestCase {
 
+    // asynchronous test to see if can fetch data
     func testNetworkHelper() {
         let exp = XCTestExpectation(description: "data fetched")
         guard let url = URL(string: RequestURLString.base) else {
@@ -31,6 +32,8 @@ class CodeWarsTrackerTests: XCTestCase {
         wait(for: [exp], timeout: 5.0)
     }
     
+    // asynchronous test to see if can parse data into the 2d arr of different user model arrays
+    // each one representing a cohort
     func testFetchAllUsers() {
         let exp = XCTestExpectation(description: "fetched all users")
         let firstUserIdInAPI = 226
@@ -49,6 +52,7 @@ class CodeWarsTrackerTests: XCTestCase {
         wait(for: [exp], timeout: 15.0)
     }
     
+    // async test
     func testFetchUserById() {
         let exp = XCTestExpectation(description: "fetched a user by id")
         CWTAPIClient.fetchUserById(id: "5") { (result) in
