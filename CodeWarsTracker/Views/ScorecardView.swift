@@ -42,26 +42,36 @@ class ScoreCardView: UIView {
     
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+            let headerHeight = 0.125
+            let fullDimension = 1
+            let halfDimension = 0.5
+            let buffer = 15
+            let smallBuffer = 2
+            let noBuffer = 0
+            let verticalAdjustment = 20
+            let horizontalAdjustment = -5
+            let fractionWidth = 0.45
+            let fractionHeight = 0.7
             
-            let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.125))
+            let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(fullDimension), heightDimension: .fractionalHeight(headerHeight))
 
             let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerFooterSize, elementKind: Constants.headerElementKind, alignment: .topLeading)
             
-            let bannerHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .absolute(20))
-            let containerAnchor = NSCollectionLayoutAnchor(edges: [.bottom, .trailing], absoluteOffset: CGPoint(x: -5, y: 20))
+            let bannerHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(halfDimension), heightDimension: .absolute(verticalAdjustment))
+            let containerAnchor = NSCollectionLayoutAnchor(edges: [.bottom, .trailing], absoluteOffset: CGPoint(x: horizontalAdjustment, y: verticalAdjustment))
             let itemBanner = NSCollectionLayoutSupplementaryItem(layoutSize: bannerHeaderSize, elementKind: Constants.badgeElementKind, containerAnchor: containerAnchor)
             
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension:
-            .fractionalHeight(1))
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(fullDimension), heightDimension:
+            .fractionalHeight(fullDimension))
 
             let item = NSCollectionLayoutItem(layoutSize: itemSize, supplementaryItems: [itemBanner])
-            item.contentInsets.bottom = 15
+            item.contentInsets.bottom = smallBuffer
 
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.45),
-            heightDimension: .fractionalWidth(0.7))
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(fractionWidth),
+            heightDimension: .fractionalWidth(fractionHeight))
 
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-            group.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 2)
+            group.contentInsets = .init(top: noBuffer, leading: buffer, bottom: noBuffer, trailing: smallBuffer)
 
             let section = NSCollectionLayoutSection(group: group)
             section.boundarySupplementaryItems = [sectionHeader]
@@ -75,22 +85,28 @@ class ScoreCardView: UIView {
     
     public lazy var scoreboardContainerStackView: UIStackView = {
         let stackview = HighlightedStackView()
+        let svInset = 8
+        let svSpacing = 13
+        let cr = 8
+        
         stackview.axis = .vertical
-        stackview.spacing = 13
+        stackview.spacing = svSpacing
         stackview.distribution = .equalSpacing
         stackview.alignment = .center
         stackview.addArrangedSubview(scoreboardLabel)
         stackview.addArrangedSubview(scoreboardDataStackView)
-        stackview.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        stackview.layoutMargins = UIEdgeInsets(top: svInset, left: svInset, bottom: svInset, right: svInset)
         stackview.isLayoutMarginsRelativeArrangement = true
-        stackview.layer.cornerRadius = 8
+        stackview.layer.cornerRadius = cr
         return stackview
     }()
     
     public lazy var scoreboardDataStackView: UIStackView = {
         let stackView = HighlightedStackView()
+        let svSpacing = 13
+        
         stackView.axis = .horizontal
-        stackView.spacing = 13
+        stackView.spacing = svSpacing
         stackView.alignment = .center
         stackView.distribution = .fillEqually
         stackView.addArrangedSubview(scoreboardWeeklyLabel)
@@ -132,12 +148,14 @@ class ScoreCardView: UIView {
     
     public lazy var segmentedControl: UISegmentedControl = {
         let sC = HighlightedSegmentedControl()
+        let defaultIndex = 0
+        
         sC.insertSegment(withTitle: "All", at: 0, animated: false)
         sC.insertSegment(withTitle: "7.1", at: 1, animated: false)
         sC.insertSegment(withTitle: "7.2", at: 2, animated: false)
         sC.insertSegment(withTitle: "8.1", at: 3, animated: false)
         sC.insertSegment(withTitle: "8.2", at: 4, animated: false)
-        sC.selectedSegmentIndex = 0
+        sC.selectedSegmentIndex = defaultIndex
         return sC
     }()
     
